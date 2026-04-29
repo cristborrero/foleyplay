@@ -27,19 +27,19 @@ export const streamProviders: StreamProvider[] = [
     getMovieUrl: (tmdbId) => `https://vidlink.pro/movie/${tmdbId}`,
     getTvUrl: (tmdbId, season, episode) => `https://vidlink.pro/tv/${tmdbId}/${season}/${episode}`,
   },
-  // ── PROXIED (ad-blocking active) ────────────────────────────────────────
+  // ── DIRECT (browser resolves DNS) ───────────────────────────────────────
   {
     id: '2embed',
     name: '2Embed',
-    getMovieUrl: (tmdbId) => proxy(`https://www.2embed.cc/embed/${tmdbId}`),
-    getTvUrl: (tmdbId, season, episode) => proxy(`https://www.2embed.cc/embedtv/${tmdbId}&s=${season}&e=${episode}`),
+    getMovieUrl: (tmdbId) => `https://www.2embed.cc/embed/${tmdbId}`,
+    getTvUrl: (tmdbId, season, episode) => `https://www.2embed.cc/embedtv/${tmdbId}&s=${season}&e=${episode}`,
   },
   {
     id: 'streamimdb',
     name: 'StreamIMDb',
     needsImdbId: true,
-    getMovieUrl: (tmdbId, imdbId) => proxy(imdbId ? `https://streamimdb.me/embed/${imdbId}` : `https://www.2embed.cc/embed/${tmdbId}`),
-    getTvUrl: (tmdbId, season, episode, imdbId) => proxy(imdbId ? `https://streamimdb.me/embed/${imdbId}?s=${season}&e=${episode}` : `https://www.2embed.cc/embedtv/${tmdbId}&s=${season}&e=${episode}`),
+    getMovieUrl: (tmdbId, imdbId) => imdbId ? proxy(`https://streamimdb.me/embed/${imdbId}`) : `https://www.2embed.cc/embed/${tmdbId}`,
+    getTvUrl: (tmdbId, season, episode, imdbId) => imdbId ? proxy(`https://streamimdb.me/embed/${imdbId}?s=${season}&e=${episode}`) : `https://www.2embed.cc/embedtv/${tmdbId}&s=${season}&e=${episode}`,
   },
   // ── DIRECT fallbacks ─────────────────────────────────────────────────────
   {
