@@ -1,4 +1,4 @@
-import NextAuth, { NextAuthConfig } from 'next-auth';
+import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import bcrypt from 'bcryptjs';
@@ -64,7 +64,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     })
   ],
   callbacks: {
-    ...authConfig.callbacks,
     async signIn({ user, account }) {
       if (account?.provider !== 'credentials') {
         try {
@@ -83,13 +82,34 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             dbUser = await User.findByIdAndUpdate(dbUser._id, { role: 'superadmin', approved: true }, { new: true }) ?? dbUser;
           }
           user.id = dbUser._id.toString();
-          (user as Record<string, unknown>).approved = (dbUser.role === 'admin' || dbUser.role === 'superadmin') ? true : dbUser.approved;
+          (user as Record<string, unknown>).approved =
+            dbUser.role === 'admin' || dbUser.role === 'superadmin' ? true : dbUser.approved;
           (user as Record<string, unknown>).role = dbUser.role || 'user';
         } catch {
           // No bloqueamos el login si la DB falla
         }
       }
       return true;
-    }
-  }
+    },
+    async jwt({ token, user, trigger, session: updateData }) {
+      if (user) {
+        token.id = user.id;
+        if (user.name) token.name = user.name;
+        token.approved = (user as Record<string, unknown>).approved ?? false;
+        token.role = (user as Record<string, unknown>).role ?? 'user';
+      }
+      if (trigger === 'update' && updateData) {
+        if (updateData.name) token.name = updateData.name;
+        if (updateData.image !== undefined) token.picture = updateData.image;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user && token.id) session.user.id = token.id as string;
+      if (token.name) session.user.name = token.name as string;
+      session.user.approved = token.approved as boolean | undefined;
+      session.user.role = token.role as string | undefined;
+      return session;
+    },
+  },
 });

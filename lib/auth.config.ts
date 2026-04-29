@@ -1,36 +1,19 @@
 import type { NextAuthConfig } from 'next-auth';
 
-export const authConfig = {
+// Edge-safe: no mongoose, no bcrypt, no Node.js-only APIs.
+// Used exclusively by proxy.ts to decode the existing JWT without touching the DB.
+export const authConfig: NextAuthConfig = {
   providers: [],
+  pages: { signIn: '/login' },
+  session: { strategy: 'jwt' },
   callbacks: {
-    async jwt({ token, user, trigger, session: updateData }) {
-      if (user) {
-        token.id = user.id;
-        if (user.name) token.name = user.name;
-        token.approved = (user as Record<string, unknown>).approved ?? false;
-        token.role = (user as Record<string, unknown>).role ?? 'user';
-      }
-      if (trigger === 'update' && updateData) {
-        if (updateData.name) token.name = updateData.name;
-        if (updateData.image !== undefined) token.picture = updateData.image;
-      }
-      return token;
-    },
-    async session({ session, token }) {
-      if (session.user && token.id) {
-        session.user.id = token.id as string;
-      }
+    jwt({ token }) { return token; },
+    session({ session, token }) {
+      if (token.id) session.user.id = token.id as string;
       if (token.name) session.user.name = token.name as string;
-      (session.user as any).approved = token.approved;
-      (session.user as any).role = token.role;
+      session.user.approved = token.approved as boolean | undefined;
+      session.user.role = token.role as string | undefined;
       return session;
-    }
+    },
   },
-  pages: {
-    signIn: '/login',
-  },
-  session: {
-    strategy: 'jwt',
-  },
-  secret: process.env.NEXTAUTH_SECRET,
-} satisfies NextAuthConfig;
+};

@@ -47,3 +47,6 @@ next-env.d.ts
 
 # local build cache (distDir output inside project)
 /tmp
+
+# AI tools
+.gemini/
