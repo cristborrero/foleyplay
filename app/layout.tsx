@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "FoleyPlay",
   description: "Tu plataforma de streaming",
+  manifest: "/manifest.webmanifest",
   icons: {
     icon: [
       { url: "/icon.png", type: "image/png", sizes: "192x192" },

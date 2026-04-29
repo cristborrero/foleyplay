@@ -538,11 +538,34 @@ Fuente: `doc/assets/img/SVG/foleyplay-ico.webp` (500×500, logo oficial).
 | Android TV (Capacitor) | ✅ Configurado (dev: IP local) |
 | D-Pad navigation (TV) | ✅ Hook implementado |
 
+## PWA
+
+| Archivo | Descripción |
+|---|---|
+| `app/manifest.ts` | Web App Manifest — Next.js file convention. Auto-sirve en `/manifest.webmanifest`. |
+| `public/sw.js` | Service worker custom. Estrategia network-first con fallback a cache. API calls excluidas del cache. |
+| `app/icon-512.png` | Icono 512×512 requerido por PWA (generado desde `foleyplay-ico.webp`). |
+| `components/layout/Providers.tsx` | Registra el SW via `navigator.serviceWorker.register('/sw.js')` en `useEffect`. |
+
+**Capacidades:**
+- Instalable en Android/Chrome/Edge ("Agregar a pantalla de inicio")
+- Funciona offline para rutas ya visitadas (network-first + cache fallback)
+- Las llamadas a `/api/*` siempre van a la red (nunca desde cache)
+- Actualización automática: nuevo SW reemplaza al anterior en la próxima visita
+
+---
+
+## Estado actual — qué funciona (adiciones)
+
+| Feature | Estado |
+|---|---|
+| Búsqueda con filtros (`/search`) | ✅ Completo — implementación real en `search/page.tsx` |
+| Capacitor URL de producción | ✅ Completo — apunta a `https://foleyplay.vercel.app`, `cleartext: false` |
+| Página `/tv` (catálogo series) | ✅ Completo — 9 carruseles de géneros, análoga a `/movies` |
+| 2Embed modo directo | ✅ Fix — pasado de proxied a direct para resolver 403 upstream en Vercel |
+
 ## Pendiente / Mejoras futuras
 
 | Feature | Prioridad | Notas |
 |---|---|---|
-| SearchBar component | Media | Stub implementado en `components/search/SearchBar.tsx` |
-| Capacitor URL para producción | Alta | Cambiar `server.url` a dominio público antes de distribuir APK |
-| PWA (manifest + service worker) | Baja | Para instalación en dispositivos sin Capacitor |
-| Página `/tv` (catálogo series) | Baja | Análoga a `/movies`, pendiente de implementar |
+| ~~PWA (manifest + service worker)~~ | ~~Media~~ | ✅ Implementado — ver sección PWA |
