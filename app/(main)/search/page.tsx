@@ -212,7 +212,7 @@ function SearchContent() {
 
 export default function SearchPage() {
   return (
-    <div className="pt-24 px-4 md:px-12 min-h-screen bg-fp-black">
+    <div className="pt-20 sm:pt-24 px-4 sm:px-5 md:px-8 lg:px-12 min-h-screen bg-fp-black">
       <Suspense fallback={<div className="text-white pt-20">Cargando...</div>}>
         <SearchContent />
       </Suspense>

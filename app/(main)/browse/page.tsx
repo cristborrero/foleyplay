@@ -7,7 +7,7 @@ export default function BrowsePage() {
     <div className="w-full">
       <HeroBanner />
 
-      <div className="-mt-32 relative z-20 md:-mt-40">
+      <div className="-mt-16 sm:-mt-24 md:-mt-32 lg:-mt-40 relative z-20">
         {/* Filas del usuario — se ocultan automáticamente si están vacías */}
         <UserContentRow
           title="Continuar viendo"

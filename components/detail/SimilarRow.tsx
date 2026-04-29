@@ -21,7 +21,7 @@ export default function SimilarRow({ items, mediaType }: SimilarRowProps) {
             <Link
               key={item.id}
               href={`/${item.media_type || mediaType}/${item.id}`}
-              className="flex-none w-[180px] group"
+              className="flex-none w-[140px] sm:w-[160px] md:w-[180px] group"
             >
               <div className="relative aspect-video rounded overflow-hidden bg-gray-800 mb-2">
                 <Image

@@ -21,36 +21,36 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
     return (
       <div className="min-h-screen bg-fp-black">
         {/* Banner Section */}
-        <div className="relative h-[40vh] md:h-[60vh] w-full">
-          <div 
+        <div className="relative h-[45vh] sm:h-[50vh] md:h-[60vh] w-full">
+          <div
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})` }}
           />
           <div className="absolute inset-0 bg-linear-to-t from-fp-black via-fp-black/80 to-transparent" />
-          
-          <div className="absolute bottom-0 left-0 p-4 md:p-12 w-full">
-            <h1 className="text-3xl md:text-5xl font-bold text-white mb-2">{title}</h1>
-            <div className="flex items-center space-x-4 text-sm text-gray-300 mb-4">
+
+          <div className="absolute bottom-0 left-0 p-4 sm:p-6 md:p-8 lg:p-12 w-full">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 leading-tight">{title}</h1>
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-sm text-gray-300 mb-3">
               <span>{releaseYear}</span>
               {movie.runtime && <span>{movie.runtime} min</span>}
               <span className="flex items-center text-green-400 font-bold">
                 ★ {movie.vote_average?.toFixed(1)}
               </span>
             </div>
-            <p className="max-w-3xl text-gray-200 text-sm md:text-base leading-relaxed">
+            <p className="max-w-full md:max-w-3xl text-gray-200 text-sm md:text-base leading-relaxed line-clamp-3 sm:line-clamp-none">
               {movie.overview}
             </p>
-            <DetailActions 
-              tmdbId={Number(id)} 
-              mediaType="movie" 
-              title={title || 'Título desconocido'} 
-              posterPath={movie.poster_path || ''} 
+            <DetailActions
+              tmdbId={Number(id)}
+              mediaType="movie"
+              title={title || 'Título desconocido'}
+              posterPath={movie.poster_path || ''}
             />
           </div>
         </div>
 
         {/* Player Section */}
-        <div className="px-4 md:px-12 py-8 max-w-7xl mx-auto">
+        <div className="px-4 sm:px-6 md:px-8 lg:px-12 py-6 sm:py-8 max-w-7xl mx-auto">
           <h2 className="text-2xl font-bold mb-6 text-white">Reproducir</h2>
           <ServerSelector mediaType="movie" tmdbId={Number(id)} imdbId={movie.imdb_id} />
           <CastRow cast={movie.credits?.cast || []} />

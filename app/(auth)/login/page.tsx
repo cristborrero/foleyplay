@@ -49,9 +49,9 @@ export default function LoginPage() {
         </Link>
       </header>
 
-      <div className="relative z-10 flex-1 flex items-center justify-center pt-20 px-4">
-        <div className="w-full max-w-md bg-black/70 backdrop-blur-sm p-8 md:p-12 rounded-xl shadow-[0_0_60px_rgba(0,0,0,0.8)]">
-          <h1 className="text-3xl font-bold text-white mb-8">Iniciar sesión</h1>
+      <div className="relative z-10 flex-1 flex items-center justify-center px-4 py-6 sm:py-0">
+        <div className="w-full max-w-md bg-black/70 backdrop-blur-sm p-6 sm:p-8 md:p-10 rounded-xl shadow-[0_0_60px_rgba(0,0,0,0.8)]">
+          <h1 className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8">Iniciar sesión</h1>
 
           {error && (
             <p className="bg-red-950/50 border border-red-800/50 text-red-300 p-3 rounded-lg mb-4 text-sm">
@@ -63,7 +63,7 @@ export default function LoginPage() {
           <button
             onClick={handleGoogle}
             disabled={isGoogleLoading}
-            className="w-full flex items-center justify-center gap-3 bg-white text-gray-800 font-semibold p-3.5 rounded-lg mb-4 hover:bg-gray-100 transition-all disabled:opacity-60"
+            className="w-full flex items-center justify-center gap-3 bg-white text-gray-800 font-semibold p-3 sm:p-3.5 rounded-lg mb-4 hover:bg-gray-100 transition-all disabled:opacity-60"
           >
             {isGoogleLoading ? (
               <div className="w-5 h-5 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />
@@ -88,7 +88,7 @@ export default function LoginPage() {
             <input
               type="email"
               placeholder="Email"
-              className="bg-fp-elevated text-white p-4 rounded-lg border border-fp-border outline-none focus:border-red-600/60 focus:bg-[#1f1f1f] focus:[box-shadow:0_0_0_1px_rgba(229,9,20,0.3)] transition-all placeholder:text-gray-600"
+              className="bg-fp-elevated text-white p-3.5 sm:p-4 rounded-lg border border-fp-border outline-none focus:border-red-600/60 focus:bg-[#1f1f1f] focus:[box-shadow:0_0_0_1px_rgba(229,9,20,0.3)] transition-all placeholder:text-gray-600"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -96,7 +96,7 @@ export default function LoginPage() {
             <input
               type="password"
               placeholder="Contraseña"
-              className="bg-fp-elevated text-white p-4 rounded-lg border border-fp-border outline-none focus:border-red-600/60 focus:bg-[#1f1f1f] focus:[box-shadow:0_0_0_1px_rgba(229,9,20,0.3)] transition-all placeholder:text-gray-600"
+              className="bg-fp-elevated text-white p-3.5 sm:p-4 rounded-lg border border-fp-border outline-none focus:border-red-600/60 focus:bg-[#1f1f1f] focus:[box-shadow:0_0_0_1px_rgba(229,9,20,0.3)] transition-all placeholder:text-gray-600"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -104,7 +104,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="bg-red-600 text-white font-bold p-4 rounded-lg mt-2 hover:bg-red-500 hover:[box-shadow:0_0_20px_rgba(229,9,20,0.5)] transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="bg-red-600 text-white font-bold p-3.5 sm:p-4 rounded-lg mt-2 hover:bg-red-500 hover:[box-shadow:0_0_20px_rgba(229,9,20,0.5)] transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isLoading && <div className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />}
               {isLoading ? 'Iniciando...' : 'Iniciar sesión'}

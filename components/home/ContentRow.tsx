@@ -57,13 +57,13 @@ export default function ContentRow({ title, fetchUrl, isLargeRow = false, mediaT
 
   // Don't render empty state (unless loading skeleton)
   if (!loading && !fetched) {
-    return <div ref={containerRef} className="pl-4 md:pl-12 my-8 h-[200px]" />;
+    return <div ref={containerRef} className="pl-3 sm:pl-4 md:pl-8 lg:pl-12 my-6 sm:my-8 h-[160px] sm:h-[200px]" />;
   }
   if (!loading && movies.length === 0) return null;
 
   return (
-    <div ref={containerRef} className="pl-4 md:pl-12 my-8">
-      <h2 className="text-white text-xl md:text-2xl font-bold mb-4">{title}</h2>
+    <div ref={containerRef} className="pl-3 sm:pl-4 md:pl-8 lg:pl-12 my-6 sm:my-8">
+      <h2 className="text-white text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4">{title}</h2>
       <div className="relative group">
         <button
           onClick={() => handleScroll('left')}
@@ -76,17 +76,17 @@ export default function ContentRow({ title, fetchUrl, isLargeRow = false, mediaT
 
         <div
           ref={rowRef}
-          className="flex space-x-3 overflow-x-scroll py-4 pr-4 md:pr-12"
+          className="flex space-x-2 sm:space-x-3 overflow-x-scroll py-3 sm:py-4 pr-3 sm:pr-4 md:pr-8 lg:pr-12"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {loading
             ? Array.from({ length: SKELETON_COUNT }).map((_, i) => (
-                <div key={i} className={`flex-none ${isLargeRow ? 'w-[150px] md:w-[200px]' : 'w-[200px] md:w-[280px]'}`}>
+                <div key={i} className={`flex-none ${isLargeRow ? 'w-[110px] sm:w-[140px] md:w-[175px]' : 'w-[150px] sm:w-[185px] md:w-[230px]'}`}>
                   <SkeletonCard isLargeRow={isLargeRow} />
                 </div>
               ))
             : movies.map((movie) => (
-                <div key={movie.id} className={`flex-none ${isLargeRow ? 'w-[150px] md:w-[200px]' : 'w-[200px] md:w-[280px]'}`}>
+                <div key={movie.id} className={`flex-none ${isLargeRow ? 'w-[110px] sm:w-[140px] md:w-[175px]' : 'w-[150px] sm:w-[185px] md:w-[230px]'}`}>
                   <MovieCard media={movie} isLargeRow={isLargeRow} mediaType={mediaType} />
                 </div>
               ))}

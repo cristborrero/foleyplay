@@ -48,9 +48,9 @@ export default function Navbar() {
           ? 'bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-white/5 shadow-[0_1px_20px_rgba(0,0,0,0.6)]'
           : 'bg-linear-to-b from-black/80 to-transparent'
       }`}>
-        <div className="flex items-center justify-between px-4 py-3 md:px-12">
+        <div className="flex items-center justify-between px-4 py-3 md:px-8 lg:px-12">
           {/* Left: Logo + desktop links */}
-          <div className="flex items-center space-x-8">
+          <div className="flex items-center space-x-4 md:space-x-8">
             <Link href="/browse" className="shrink-0">
               <Image src="/logo.webp" alt="FoleyPlay" width={140} height={40} className="h-8 w-auto object-contain" priority />
             </Link>
@@ -64,7 +64,7 @@ export default function Navbar() {
           </div>
 
           {/* Right: Search + Avatar + Hamburger */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
             <Link href="/search" className="text-gray-300 hover:text-white transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />

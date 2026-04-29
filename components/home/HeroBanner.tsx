@@ -41,7 +41,7 @@ export default function HeroBanner() {
   const movie = items[currentIndex];
 
   if (!movie) {
-    return <div className="h-[70vh] md:h-[85vh] bg-[#111] animate-pulse" />;
+    return <div className="h-[55vh] sm:h-[70vh] md:h-[85vh] bg-[#111] animate-pulse" />;
   }
 
   const title = movie.title || movie.name || movie.original_name || '';
@@ -51,7 +51,7 @@ export default function HeroBanner() {
       : movie.overview;
 
   return (
-    <div className="relative h-[70vh] md:h-[85vh] w-full overflow-hidden">
+    <div className="relative h-[55vh] sm:h-[70vh] md:h-[85vh] w-full overflow-hidden">
 
       {/* background cross-fade */}
       <AnimatePresence mode="sync">
@@ -84,33 +84,33 @@ export default function HeroBanner() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -6 }}
           transition={{ duration: 0.35, ease: 'easeOut' }}
-          className="absolute bottom-[20%] left-4 md:left-12 max-w-2xl"
+          className="absolute bottom-[8%] sm:bottom-[15%] md:bottom-[20%] left-4 md:left-8 lg:left-12 max-w-[calc(100%-2rem)] sm:max-w-lg md:max-w-2xl"
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 sm:mb-4 drop-shadow-lg leading-tight">
             {title}
           </h1>
-          <p className="text-gray-200 text-sm md:text-base mb-6 drop-shadow-md leading-relaxed max-w-xl">
+          <p className="hidden sm:block text-gray-200 text-sm md:text-base mb-4 sm:mb-6 drop-shadow-md leading-relaxed max-w-xl">
             {overview}
           </p>
 
-          <div className="flex space-x-3">
+          <div className="flex flex-row gap-2 sm:gap-3">
             <button
               onClick={() => openPlayer({ tmdbId: movie.id, mediaType: movie.media_type || 'movie', title })}
-              className="flex items-center px-7 py-2.5 bg-white text-black rounded-md font-bold hover:bg-white/90 transition-all hover:[box-shadow:0_0_20px_rgba(255,255,255,0.3)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
+              className="flex items-center px-4 py-2 sm:px-7 sm:py-2.5 bg-white text-black rounded-md font-bold text-sm sm:text-base hover:bg-white/90 transition-all hover:[box-shadow:0_0_20px_rgba(255,255,255,0.3)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 mr-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2">
                 <path fillRule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clipRule="evenodd" />
               </svg>
               Reproducir
             </button>
             <Link
               href={`/${movie.media_type || 'movie'}/${movie.id}`}
-              className="flex items-center px-7 py-2.5 bg-white/10 text-white rounded-md font-bold border border-white/20 hover:bg-white/20 hover:border-red-600/50 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
+              className="flex items-center px-4 py-2 sm:px-7 sm:py-2.5 bg-white/10 text-white rounded-md font-bold text-sm sm:text-base border border-white/20 hover:bg-white/20 hover:border-red-600/50 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 mr-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
               </svg>
-              Más información
+              Más info
             </Link>
           </div>
         </motion.div>
@@ -118,7 +118,7 @@ export default function HeroBanner() {
 
       {/* dots — static, don't fade with content */}
       {items.length > 1 && (
-        <div className="absolute bottom-[13%] left-4 md:left-12 flex space-x-1.5">
+        <div className="absolute bottom-3 sm:bottom-[8%] md:bottom-[13%] left-4 md:left-8 lg:left-12 flex space-x-1.5">
           {items.map((_, i) => (
             <button
               key={i}
