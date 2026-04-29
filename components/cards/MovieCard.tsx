@@ -53,9 +53,15 @@ export default function MovieCard({ media, isLargeRow = false, mediaType }: Movi
   return (
     <div
       className="relative cursor-pointer"
+      tabIndex={0}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onFocus={() => setHovered(true)}
+      onBlur={() => setHovered(false)}
       onClick={handleInfo}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') { e.preventDefault(); openDetail({ tmdbId: media.id, mediaType: resolvedMediaType }); }
+      }}
     >
       <motion.div
         animate={{ scale: hovered ? 1.04 : 1 }}
