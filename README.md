@@ -1,6 +1,6 @@
 # FoleyPlay
 
-Plataforma de streaming educativa y no comercial construida como demostración técnica full-stack. Replica la experiencia de Netflix con autenticación real, catálogo desde TMDB, reproductores embebidos con ad-blocking proxy, subtítulos sincronizados, y soporte Android TV vía Capacitor.
+Plataforma de streaming educativa y no comercial construida como demostración técnica full-stack. Replica la experiencia de Netflix con autenticación real, catálogo desde TMDB, reproductores embebidos con ad-blocking proxy, subtítulos sincronizados, panel de administración con control de acceso por roles, y soporte Android TV vía Capacitor.
 
 ## Stack
 
@@ -38,21 +38,43 @@ Abrí [http://localhost:3000](http://localhost:3000).
 ## Variables de entorno
 
 ```env
+# TMDB
 TMDB_API_KEY=
 TMDB_BASE_URL=https://api.themoviedb.org/3
+TMDB_IMAGE_BASE_URL=https://image.tmdb.org/t/p
+
+# MongoDB Atlas
 MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/db
+
+# NextAuth
 NEXTAUTH_SECRET=
 NEXTAUTH_URL=http://localhost:3000
+
+# Google OAuth
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
+
+# OpenSubtitles (opcional)
 OPENSUBTITLES_API_KEY=
 OPENSUBTITLES_USER_AGENT=FoleyPlayApp v1.0
+
+# Admin
+ADMIN_EMAIL=tu_email_de_superadmin@ejemplo.com
+ADMIN_SECRET=secreto_para_scripts_de_admin
+
+# App pública
+NEXT_PUBLIC_APP_NAME="FoleyPlay"
+NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
 ## Features principales
 
 - Autenticación email/password y Google OAuth
+- Sistema de aprobación de usuarios — el registro está abierto, el acceso lo aprueba el admin
+- Roles jerárquicos: `user` / `admin` / `superadmin`
+- Panel de administración en `/admin/users` — listar, aprobar, eliminar y promover usuarios
 - Catálogo TMDB con carruseles lazy-load y HeroBanner rotativo
+- Página `/movies` con catálogo de películas por género
 - Búsqueda con filtros por tipo, género y año
 - Reproductores embebidos con ad-blocking proxy server-side
 - Multi-audio vía UnlimPlay y VidLink
@@ -70,6 +92,16 @@ OPENSUBTITLES_USER_AGENT=FoleyPlayApp v1.0
 | 2Embed | Proxied (ad-blocked) | ❌ |
 | StreamIMDb | Proxied (ad-blocked) | ❌ |
 | Embed.su | Direct | ❌ |
+
+## Sistema de acceso
+
+El registro es público pero el acceso requiere aprobación. Flujo:
+
+1. Usuario se registra → cuenta creada con `approved: false`
+2. Superadmin (o admin) aprueba desde `/admin/users`
+3. Usuario puede iniciar sesión y usar la plataforma
+
+Para definir el superadmin inicial, configurar `ADMIN_EMAIL` en `.env.local`.
 
 ## Android TV (Capacitor)
 
