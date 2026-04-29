@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FoleyPlay
 
-## Getting Started
+Plataforma de streaming educativa y no comercial construida como demostración técnica full-stack. Replica la experiencia de Netflix con autenticación real, catálogo desde TMDB, reproductores embebidos con ad-blocking proxy, subtítulos sincronizados, y soporte Android TV vía Capacitor.
 
-First, run the development server:
+## Stack
+
+| Capa | Tecnología |
+|---|---|
+| Framework | Next.js 16 (App Router, Turbopack) |
+| UI | React 19 + TypeScript 5 |
+| Estilos | Tailwind CSS v4 |
+| Animaciones | Framer Motion |
+| Auth | NextAuth v5 beta (Credentials + Google OAuth) |
+| Base de datos | MongoDB Atlas + Mongoose |
+| Mobile/TV | Capacitor Android 8 |
+
+## Requisitos previos
+
+- Node.js >= 20
+- Cuenta en MongoDB Atlas
+- Google Cloud Console — OAuth 2.0 credentials
+- TMDB API key
+- OpenSubtitles API key (opcional, para subtítulos)
+
+## Instalación
 
 ```bash
+git clone <repo-url>
+cd 09-netflix-clone
+npm install
+cp .env.local.example .env.local
+# Editá .env.local con tus credenciales
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrí [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Variables de entorno
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+TMDB_API_KEY=
+TMDB_BASE_URL=https://api.themoviedb.org/3
+MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/db
+NEXTAUTH_SECRET=
+NEXTAUTH_URL=http://localhost:3000
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+OPENSUBTITLES_API_KEY=
+OPENSUBTITLES_USER_AGENT=FoleyPlayApp v1.0
+```
 
-## Learn More
+## Features principales
 
-To learn more about Next.js, take a look at the following resources:
+- Autenticación email/password y Google OAuth
+- Catálogo TMDB con carruseles lazy-load y HeroBanner rotativo
+- Búsqueda con filtros por tipo, género y año
+- Reproductores embebidos con ad-blocking proxy server-side
+- Multi-audio vía UnlimPlay y VidLink
+- Subtítulos overlay sincronizados manualmente
+- Watchlist, historial de reproducción y calificaciones (like/dislike)
+- Perfil de usuario con avatar generado por iniciales
+- Soporte D-Pad para Android TV
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Proveedores de stream
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Proveedor | Modo | Multi-audio |
+|---|---|---|
+| UnlimPlay | Direct | ✅ |
+| VidLink | Direct | ✅ |
+| 2Embed | Proxied (ad-blocked) | ❌ |
+| StreamIMDb | Proxied (ad-blocked) | ❌ |
+| Embed.su | Direct | ❌ |
 
-## Deploy on Vercel
+## Android TV (Capacitor)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# Cambiar server.url en capacitor.config.ts a la URL de producción
+npm run build
+npx cap sync android
+# Abrir en Android Studio o instalar via ADB
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> ⚠️ `capacitor.config.ts` tiene `server.url` apuntando a IP local para desarrollo. Cambiar a URL pública antes de distribuir el APK.
+
+## Créditos
+
+- [TMDB](https://developer.themoviedb.org/docs) — catálogo de películas y series
+- [OpenSubtitles](https://opensubtitles.com) — subtítulos
+- [Next.js](https://nextjs.org/) / [Tailwind CSS](https://tailwindcss.com/)

@@ -1,26 +1,100 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@source not "../doc/**";
+@source not "../tmp/**";
+@source not "../.next/**";
+@source not "../public/**";
+@source not "../**/*.md";
+@source not "../**/*.log";
+@source not "../**/*.txt";
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-fp-red: #e50914;
+  --color-fp-red-bright: #ff1a1a;
+  --color-fp-black: #0a0a0a;
+  --color-fp-surface: #111111;
+  --color-fp-elevated: #1a1a1a;
+  --color-fp-border: #2a2a2a;
+  --color-fp-muted: #6b6b6b;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background-color: var(--color-fp-black);
+  color: white;
+  margin: 0;
+  padding: 0;
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-fp-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Focus — neon red glow */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-fp-red);
+  outline-offset: 3px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(229, 9, 20, 0.3), 0 0 12px rgba(229, 9, 20, 0.4);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-fp-red);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 1px rgba(229, 9, 20, 0.3), 0 0 12px rgba(229, 9, 20, 0.4);
+}
+
+/* Neon glow utilities */
+.neon-red {
+  box-shadow: 0 0 8px rgba(229, 9, 20, 0.7), 0 0 20px rgba(229, 9, 20, 0.4), 0 0 40px rgba(229, 9, 20, 0.2);
+}
+
+.neon-red-sm {
+  box-shadow: 0 0 6px rgba(229, 9, 20, 0.5), 0 0 12px rgba(229, 9, 20, 0.2);
+}
+
+.neon-border {
+  border: 1px solid rgba(229, 9, 20, 0.4);
+  box-shadow: 0 0 8px rgba(229, 9, 20, 0.2), inset 0 0 8px rgba(229, 9, 20, 0.05);
+}
+
+.neon-text {
+  text-shadow: 0 0 10px rgba(229, 9, 20, 0.8), 0 0 20px rgba(229, 9, 20, 0.5);
+}
+
+/* TV mode — Android TV D-Pad */
+@media (hover: none) and (pointer: coarse) {
+  * {
+    font-size: 120%;
+  }
+
+  button, a {
+    min-height: 48px;
+    min-width: 48px;
+  }
 }

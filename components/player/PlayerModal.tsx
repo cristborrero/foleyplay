@@ -1,0 +1,124 @@
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+import { useModal } from '@/lib/modal-context';
+import ServerSelector from './ServerSelector';
+import SubtitleInjector from './SubtitleInjector';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useSession } from 'next-auth/react';
+
+export default function PlayerModal() {
+  const { player, closePlayer } = useModal();
+  const { data: session } = useSession();
+  const [showSlowHint, setShowSlowHint] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Register in history on open
+  useEffect(() => {
+    if (!player || !session?.user) return;
+    fetch('/api/history', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        tmdbId: player.tmdbId,
+        mediaType: player.mediaType,
+        title: player.title,
+        posterPath: '',
+        season: player.season,
+        episode: player.episode,
+        progress: 5,
+      }),
+    }).catch(() => {});
+  }, [player?.tmdbId, session]);
+
+  // 30-second slow hint
+  useEffect(() => {
+    setShowSlowHint(false);
+    if (!player) return;
+    timeoutRef.current = setTimeout(() => setShowSlowHint(true), 30000);
+    return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
+  }, [player]);
+
+  // ESC to close
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') closePlayer(); };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [closePlayer]);
+
+  // Prevent body scroll
+  useEffect(() => {
+    document.body.style.overflow = player ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [player]);
+
+  return (
+    <AnimatePresence>
+      {player && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 z-[100] bg-black flex flex-col"
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between px-4 md:px-8 py-3 shrink-0">
+            <div>
+              <p className="text-white font-bold text-lg leading-tight">{player.title}</p>
+              {player.mediaType === 'tv' && player.season && (
+                <p className="text-gray-400 text-sm">
+                  Temporada {player.season} — Episodio {player.episode}
+                </p>
+              )}
+            </div>
+            <button
+              onClick={closePlayer}
+              className="text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/10"
+              aria-label="Cerrar"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Player */}
+          <div className="flex-1 px-4 md:px-8 pb-2 min-h-0 relative flex flex-col">
+            <ServerSelector
+              mediaType={player.mediaType}
+              tmdbId={player.tmdbId}
+              imdbId={player.imdbId}
+              season={player.season}
+              episode={player.episode}
+              fullscreen
+            />
+            <SubtitleInjector
+              tmdbId={player.tmdbId}
+              mediaType={player.mediaType}
+              season={player.season}
+              episode={player.episode}
+            />
+          </div>
+
+          {/* Slow hint */}
+          <AnimatePresence>
+            {showSlowHint && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="mx-4 md:mx-8 mb-3 px-4 py-3 bg-fp-elevated rounded-lg text-sm text-gray-300 flex items-center gap-3"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-yellow-500 shrink-0">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+                </svg>
+                ¿El video no carga? Probá otro servidor en los botones de arriba.
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
