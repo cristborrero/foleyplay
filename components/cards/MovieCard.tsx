@@ -99,7 +99,7 @@ export default function MovieCard({ media, isLargeRow = false, mediaType }: Movi
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
-              className="absolute bottom-0 left-0 right-0 bg-netflix-black/97 backdrop-blur-sm px-2.5 pt-2.5 pb-2"
+              className="absolute bottom-0 left-0 right-0 bg-[#0a0a0a]/97 backdrop-blur-sm px-2.5 pt-2.5 pb-2"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Title + badges */}

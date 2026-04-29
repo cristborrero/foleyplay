@@ -87,14 +87,16 @@ button:focus-visible {
   text-shadow: 0 0 10px rgba(229, 9, 20, 0.8), 0 0 20px rgba(229, 9, 20, 0.5);
 }
 
-/* TV mode — Android TV D-Pad */
-@media (hover: none) and (pointer: coarse) {
+/* TV mode — Android TV D-Pad only (large screens) */
+@media (hover: none) and (pointer: coarse) and (min-width: 960px) {
   * {
     font-size: 120%;
   }
+}
 
+/* Touch targets — all touch devices */
+@media (hover: none) and (pointer: coarse) {
   button, a {
-    min-height: 48px;
-    min-width: 48px;
+    min-height: 44px;
   }
 }
