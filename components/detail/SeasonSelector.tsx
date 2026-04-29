@@ -42,7 +42,7 @@ export default function SeasonSelector({ tmdbId, seasons, imdbId }: SeasonSelect
   }, [tmdbId, activeSeason]);
 
   return (
-    <div className="flex flex-col md:flex-row gap-8">
+    <div className="flex flex-col md:flex-row gap-4 sm:gap-8">
       {/* Left Column: Seasons and Episodes */}
       <div className="w-full md:w-1/3 flex flex-col space-y-4">
         {/* Season Dropdown */}
@@ -82,7 +82,7 @@ export default function SeasonSelector({ tmdbId, seasons, imdbId }: SeasonSelect
       <div className="w-full md:w-2/3">
         {activeEpisode ? (
           <div>
-            <h3 className="text-xl text-white mb-4">
+            <h3 className="text-base sm:text-xl text-white mb-3 sm:mb-4">
               Reproduciendo: Episodio {activeEpisode}
             </h3>
             <ServerSelector

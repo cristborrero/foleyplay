@@ -52,8 +52,8 @@ export default function UserContentRow({ title, fetchUrl, showProgress = false }
   };
 
   return (
-    <div className="pl-4 md:pl-12 my-8">
-      <h2 className="text-white text-xl md:text-2xl font-bold mb-4">{title}</h2>
+    <div className="pl-3 sm:pl-4 md:pl-8 lg:pl-12 my-6 sm:my-8">
+      <h2 className="text-white text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4">{title}</h2>
       <div className="relative group">
         <button
           onClick={() => handleScroll('left')}
@@ -66,14 +66,14 @@ export default function UserContentRow({ title, fetchUrl, showProgress = false }
 
         <div
           ref={rowRef}
-          className="flex space-x-4 overflow-x-scroll py-4 pr-4 md:pr-12"
+          className="flex space-x-2 sm:space-x-3 overflow-x-scroll py-3 sm:py-4 pr-3 sm:pr-4 md:pr-8 lg:pr-12"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {items.map((item) => (
             <Link
               key={item._id}
               href={`/${item.mediaType}/${item.tmdbId}`}
-              className="flex-none w-[150px] md:w-[200px] group/card"
+              className="flex-none w-[110px] sm:w-[140px] md:w-[175px] group/card"
             >
               <div className="relative aspect-2/3 rounded-md overflow-hidden bg-gray-800">
                 {item.posterPath ? (

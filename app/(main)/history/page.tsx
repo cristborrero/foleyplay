@@ -47,9 +47,9 @@ export default function HistoryPage() {
   }
 
   return (
-    <div className="pt-24 px-4 md:px-12 min-h-screen bg-fp-black">
+    <div className="pt-20 sm:pt-24 px-3 sm:px-4 md:px-12 min-h-screen bg-fp-black">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold text-white mb-8">Continuar Viendo</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-8">Continuar Viendo</h1>
 
         {history.length === 0 ? (
           <div className="text-center py-20">
@@ -57,7 +57,7 @@ export default function HistoryPage() {
             <p className="text-gray-500 mt-2">Reproduce una película o serie para que aparezca aquí.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-4">
             {history.map((item) => {
               // Convert to TMDBMedia format for MovieCard
               const media: TMDBMedia = {

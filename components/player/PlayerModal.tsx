@@ -63,9 +63,9 @@ export default function PlayerModal() {
           className="fixed inset-0 z-[100] bg-black flex flex-col"
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-4 md:px-8 py-3 shrink-0">
+          <div className="flex items-center justify-between px-3 sm:px-4 md:px-8 py-2 sm:py-3 shrink-0">
             <div>
-              <p className="text-white font-bold text-lg leading-tight">{player.title}</p>
+              <p className="text-white font-bold text-sm sm:text-base md:text-lg leading-tight">{player.title}</p>
               {player.mediaType === 'tv' && player.season && (
                 <p className="text-gray-400 text-sm">
                   Temporada {player.season} — Episodio {player.episode}
@@ -84,7 +84,7 @@ export default function PlayerModal() {
           </div>
 
           {/* Player */}
-          <div className="flex-1 px-4 md:px-8 pb-2 min-h-0 relative flex flex-col">
+          <div className="flex-1 px-2 sm:px-4 md:px-8 pb-2 min-h-0 relative flex flex-col">
             <ServerSelector
               mediaType={player.mediaType}
               tmdbId={player.tmdbId}
@@ -108,7 +108,7 @@ export default function PlayerModal() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className="mx-4 md:mx-8 mb-3 px-4 py-3 bg-fp-elevated rounded-lg text-sm text-gray-300 flex items-center gap-3"
+                className="mx-2 sm:mx-4 md:mx-8 mb-3 px-3 sm:px-4 py-2 sm:py-3 bg-fp-elevated rounded-lg text-xs sm:text-sm text-gray-300 flex items-center gap-3"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-yellow-500 shrink-0">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />

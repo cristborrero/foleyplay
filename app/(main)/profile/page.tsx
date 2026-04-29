@@ -46,9 +46,9 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="pt-24 px-4 md:px-12 min-h-screen bg-fp-black">
+    <div className="pt-20 sm:pt-24 px-4 sm:px-6 md:px-12 min-h-screen bg-fp-black">
       <div className="max-w-md mx-auto">
-        <h1 className="text-white text-2xl font-bold mb-8">Mi Perfil</h1>
+        <h1 className="text-white text-xl sm:text-2xl font-bold mb-5 sm:mb-8">Mi Perfil</h1>
 
         {/* Avatar */}
         <div className="flex justify-center mb-8">

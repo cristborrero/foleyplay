@@ -188,7 +188,7 @@ export default function DetailModal() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[90] bg-black/85 flex items-start justify-center overflow-y-auto py-6 px-3 md:px-6"
+          className="fixed inset-0 z-[90] bg-black/85 flex items-start justify-center overflow-y-auto py-4 sm:py-6 px-2 sm:px-3 md:px-6"
           onClick={e => { if (e.target === e.currentTarget) closeDetail(); }}
         >
           <motion.div
@@ -212,18 +212,18 @@ export default function DetailModal() {
                 HERO
             ══════════════════════════════════════════════════════════ */}
             {loading || !data ? (
-              <div className="min-h-[56vh] flex items-center justify-center bg-[#1a1a1a]">
+              <div className="min-h-[40vh] sm:min-h-[52vh] flex items-center justify-center bg-[#1a1a1a]">
                 <div className="w-10 h-10 border-2 border-red-600 border-t-transparent rounded-full animate-spin" />
               </div>
             ) : (
               <>
-                <div className="relative w-full min-h-[56vh] bg-black overflow-hidden">
+                <div className="relative w-full min-h-[40vh] sm:min-h-[52vh] bg-black overflow-hidden">
                   {/* backdrop or trailer */}
                   {trailer ? (
                     <iframe
                       key={isMuted ? 'trailer-muted' : 'trailer-unmuted'}
                       src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=${isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&loop=1&playlist=${trailer.key}`}
-                      className="absolute inset-0 w-full h-full scale-105"
+                      className="absolute inset-0 w-full h-full scale-100 md:scale-105"
                       allow="autoplay"
                     />
                   ) : data.backdrop_path ? (
@@ -252,12 +252,12 @@ export default function DetailModal() {
                   )}
 
                   {/* hero content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8">
                     <motion.h2
                       initial={{ y: 12, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.1, duration: 0.3 }}
-                      className="text-white text-3xl md:text-5xl font-black mb-4 drop-shadow-lg max-w-2xl leading-tight"
+                      className="text-white text-xl sm:text-3xl md:text-5xl font-black mb-2 sm:mb-4 drop-shadow-lg max-w-2xl leading-tight"
                     >
                       {title}
                     </motion.h2>
@@ -267,23 +267,23 @@ export default function DetailModal() {
                       initial={{ y: 12, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.18, duration: 0.3 }}
-                      className="flex items-center gap-3 flex-wrap"
+                      className="flex items-center gap-2 sm:gap-3 flex-wrap"
                     >
                       {/* Play */}
                       <button
                         onClick={handlePlay}
-                        className="flex items-center gap-2 bg-white text-black font-bold px-6 py-2.5 rounded text-sm hover:bg-white/90 transition-all hover:[box-shadow:0_0_20px_rgba(255,255,255,0.25)] active:scale-[0.97]"
+                        className="flex items-center gap-1.5 sm:gap-2 bg-white text-black font-bold px-4 sm:px-6 py-2 sm:py-2.5 rounded text-sm hover:bg-white/90 transition-all hover:[box-shadow:0_0_20px_rgba(255,255,255,0.25)] active:scale-[0.97]"
                       >
-                        <Play size={18} className="fill-black" />
+                        <Play size={16} className="fill-black" />
                         Reproducir
                       </button>
 
                       {/* My list */}
                       <button
                         onClick={toggleWatchlist}
-                        className="flex items-center gap-2 bg-white/15 border border-white/40 text-white font-semibold px-5 py-2.5 rounded text-sm hover:bg-white/25 transition-all active:scale-[0.97] backdrop-blur-sm"
+                        className="flex items-center gap-1.5 sm:gap-2 bg-white/15 border border-white/40 text-white font-semibold px-3 sm:px-5 py-2 sm:py-2.5 rounded text-sm hover:bg-white/25 transition-all active:scale-[0.97] backdrop-blur-sm"
                       >
-                        {inWatchlist ? <Check size={18} /> : <Plus size={18} />}
+                        {inWatchlist ? <Check size={16} /> : <Plus size={16} />}
                         {inWatchlist ? 'En mi lista' : 'Mi lista'}
                       </button>
 
@@ -291,7 +291,7 @@ export default function DetailModal() {
                       <Link
                         href={`/${detail?.mediaType}/${data.id}`}
                         onClick={closeDetail}
-                        className="flex items-center gap-2 bg-white/15 border border-white/40 text-white font-semibold px-5 py-2.5 rounded text-sm hover:bg-white/25 transition-all active:scale-[0.97] backdrop-blur-sm"
+                        className="hidden sm:flex items-center gap-2 bg-white/15 border border-white/40 text-white font-semibold px-5 py-2 sm:py-2.5 rounded text-sm hover:bg-white/25 transition-all active:scale-[0.97] backdrop-blur-sm"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                           <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
@@ -350,7 +350,7 @@ export default function DetailModal() {
                 {/* ══════════════════════════════════════════════════════════
                     METADATA BAR
                 ══════════════════════════════════════════════════════════ */}
-                <div className="px-6 md:px-8 pt-5 pb-4 flex items-center gap-3 flex-wrap">
+                <div className="px-4 sm:px-6 md:px-8 pt-5 pb-4 flex items-center gap-3 flex-wrap">
                   <span className={`font-bold text-sm ${scoreColor}`}>{score}%</span>
 
                   {year && <span className="text-gray-300 text-sm">{year}</span>}
@@ -400,7 +400,7 @@ export default function DetailModal() {
                 {/* ══════════════════════════════════════════════════════════
                     SYNOPSIS + DETAILS
                 ══════════════════════════════════════════════════════════ */}
-                <div className="px-6 md:px-8 pb-6 grid md:grid-cols-[1fr_auto] gap-6">
+                <div className="px-4 sm:px-6 md:px-8 pb-4 sm:pb-6 grid md:grid-cols-[1fr_auto] gap-4 sm:gap-6">
                   {/* left: synopsis */}
                   <div>
                     <div className="relative">
@@ -419,7 +419,7 @@ export default function DetailModal() {
                   </div>
 
                   {/* right: extra info */}
-                  <div className="text-sm space-y-1.5 min-w-[180px]">
+                  <div className="text-sm space-y-1.5 w-full md:min-w-[180px]">
                     {(director || creators) && (
                       <p className="text-gray-400">
                         <span className="text-gray-600">{detail?.mediaType === 'tv' ? 'Creador: ' : 'Director: '}</span>
@@ -440,7 +440,7 @@ export default function DetailModal() {
 
                 {/* Cast row inline */}
                 {(data.credits?.cast?.length ?? 0) > 0 && (
-                  <div className="px-6 md:px-8 pb-6">
+                  <div className="px-4 sm:px-6 md:px-8 pb-4 sm:pb-6">
                     <div className="flex gap-4 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none' }}>
                       {data.credits!.cast.slice(0, 12).map(person => (
                         <div key={person.id} className="flex-none text-center w-20">
@@ -469,13 +469,13 @@ export default function DetailModal() {
                 <div className="border-t border-white/8">
                   {/* tab header */}
                   {extraVideos.length > 0 && (
-                    <div className="px-6 md:px-8 pt-5 flex gap-6 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
+                    <div className="px-4 sm:px-6 md:px-8 pt-4 sm:pt-5 flex gap-6 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
                       <TabButton label="Trailers y extras" active={activeTab === 'trailers'} onClick={() => setActiveTab('trailers')} />
                     </div>
                   )}
 
                   {/* tab content */}
-                  <div className="px-6 md:px-8 py-5">
+                  <div className="px-4 sm:px-6 md:px-8 py-4 sm:py-5">
 
                     {/* ── TRAILERS ── */}
                     {activeTab === 'trailers' && (

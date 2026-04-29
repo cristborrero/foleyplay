@@ -2,9 +2,9 @@ import ContentRow from '@/components/home/ContentRow';
 
 export default function TVPage() {
   return (
-    <div className="w-full pt-24">
-      <div className="px-4 md:px-12 mb-6">
-        <h1 className="text-3xl font-bold text-white">Series</h1>
+    <div className="w-full pt-20 sm:pt-24">
+      <div className="px-3 sm:px-4 md:px-12 mb-4 sm:mb-6">
+        <h1 className="text-2xl sm:text-3xl font-bold text-white">Series</h1>
       </div>
 
       <ContentRow title="Populares" fetchUrl="/api/tmdb/tv/popular" isLargeRow />
