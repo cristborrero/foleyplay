@@ -1,7 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { getToken } from 'next-auth/jwt';
+import { NextResponse } from 'next/server';
+import NextAuth from 'next-auth';
+import { authConfig } from '@/lib/auth.config';
 
-export async function middleware(req: NextRequest) {
+const { auth } = NextAuth(authConfig);
+
+export default auth((req) => {
   const { pathname } = req.nextUrl;
 
   if (
@@ -21,13 +24,13 @@ export async function middleware(req: NextRequest) {
     }
   }
 
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET! });
+  const token = req.auth;
 
   if (!token) {
     return NextResponse.redirect(new URL('/login', req.url));
   }
 
-  const role = (token.role as string) || 'user';
+  const role = ((token.user as any)?.role as string) || 'user';
   const isStaff = role === 'admin' || role === 'superadmin';
 
   // Admin-only routes — require admin or superadmin role
@@ -44,12 +47,12 @@ export async function middleware(req: NextRequest) {
   }
 
   // Block unapproved regular users
-  if (!token.approved) {
+  if (!(token.user as any)?.approved) {
     return NextResponse.redirect(new URL('/pending', req.url));
   }
 
   return NextResponse.next();
-}
+});
 
 export const config = {
   matcher: ['/((?!_next/static|_next/image|favicon|.*\\.(?:webp|png|jpg|ico|svg)).*)'],

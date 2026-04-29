@@ -1,0 +1,72 @@
+
+> tmp-app@0.1.0 build
+> next build
+
+▲ Next.js 16.2.4 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 29.5s
+  Running TypeScript ...
+  Finished TypeScript in 4.4s ...
+  Collecting page data using 9 workers ...
+Error: Please define the MONGODB_URI environment variable inside .env.local
+    at module evaluation (.next/server/chunks/[root-of-the-server]__04i~b51._.js:1:20015)
+    at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:853:9)
+    at getOrInstantiateModuleFromParent (.next/server/chunks/[turbopack]_runtime.js:877:12)
+    at Context.esmImport [as i] (.next/server/chunks/[turbopack]_runtime.js:281:20)
+    at module evaluation (.next/server/chunks/[root-of-the-server]__05koq4~._.js:1:1267)
+    at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:853:9)
+    at instantiateRuntimeModule (.next/server/chunks/[turbopack]_runtime.js:882:12)
+    at getOrInstantiateRuntimeModule (.next/server/chunks/[turbopack]_runtime.js:895:12)
+    at Object.m (.next/server/chunks/[turbopack]_runtime.js:898:18)
+    at Object.<anonymous> (.next/server/app/api/auth/register/route.js:6:3)
+Error: Please define the MONGODB_URI environment variable inside .env.local
+    at module evaluation (.next/server/chunks/[root-of-the-server]__04i~b51._.js:1:20015)
+    at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:853:9)
+    at getOrInstantiateModuleFromParent (.next/server/chunks/[turbopack]_runtime.js:877:12)
+    at Context.esmImport [as i] (.next/server/chunks/[turbopack]_runtime.js:281:20)
+    at module evaluation (.next/server/chunks/_0pqrvv0._.js:404:61213)
+    at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:853:9)
+    at getOrInstantiateModuleFromParent (.next/server/chunks/[turbopack]_runtime.js:877:12)
+    at Context.esmImport [as i] (.next/server/chunks/[turbopack]_runtime.js:281:20)
+    at module evaluation (.next/server/chunks/[root-of-the-server]__020d3ay._.js:1:1437)
+    at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:853:9)
+Error: Please define the MONGODB_URI environment variable inside .env.local
+    at module evaluation (.next/server/chunks/[root-of-the-server]__04i~b51._.js:1:20015)
+    at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:853:9)
+    at getOrInstantiateModuleFromParent (.next/server/chunks/[turbopack]_runtime.js:877:12)
+    at Context.esmImport [as i] (.next/server/chunks/[turbopack]_runtime.js:281:20)
+    at module evaluation (.next/server/chunks/_0pqrvv0._.js:404:61213)
+    at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:853:9)
+    at getOrInstantiateModuleFromParent (.next/server/chunks/[turbopack]_runtime.js:877:12)
+    at Context.esmImport [as i] (.next/server/chunks/[turbopack]_runtime.js:281:20)
+    at module evaluation (.next/server/chunks/[root-of-the-server]__0~d5z4l._.js:1:1438)
+    at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:853:9)
+Error: Please define the MONGODB_URI environment variable inside .env.local
+    at module evaluation (.next/server/chunks/[root-of-the-server]__04i~b51._.js:1:20015)
+    at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:853:9)
+    at getOrInstantiateModuleFromParent (.next/server/chunks/[turbopack]_runtime.js:877:12)
+    at Context.esmImport [as i] (.next/server/chunks/[turbopack]_runtime.js:281:20)
+    at module evaluation (.next/server/chunks/_0pqrvv0._.js:404:61213)
+    at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:853:9)
+    at getOrInstantiateModuleFromParent (.next/server/chunks/[turbopack]_runtime.js:877:12)
+    at Context.esmImport [as i] (.next/server/chunks/[turbopack]_runtime.js:281:20)
+    at module evaluation (.next/server/chunks/[root-of-the-server]__0g4tlgn._.js:1:1438)
+    at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:853:9)
+Error: Please define the MONGODB_URI environment variable inside .env.local
+    at module evaluation (.next/server/chunks/[root-of-the-server]__04i~b51._.js:1:20015)
+    at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:853:9)
+    at getOrInstantiateModuleFromParent (.next/server/chunks/[turbopack]_runtime.js:877:12)
+    at Context.esmImport [as i] (.next/server/chunks/[turbopack]_runtime.js:281:20)
+    at module evaluation (.next/server/chunks/_0pqrvv0._.js:404:61213)
+    at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:853:9)
+    at getOrInstantiateModuleFromParent (.next/server/chunks/[turbopack]_runtime.js:877:12)
+    at Context.esmImport [as i] (.next/server/chunks/[turbopack]_runtime.js:281:20)
+    at module evaluation (.next/server/chunks/[root-of-the-server]__0mnil9v._.js:1:1441)
+    at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:853:9)
+
+> Build error occurred
+Error: Failed to collect page data for /api/auth/register
+    at ignore-listed frames {
+  type: 'Error'
+}

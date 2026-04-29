@@ -4,8 +4,10 @@ import GoogleProvider from 'next-auth/providers/google';
 import bcrypt from 'bcryptjs';
 import dbConnect from './mongodb';
 import { User } from '@/models/User';
+import { authConfig } from './auth.config';
 
-export const authConfig: NextAuthConfig = {
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  ...authConfig,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || '',
@@ -62,6 +64,7 @@ export const authConfig: NextAuthConfig = {
     })
   ],
   callbacks: {
+    ...authConfig.callbacks,
     async signIn({ user, account }) {
       if (account?.provider !== 'credentials') {
         try {
@@ -87,37 +90,6 @@ export const authConfig: NextAuthConfig = {
         }
       }
       return true;
-    },
-    async jwt({ token, user, trigger, session: updateData }) {
-      if (user) {
-        token.id = user.id;
-        if (user.name) token.name = user.name;
-        token.approved = (user as Record<string, unknown>).approved ?? false;
-        token.role = (user as Record<string, unknown>).role ?? 'user';
-      }
-      if (trigger === 'update' && updateData) {
-        if (updateData.name) token.name = updateData.name;
-        if (updateData.image !== undefined) token.picture = updateData.image;
-      }
-      return token;
-    },
-    async session({ session, token }) {
-      if (session.user && token.id) {
-        session.user.id = token.id as string;
-      }
-      if (token.name) session.user.name = token.name as string;
-      session.user.approved = token.approved as boolean | undefined;
-      session.user.role = token.role as string | undefined;
-      return session;
     }
-  },
-  pages: {
-    signIn: '/login',
-  },
-  session: {
-    strategy: 'jwt',
-  },
-  secret: process.env.NEXTAUTH_SECRET,
-};
-
-export const { handlers, auth, signIn, signOut } = NextAuth(authConfig);
+  }
+});
