@@ -2,7 +2,6 @@
 
 import TVCarousel from './TVCarousel';
 import TVUserCarousel from './TVUserCarousel';
-import TVFocusManager from './TVFocusManager';
 import TVHero from './TVHero';
 
 const ROWS = [
@@ -23,7 +22,6 @@ const ROWS = [
 export default function TVBrowse() {
   return (
     <div className="flex-1 h-full overflow-y-auto" style={{ scrollbarWidth: 'none' }}>
-      <TVFocusManager />
       <TVHero />
       <div className="py-6">
         <TVUserCarousel title="Continuar viendo" fetchUrl="/api/history" />

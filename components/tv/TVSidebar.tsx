@@ -10,8 +10,8 @@ import { useTVSidebar } from './TVSidebarContext';
 const NAV_ITEMS = [
   { icon: Home,     label: 'Inicio',    href: '/browse' },
   { icon: Search,   label: 'Buscador',  href: '/search' },
-  { icon: Film,     label: 'Películas', href: '/browse' },
-  { icon: Tv2,      label: 'Series',    href: '/browse' },
+  { icon: Film,     label: 'Películas', href: '/movies' },
+  { icon: Tv2,      label: 'Series',    href: '/tv-shows' },
   { icon: Bookmark, label: 'Mi Lista',  href: '/watchlist' },
   { icon: User,     label: 'Perfil',    href: '/profile' },
 ];
@@ -70,7 +70,7 @@ export default function TVSidebar({ expanded, onClose }: TVSidebarProps) {
       {/* Nav */}
       <nav className="flex flex-col gap-1 px-2 flex-1 pt-2">
         {NAV_ITEMS.map(({ icon: Icon, label, href }) => {
-          const active = pathname === href;
+          const active = href === '/browse' ? pathname === href : pathname.startsWith(href);
           return (
             <button
               key={label}

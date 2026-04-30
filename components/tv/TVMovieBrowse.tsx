@@ -1,0 +1,29 @@
+'use client';
+import TVCarousel from './TVCarousel';
+import TVHero from './TVHero';
+
+const ROWS = [
+  { title: 'Populares',       fetchUrl: '/api/tmdb/movie/popular' },
+  { title: 'Mejor valoradas', fetchUrl: '/api/tmdb/movie/top_rated' },
+  { title: 'Acción',          fetchUrl: '/api/tmdb/discover/movie?with_genres=28' },
+  { title: 'Comedia',         fetchUrl: '/api/tmdb/discover/movie?with_genres=35' },
+  { title: 'Terror',          fetchUrl: '/api/tmdb/discover/movie?with_genres=27' },
+  { title: 'Drama',           fetchUrl: '/api/tmdb/discover/movie?with_genres=18' },
+  { title: 'Ciencia Ficción', fetchUrl: '/api/tmdb/discover/movie?with_genres=878' },
+  { title: 'Animación',       fetchUrl: '/api/tmdb/discover/movie?with_genres=16' },
+  { title: 'Romance',         fetchUrl: '/api/tmdb/discover/movie?with_genres=10749' },
+  { title: 'Thriller',        fetchUrl: '/api/tmdb/discover/movie?with_genres=53' },
+];
+
+export default function TVMovieBrowse() {
+  return (
+    <div className="flex-1 h-full overflow-y-auto" style={{ scrollbarWidth: 'none' }}>
+      <TVHero />
+      <div className="py-6">
+        {ROWS.map(({ title, fetchUrl }) => (
+          <TVCarousel key={fetchUrl} title={title} fetchUrl={fetchUrl} mediaType="movie" />
+        ))}
+      </div>
+    </div>
+  );
+}

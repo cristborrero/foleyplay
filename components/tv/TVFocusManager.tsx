@@ -1,16 +1,21 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { useTVSidebar } from './TVSidebarContext';
 
 export default function TVFocusManager() {
   const { open: openSidebar } = useTVSidebar();
+  const pathname = usePathname();
 
   useEffect(() => {
-    // Auto-focus first card after initial render
+    // Auto-focus first card after route change, only if nothing is focused
     const timer = setTimeout(() => {
-      const firstCard = document.querySelector<HTMLElement>('[data-tv-card]');
-      firstCard?.focus();
+      const active = document.activeElement;
+      if (!active || active === document.body) {
+        const firstCard = document.querySelector<HTMLElement>('[data-tv-card]');
+        firstCard?.focus();
+      }
     }, 400);
 
     const handleFocusIn = (e: FocusEvent) => {
@@ -24,6 +29,10 @@ export default function TVFocusManager() {
     const handleKeyDown = (e: KeyboardEvent) => {
       const active = document.activeElement as HTMLElement | null;
       if (!active) return;
+
+      // Skip arrow key interception when focus is on text inputs
+      const tag = active.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
 
       const row = active.closest('[data-tv-row]') as HTMLElement | null;
       if (!row) return;
@@ -78,7 +87,7 @@ export default function TVFocusManager() {
       document.removeEventListener('focusin', handleFocusIn);
       document.removeEventListener('keydown', handleKeyDown, true);
     };
-  }, [openSidebar]);
+  }, [openSidebar, pathname]);
 
   return null;
 }

@@ -81,7 +81,7 @@ export default function TVUserCarousel({ title, fetchUrl }: TVUserCarouselProps)
   return (
     <div data-tv-row className="mb-8">
       <h2 className="text-white text-lg font-bold mb-3 px-8 lg:px-12">{title}</h2>
-      <div className="flex gap-3 overflow-x-auto pb-3 px-8 lg:px-12" style={{ scrollbarWidth: 'none' }}>
+      <div className="flex gap-3 overflow-x-auto pt-3 pb-4 px-8 lg:px-12" style={{ scrollbarWidth: 'none' }}>
         {loading
           ? Array.from({ length: 4 }).map((_, i) => (
               <div key={i} className="flex-none w-[140px] aspect-[2/3] rounded-lg bg-[#1a1a1a] animate-pulse" />

@@ -4,6 +4,8 @@ import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { TMDBMedia } from '@/types/tmdb';
 import MovieCard from '@/components/cards/MovieCard';
+import { useIsTV } from '@/lib/tv-context';
+import TVSearch from '@/components/tv/TVSearch';
 
 type MediaFilter = 'all' | 'movie' | 'tv';
 
@@ -211,6 +213,9 @@ function SearchContent() {
 }
 
 export default function SearchPage() {
+  const isTV = useIsTV();
+  if (isTV) return <TVSearch />;
+
   return (
     <div className="pt-20 sm:pt-24 px-4 sm:px-5 md:px-8 lg:px-12 min-h-screen bg-fp-black">
       <Suspense fallback={<div className="text-white pt-20">Cargando...</div>}>
