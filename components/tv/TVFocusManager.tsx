@@ -8,16 +8,8 @@ export default function TVFocusManager() {
   const { open: openSidebar } = useTVSidebar();
   const pathname = usePathname();
 
+  // Key handlers — stable because openSidebar is memoized with useCallback
   useEffect(() => {
-    // Auto-focus first card after route change, only if nothing is focused
-    const timer = setTimeout(() => {
-      const active = document.activeElement;
-      if (!active || active === document.body) {
-        const firstCard = document.querySelector<HTMLElement>('[data-tv-card]');
-        firstCard?.focus();
-      }
-    }, 400);
-
     const handleFocusIn = (e: FocusEvent) => {
       const target = e.target as HTMLElement;
       const row = target?.closest('[data-tv-row]') as HTMLElement | null;
@@ -30,9 +22,8 @@ export default function TVFocusManager() {
       const active = document.activeElement as HTMLElement | null;
       if (!active) return;
 
-      // Skip arrow key interception when focus is on text inputs
       const tag = active.tagName;
-      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
 
       const row = active.closest('[data-tv-row]') as HTMLElement | null;
       if (!row) return;
@@ -83,11 +74,32 @@ export default function TVFocusManager() {
     document.addEventListener('focusin', handleFocusIn);
     document.addEventListener('keydown', handleKeyDown, true);
     return () => {
-      clearTimeout(timer);
       document.removeEventListener('focusin', handleFocusIn);
       document.removeEventListener('keydown', handleKeyDown, true);
     };
-  }, [openSidebar, pathname]);
+  }, [openSidebar]);
+
+  // Auto-focus first card on route change — retries up to 10 times if cards haven't rendered yet
+  useEffect(() => {
+    let attempts = 0;
+    let timerId: ReturnType<typeof setTimeout>;
+
+    const tryFocus = () => {
+      const active = document.activeElement;
+      if (!active || active === document.body) {
+        const firstCard = document.querySelector<HTMLElement>('[data-tv-card]');
+        if (firstCard) {
+          firstCard.focus();
+        } else if (attempts < 10) {
+          attempts++;
+          timerId = setTimeout(tryFocus, 300);
+        }
+      }
+    };
+
+    timerId = setTimeout(tryFocus, 400);
+    return () => clearTimeout(timerId);
+  }, [pathname]);
 
   return null;
 }

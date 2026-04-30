@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState } from 'react';
+import { createContext, useCallback, useContext, useState } from 'react';
 
 interface TVSidebarCtx {
   expanded: boolean;
@@ -12,11 +12,9 @@ const Ctx = createContext<TVSidebarCtx>({ expanded: false, open: () => {}, close
 
 export function TVSidebarProvider({ children }: { children: React.ReactNode }) {
   const [expanded, setExpanded] = useState(false);
-  return (
-    <Ctx.Provider value={{ expanded, open: () => setExpanded(true), close: () => setExpanded(false) }}>
-      {children}
-    </Ctx.Provider>
-  );
+  const open  = useCallback(() => setExpanded(true),  []);
+  const close = useCallback(() => setExpanded(false), []);
+  return <Ctx.Provider value={{ expanded, open, close }}>{children}</Ctx.Provider>;
 }
 
 export function useTVSidebar() {

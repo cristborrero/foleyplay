@@ -1,23 +1,21 @@
 import { tmdb } from '@/lib/tmdb';
 import { notFound } from 'next/navigation';
-import SeasonSelector from '@/components/detail/SeasonSelector';
 import DetailActions from '@/components/detail/DetailActions';
-import CastRow from '@/components/detail/CastRow';
-import SimilarRow from '@/components/detail/SimilarRow';
+import TVShowDetail from '@/components/tv/TVShowDetail';
 
 export default async function TVPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  
+
   try {
     const tv = await tmdb.getDetail('tv', Number(id));
-    
+
     if (!tv) {
       return notFound();
     }
 
     const title = tv.title || tv.name || tv.original_name;
     const firstAirYear = tv.first_air_date ? new Date(tv.first_air_date).getFullYear() : '';
-    
+
     return (
       <div className="min-h-screen bg-fp-black">
         {/* Banner Section */}
@@ -49,18 +47,15 @@ export default async function TVPage({ params }: { params: Promise<{ id: string 
           </div>
         </div>
 
-        {/* Episodes & Player Section */}
+        {/* Player + Episodes + Similar Section */}
         <div className="px-4 sm:px-6 md:px-8 lg:px-12 py-6 sm:py-8 max-w-7xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6 text-white">Episodios</h2>
-          {tv.seasons && (
-            <SeasonSelector
-              tmdbId={Number(id)}
-              seasons={tv.seasons.filter(s => s.season_number > 0)}
-              imdbId={tv.external_ids?.imdb_id}
-            />
-          )}
-          <CastRow cast={tv.credits?.cast || []} />
-          <SimilarRow items={tv.similar?.results || []} mediaType="tv" />
+          <TVShowDetail
+            tmdbId={Number(id)}
+            seasons={tv.seasons?.filter(s => s.season_number > 0) || []}
+            imdbId={tv.external_ids?.imdb_id}
+            cast={tv.credits?.cast || []}
+            similar={tv.similar?.results || []}
+          />
         </div>
       </div>
     );

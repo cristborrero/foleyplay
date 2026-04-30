@@ -1,23 +1,21 @@
 import { tmdb } from '@/lib/tmdb';
 import { notFound } from 'next/navigation';
-import TVDetailPlayer from '@/components/tv/TVDetailPlayer';
 import DetailActions from '@/components/detail/DetailActions';
-import CastRow from '@/components/detail/CastRow';
-import SimilarRow from '@/components/detail/SimilarRow';
+import TVMovieDetail from '@/components/tv/TVMovieDetail';
 
 export default async function MoviePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  
+
   try {
     const movie = await tmdb.getDetail('movie', Number(id));
-    
+
     if (!movie) {
       return notFound();
     }
 
     const title = movie.title || movie.name || movie.original_title;
     const releaseYear = movie.release_date ? new Date(movie.release_date).getFullYear() : '';
-    
+
     return (
       <div className="min-h-screen bg-fp-black">
         {/* Banner Section */}
@@ -49,11 +47,15 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
           </div>
         </div>
 
-        {/* Player Section */}
+        {/* Player + Similar Section */}
         <div className="px-4 sm:px-6 md:px-8 lg:px-12 py-6 sm:py-8 max-w-7xl mx-auto">
-          <TVDetailPlayer mediaType="movie" tmdbId={Number(id)} imdbId={movie.imdb_id} title={title || ''} />
-          <CastRow cast={movie.credits?.cast || []} />
-          <SimilarRow items={movie.similar?.results || []} mediaType="movie" />
+          <TVMovieDetail
+            tmdbId={Number(id)}
+            imdbId={movie.imdb_id}
+            title={title || ''}
+            cast={movie.credits?.cast || []}
+            similar={movie.similar?.results || []}
+          />
         </div>
       </div>
     );

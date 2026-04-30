@@ -28,7 +28,7 @@ export default function TVCarousel({ title, fetchUrl, mediaType }: TVCarouselPro
     <div data-tv-row className="mb-8">
       <h2 className="text-white text-lg font-bold mb-3 px-8 lg:px-12">{title}</h2>
       <div
-        className="flex gap-3 overflow-x-auto pt-3 pb-4 px-8 lg:px-12"
+        className="flex gap-3 overflow-x-auto pt-3 pb-4 px-8 lg:px-12 [&::-webkit-scrollbar]:hidden"
         style={{ scrollbarWidth: 'none' }}
       >
         {loading
