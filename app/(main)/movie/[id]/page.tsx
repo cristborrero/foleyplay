@@ -1,6 +1,6 @@
 import { tmdb } from '@/lib/tmdb';
 import { notFound } from 'next/navigation';
-import ServerSelector from '@/components/player/ServerSelector';
+import TVDetailPlayer from '@/components/tv/TVDetailPlayer';
 import DetailActions from '@/components/detail/DetailActions';
 import CastRow from '@/components/detail/CastRow';
 import SimilarRow from '@/components/detail/SimilarRow';
@@ -51,8 +51,7 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
 
         {/* Player Section */}
         <div className="px-4 sm:px-6 md:px-8 lg:px-12 py-6 sm:py-8 max-w-7xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6 text-white">Reproducir</h2>
-          <ServerSelector mediaType="movie" tmdbId={Number(id)} imdbId={movie.imdb_id} />
+          <TVDetailPlayer mediaType="movie" tmdbId={Number(id)} imdbId={movie.imdb_id} title={title || ''} />
           <CastRow cast={movie.credits?.cast || []} />
           <SimilarRow items={movie.similar?.results || []} mediaType="movie" />
         </div>

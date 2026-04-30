@@ -6,9 +6,11 @@ import PageTransition from '@/components/layout/PageTransition';
 import { ModalProvider } from '@/lib/modal-context';
 import PlayerModal from '@/components/player/PlayerModal';
 import DetailModal from '@/components/detail/DetailModal';
+import { TVProvider } from '@/lib/tv-context';
+import TVModeGate from '@/components/tv/TVModeGate';
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
-  return (
+  const webLayout = (
     <ModalProvider>
       <div className="min-h-screen flex flex-col bg-fp-black">
         <TVBackHandler />
@@ -22,5 +24,13 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       <PlayerModal />
       <DetailModal />
     </ModalProvider>
+  );
+
+  return (
+    <TVProvider>
+      <TVModeGate webWrapper={webLayout}>
+        {children}
+      </TVModeGate>
+    </TVProvider>
   );
 }

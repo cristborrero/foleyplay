@@ -1,9 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { TMDBEpisode } from '@/types/tmdb';
 import ServerSelector from '@/components/player/ServerSelector';
 import EpisodeCard from '@/components/cards/EpisodeCard';
+import { useIsTV } from '@/lib/tv-context';
+import TVPlayerControls from '@/components/tv/TVPlayerControls';
 
 interface Season {
   id: number;
@@ -19,6 +21,8 @@ interface SeasonSelectorProps {
 }
 
 export default function SeasonSelector({ tmdbId, seasons, imdbId }: SeasonSelectorProps) {
+  const isTV = useIsTV();
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [activeSeason, setActiveSeason] = useState<number>(seasons[0]?.season_number || 1);
   const [episodes, setEpisodes] = useState<TMDBEpisode[]>([]);
   const [activeEpisode, setActiveEpisode] = useState<number | null>(null);
@@ -81,20 +85,24 @@ export default function SeasonSelector({ tmdbId, seasons, imdbId }: SeasonSelect
       {/* Right Column: Player */}
       <div className="w-full md:w-2/3">
         {activeEpisode ? (
-          <div>
-            <h3 className="text-base sm:text-xl text-white mb-3 sm:mb-4">
-              Reproduciendo: Episodio {activeEpisode}
-            </h3>
+          <div className="relative">
+            {!isTV && (
+              <h3 className="text-base sm:text-xl text-white mb-3 sm:mb-4">
+                Reproduciendo: Episodio {activeEpisode}
+              </h3>
+            )}
             <ServerSelector
               mediaType="tv"
               tmdbId={tmdbId}
               imdbId={imdbId}
               season={activeSeason}
               episode={activeEpisode}
+              iframeRef={iframeRef}
             />
+            {isTV && <TVPlayerControls title={`Episodio ${activeEpisode}`} iframeRef={iframeRef} />}
           </div>
         ) : (
-          <div className="w-full aspect-video bg-netflix-dark rounded-lg flex items-center justify-center border border-gray-800">
+          <div className="w-full aspect-video bg-[#141414] rounded-lg flex items-center justify-center border border-gray-800">
             <p className="text-gray-500">Selecciona un episodio para empezar a ver</p>
           </div>
         )}

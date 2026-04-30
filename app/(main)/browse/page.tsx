@@ -1,9 +1,10 @@
 import HeroBanner from '@/components/home/HeroBanner';
 import ContentRow from '@/components/home/ContentRow';
 import UserContentRow from '@/components/home/UserContentRow';
+import TVBrowseSwitch from '@/components/tv/TVBrowseSwitch';
 
 export default function BrowsePage() {
-  return (
+  const webContent = (
     <div className="w-full">
       <HeroBanner />
 
@@ -102,4 +103,6 @@ export default function BrowsePage() {
       </div>
     </div>
   );
+
+  return <TVBrowseSwitch webContent={webContent} />;
 }
