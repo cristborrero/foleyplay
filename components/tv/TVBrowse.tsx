@@ -3,6 +3,7 @@
 import TVCarousel from './TVCarousel';
 import TVUserCarousel from './TVUserCarousel';
 import TVFocusManager from './TVFocusManager';
+import TVHero from './TVHero';
 
 const ROWS = [
   { title: 'Tendencias',             fetchUrl: '/api/tmdb/trending/all/day' },
@@ -21,13 +22,16 @@ const ROWS = [
 
 export default function TVBrowse() {
   return (
-    <div className="flex-1 h-full overflow-y-auto py-6" style={{ scrollbarWidth: 'none' }}>
+    <div className="flex-1 h-full overflow-y-auto" style={{ scrollbarWidth: 'none' }}>
       <TVFocusManager />
-      <TVUserCarousel title="Continuar viendo" fetchUrl="/api/history" />
-      <TVUserCarousel title="Mi lista"          fetchUrl="/api/watchlist" />
-      {ROWS.map(({ title, fetchUrl, mediaType }) => (
-        <TVCarousel key={fetchUrl} title={title} fetchUrl={fetchUrl} mediaType={mediaType} />
-      ))}
+      <TVHero />
+      <div className="py-6">
+        <TVUserCarousel title="Continuar viendo" fetchUrl="/api/history" />
+        <TVUserCarousel title="Mi lista"          fetchUrl="/api/watchlist" />
+        {ROWS.map(({ title, fetchUrl, mediaType }) => (
+          <TVCarousel key={fetchUrl} title={title} fetchUrl={fetchUrl} mediaType={mediaType} />
+        ))}
+      </div>
     </div>
   );
 }

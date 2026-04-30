@@ -4,13 +4,16 @@ import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, Search, Bookmark, User, LogOut } from 'lucide-react';
+import { Home, Search, Film, Tv2, Bookmark, User, LogOut } from 'lucide-react';
+import { useTVSidebar } from './TVSidebarContext';
 
 const NAV_ITEMS = [
-  { icon: Home,     label: 'Inicio',   href: '/browse' },
-  { icon: Search,   label: 'Buscar',   href: '/search' },
-  { icon: Bookmark, label: 'Mi Lista', href: '/watchlist' },
-  { icon: User,     label: 'Perfil',   href: '/profile' },
+  { icon: Home,     label: 'Inicio',    href: '/browse' },
+  { icon: Search,   label: 'Buscador',  href: '/search' },
+  { icon: Film,     label: 'Películas', href: '/browse' },
+  { icon: Tv2,      label: 'Series',    href: '/browse' },
+  { icon: Bookmark, label: 'Mi Lista',  href: '/watchlist' },
+  { icon: User,     label: 'Perfil',    href: '/profile' },
 ];
 
 interface TVSidebarProps {
@@ -19,12 +22,38 @@ interface TVSidebarProps {
 }
 
 export default function TVSidebar({ expanded, onClose }: TVSidebarProps) {
+  const { open: onOpen } = useTVSidebar();
   const pathname = usePathname();
   const router = useRouter();
 
   const handleNav = (href: string) => {
     onClose();
     router.push(href);
+  };
+
+  const goToContent = () => {
+    onClose();
+    setTimeout(() => {
+      const firstCard = document.querySelector<HTMLElement>('[data-tv-card]');
+      firstCard?.focus();
+    }, 150);
+  };
+
+  const handleItemKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === 'ArrowRight' || e.key === 'Escape') {
+      e.preventDefault();
+      goToContent();
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const items = Array.from(document.querySelectorAll<HTMLElement>('[data-sidebar-item]'));
+      const idx = items.indexOf(e.currentTarget);
+      items[Math.min(idx + 1, items.length - 1)]?.focus();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      const items = Array.from(document.querySelectorAll<HTMLElement>('[data-sidebar-item]'));
+      const idx = items.indexOf(e.currentTarget);
+      items[Math.max(idx - 1, 0)]?.focus();
+    }
   };
 
   return (
@@ -44,12 +73,12 @@ export default function TVSidebar({ expanded, onClose }: TVSidebarProps) {
           const active = pathname === href;
           return (
             <button
-              key={href}
+              key={label}
+              data-sidebar-item
               tabIndex={expanded ? 0 : -1}
               onClick={() => handleNav(href)}
-              onKeyDown={(e) => {
-                if (e.key === 'ArrowRight' || e.key === 'Escape') { e.preventDefault(); onClose(); }
-              }}
+              onFocus={() => onOpen()}
+              onKeyDown={handleItemKeyDown}
               className={`flex items-center gap-3 px-3 py-3.5 rounded-lg transition-colors duration-150 outline-none focus:ring-2 focus:ring-red-500 w-full ${
                 active
                   ? 'bg-red-600/20 text-white'
@@ -78,8 +107,11 @@ export default function TVSidebar({ expanded, onClose }: TVSidebarProps) {
       {/* Sign out */}
       <div className="px-2 pb-4">
         <button
+          data-sidebar-item
           tabIndex={expanded ? 0 : -1}
           onClick={() => signOut({ callbackUrl: '/login' })}
+          onFocus={() => onOpen()}
+          onKeyDown={handleItemKeyDown}
           className="flex items-center gap-3 px-3 py-3.5 rounded-lg text-gray-600 hover:text-red-400 hover:bg-red-950/20 focus:outline-none focus:ring-2 focus:ring-red-500 w-full transition-colors duration-150"
         >
           <LogOut size={22} className="shrink-0" />
@@ -92,7 +124,7 @@ export default function TVSidebar({ expanded, onClose }: TVSidebarProps) {
                 transition={{ duration: 0.15 }}
                 className="text-sm font-medium whitespace-nowrap"
               >
-                Cerrar sesión
+                Cerrar
               </motion.span>
             )}
           </AnimatePresence>

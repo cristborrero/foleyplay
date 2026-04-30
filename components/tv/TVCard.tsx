@@ -7,15 +7,14 @@ import { TMDBMedia } from '@/types/tmdb';
 
 interface TVCardProps {
   media: TMDBMedia;
-  isLargeRow?: boolean;
   mediaType?: 'movie' | 'tv';
 }
 
-export default function TVCard({ media, isLargeRow = false, mediaType }: TVCardProps) {
+export default function TVCard({ media, mediaType }: TVCardProps) {
   const router = useRouter();
   const cardRef = useRef<HTMLDivElement>(null);
 
-  const imagePath = isLargeRow ? media.poster_path : media.backdrop_path || media.poster_path;
+  const imagePath = media.poster_path || media.backdrop_path;
   if (!imagePath) return null;
 
   const title = media.title || media.name || '';
@@ -28,18 +27,19 @@ export default function TVCard({ media, isLargeRow = false, mediaType }: TVCardP
   return (
     <div
       ref={cardRef}
+      data-tv-card
       tabIndex={0}
       onClick={navigate}
       onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); navigate(); } }}
       onFocus={() => cardRef.current?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })}
-      className={`relative cursor-pointer rounded-lg overflow-hidden bg-[#111] outline-none transition-transform duration-150 focus:ring-2 focus:ring-red-500 focus:ring-offset-1 focus:ring-offset-black focus:scale-[1.06] ${isLargeRow ? 'aspect-[2/3]' : 'aspect-video'}`}
+      className="relative cursor-pointer rounded-lg overflow-hidden bg-[#111] outline-none transition-transform duration-150 focus:ring-2 focus:ring-red-500 focus:ring-offset-1 focus:ring-offset-black focus:scale-[1.06] aspect-[2/3]"
     >
       <Image
-        src={`https://image.tmdb.org/t/p/w500${imagePath}`}
+        src={`https://image.tmdb.org/t/p/w342${imagePath}`}
         alt={title}
         fill
         className="object-cover"
-        sizes="220px"
+        sizes="140px"
         loading="lazy"
       />
       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
