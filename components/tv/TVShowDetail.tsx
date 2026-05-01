@@ -1,12 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useIsTV } from '@/lib/tv-context';
-import { TMDBMedia, TMDBCast, TMDBEpisode } from '@/types/tmdb';
+import { TMDBMedia, TMDBEpisode } from '@/types/tmdb';
 import ServerSelector from '@/components/player/ServerSelector';
-import SeasonSelector from '@/components/detail/SeasonSelector';
-import CastRow from '@/components/detail/CastRow';
-import SimilarRow from '@/components/detail/SimilarRow';
 import TVSimilarPanel from '@/components/tv/TVSimilarPanel';
 import { Maximize, Minimize } from 'lucide-react';
 
@@ -21,11 +17,10 @@ interface TVShowDetailProps {
   tmdbId: number;
   seasons: Season[];
   imdbId?: string;
-  cast: TMDBCast[];
   similar: TMDBMedia[];
 }
 
-function TVModeLayout({ tmdbId, seasons, imdbId, similar }: Omit<TVShowDetailProps, 'cast'>) {
+export default function TVShowDetail({ tmdbId, seasons, imdbId, similar }: TVShowDetailProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [activeSeason, setActiveSeason] = useState<number>(seasons[0]?.season_number || 1);
   const [episodes, setEpisodes] = useState<TMDBEpisode[]>([]);
@@ -57,10 +52,9 @@ function TVModeLayout({ tmdbId, seasons, imdbId, similar }: Omit<TVShowDetailPro
   };
 
   return (
-    <div className="flex gap-4 h-full">
+    <div className="flex gap-4">
       {/* Left: season picker + player + episodes */}
-      <div className="flex flex-col gap-3 flex-[3] min-w-0">
-        {/* Season selector + fullscreen button */}
+      <div className="flex-[3] min-w-0 flex flex-col gap-3">
         <div data-tv-row className="flex gap-2 items-center shrink-0">
           <select
             className="bg-[#242424] text-white p-2 rounded border border-gray-700 outline-none text-sm flex-1"
@@ -83,15 +77,11 @@ function TVModeLayout({ tmdbId, seasons, imdbId, similar }: Omit<TVShowDetailPro
           </button>
         </div>
 
-        {/* Player */}
         {activeEpisode ? (
           <ServerSelector
-            mediaType="tv"
-            tmdbId={tmdbId}
-            imdbId={imdbId}
-            season={activeSeason}
-            episode={activeEpisode}
-            iframeRef={iframeRef}
+            mediaType="tv" tmdbId={tmdbId} imdbId={imdbId}
+            season={activeSeason} episode={activeEpisode}
+            iframeRef={iframeRef} tvMode
           />
         ) : (
           <div className="w-full aspect-video bg-[#141414] rounded-lg flex items-center justify-center border border-gray-800 shrink-0">
@@ -99,7 +89,6 @@ function TVModeLayout({ tmdbId, seasons, imdbId, similar }: Omit<TVShowDetailPro
           </div>
         )}
 
-        {/* Episode list */}
         <div
           data-tv-row
           className="flex flex-col gap-1 overflow-y-auto [&::-webkit-scrollbar]:hidden"
@@ -121,9 +110,7 @@ function TVModeLayout({ tmdbId, seasons, imdbId, similar }: Omit<TVShowDetailPro
                     : 'hover:bg-white/5 focus:bg-white/5'
                 }`}
               >
-                <span className="text-gray-500 text-xs w-5 shrink-0 text-center font-mono">
-                  {ep.episode_number}
-                </span>
+                <span className="text-gray-500 text-xs w-5 shrink-0 text-center font-mono">{ep.episode_number}</span>
                 <span className="text-white text-sm truncate">{ep.name}</span>
                 {ep.runtime > 0 && (
                   <span className="text-gray-600 text-xs shrink-0 ml-auto">{ep.runtime}m</span>
@@ -142,29 +129,5 @@ function TVModeLayout({ tmdbId, seasons, imdbId, similar }: Omit<TVShowDetailPro
         <TVSimilarPanel items={similar} mediaType="tv" />
       </div>
     </div>
-  );
-}
-
-export default function TVShowDetail({ tmdbId, seasons, imdbId, cast, similar }: TVShowDetailProps) {
-  const isTV = useIsTV();
-
-  if (!isTV) {
-    return (
-      <>
-        <h2 className="text-2xl font-bold mb-6 text-white">Episodios</h2>
-        <SeasonSelector tmdbId={tmdbId} seasons={seasons} imdbId={imdbId} />
-        <CastRow cast={cast} />
-        <SimilarRow items={similar} mediaType="tv" />
-      </>
-    );
-  }
-
-  return (
-    <TVModeLayout
-      tmdbId={tmdbId}
-      seasons={seasons}
-      imdbId={imdbId}
-      similar={similar}
-    />
   );
 }

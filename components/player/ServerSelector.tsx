@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { streamProviders, StreamProvider } from '@/lib/streams';
-import { useIsTV } from '@/lib/tv-context';
 
 interface ServerSelectorProps {
   mediaType: 'movie' | 'tv';
@@ -12,17 +11,17 @@ interface ServerSelectorProps {
   episode?: number;
   fullscreen?: boolean;
   iframeRef?: React.RefObject<HTMLIFrameElement | null>;
+  tvMode?: boolean;
 }
 
 const MULTI_AUDIO_PROVIDERS = ['unlimplay', 'vidlink'];
 
-export default function ServerSelector({ mediaType, tmdbId, imdbId, season, episode, fullscreen = false, iframeRef }: ServerSelectorProps) {
-  const isTV = useIsTV();
-  const providers = isTV ? streamProviders.filter(p => p.id === 'unlimplay') : streamProviders;
-
+export default function ServerSelector({ mediaType, tmdbId, imdbId, season, episode, fullscreen = false, iframeRef, tvMode = false }: ServerSelectorProps) {
+  const providers = tvMode ? streamProviders.filter(p => p.id === 'unlimplay') : streamProviders;
   const [selectedProviderId, setSelectedProviderId] = useState<string>(streamProviders[0]?.id ?? '');
-  const activeProvider = providers.find(p => p.id === selectedProviderId) ?? providers[0];
   const [iframeKey, setIframeKey] = useState(0);
+
+  const activeProvider = providers.find(p => p.id === selectedProviderId) ?? providers[0];
 
   const getUrl = (provider: StreamProvider) => {
     if (mediaType === 'movie') return provider.getMovieUrl(tmdbId, imdbId);
@@ -33,8 +32,7 @@ export default function ServerSelector({ mediaType, tmdbId, imdbId, season, epis
 
   return (
     <div className={`w-full flex flex-col space-y-3 ${fullscreen ? 'h-full' : ''}`}>
-      {/* Provider Tabs — hidden in TV mode (single provider) */}
-      {!isTV && (
+      {!tvMode && (
         <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
           <span className="text-gray-500 text-xs whitespace-nowrap shrink-0">Servidor:</span>
           {providers.map((provider) => {
@@ -62,21 +60,19 @@ export default function ServerSelector({ mediaType, tmdbId, imdbId, season, epis
         </div>
       )}
 
-      {/* Feature hint for direct providers — hidden in TV mode */}
-      {!isTV && isDirect && (
+      {!tvMode && isDirect && (
         <p className="text-xs text-gray-500">
           Usá el selector de idioma dentro del reproductor para cambiar entre Inglés y Español.
         </p>
       )}
 
-      {/* Player */}
       <div className={`relative bg-black rounded-lg overflow-hidden border border-gray-800 shadow-2xl ${fullscreen ? 'flex-1 min-h-0 w-full' : 'w-full aspect-video'}`}>
         <iframe
           key={iframeKey}
           ref={iframeRef}
           src={getUrl(activeProvider)}
           className="absolute inset-0 w-full h-full"
-          tabIndex={isTV ? -1 : undefined}
+          tabIndex={tvMode ? -1 : undefined}
           allowFullScreen
           referrerPolicy="origin"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"

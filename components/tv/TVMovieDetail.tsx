@@ -1,24 +1,18 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useIsTV } from '@/lib/tv-context';
-import { TMDBMedia, TMDBCast } from '@/types/tmdb';
+import { TMDBMedia } from '@/types/tmdb';
 import ServerSelector from '@/components/player/ServerSelector';
-import CastRow from '@/components/detail/CastRow';
-import SimilarRow from '@/components/detail/SimilarRow';
 import TVSimilarPanel from '@/components/tv/TVSimilarPanel';
 import { Maximize, Minimize } from 'lucide-react';
 
 interface TVMovieDetailProps {
   tmdbId: number;
   imdbId?: string;
-  title: string;
-  cast: TMDBCast[];
   similar: TMDBMedia[];
 }
 
-export default function TVMovieDetail({ tmdbId, imdbId, title, cast, similar }: TVMovieDetailProps) {
-  const isTV = useIsTV();
+export default function TVMovieDetail({ tmdbId, imdbId, similar }: TVMovieDetailProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -36,22 +30,10 @@ export default function TVMovieDetail({ tmdbId, imdbId, title, cast, similar }: 
     }
   };
 
-  if (!isTV) {
-    return (
-      <>
-        <h2 className="text-2xl font-bold mb-6 text-white">Reproducir</h2>
-        <ServerSelector mediaType="movie" tmdbId={tmdbId} imdbId={imdbId} />
-        <CastRow cast={cast} />
-        <SimilarRow items={similar} mediaType="movie" />
-      </>
-    );
-  }
-
   return (
-    <div className="flex gap-4 h-full">
-      {/* Left: fullscreen button + player */}
-      <div className="flex flex-col gap-3 flex-[3] min-w-0">
-        <div data-tv-row className="flex gap-2 shrink-0">
+    <div className="flex gap-4">
+      <div className="flex-[3] min-w-0 flex flex-col gap-3">
+        <div data-tv-row className="flex shrink-0">
           <button
             data-tv-card
             tabIndex={0}
@@ -63,14 +45,9 @@ export default function TVMovieDetail({ tmdbId, imdbId, title, cast, similar }: 
             <span>{isFullscreen ? 'Salir de pantalla completa' : 'Pantalla completa'}</span>
           </button>
         </div>
-        <ServerSelector mediaType="movie" tmdbId={tmdbId} imdbId={imdbId} iframeRef={iframeRef} />
+        <ServerSelector mediaType="movie" tmdbId={tmdbId} imdbId={imdbId} iframeRef={iframeRef} tvMode />
       </div>
-
-      {/* Right: similar titles */}
-      <div
-        className="flex-[2] min-w-0 overflow-y-auto [&::-webkit-scrollbar]:hidden"
-        style={{ scrollbarWidth: 'none' }}
-      >
+      <div className="flex-[2] min-w-0 overflow-y-auto [&::-webkit-scrollbar]:hidden" style={{ scrollbarWidth: 'none' }}>
         <TVSimilarPanel items={similar} mediaType="movie" />
       </div>
     </div>
