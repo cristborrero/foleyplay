@@ -1,4 +1,4 @@
-import { tmdb } from '@/lib/tmdb';
+import { tmdb, extractRating } from '@/lib/tmdb';
 import { notFound } from 'next/navigation';
 import DetailActions from '@/components/detail/DetailActions';
 import ServerSelector from '@/components/player/ServerSelector';
@@ -13,6 +13,7 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
 
     const title = movie.title || movie.name || movie.original_title;
     const releaseYear = movie.release_date ? new Date(movie.release_date).getFullYear() : '';
+    const rating = extractRating(movie);
 
     return (
       <div className="min-h-screen bg-fp-black">
@@ -25,6 +26,9 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
           <div className="absolute bottom-0 left-0 p-4 sm:p-6 md:p-8 lg:p-12 w-full">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 leading-tight">{title}</h1>
             <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-sm text-gray-300 mb-3">
+              <span className="border border-gray-600 px-1.5 py-0.5 rounded-sm text-xs font-medium text-gray-300">
+                {rating}
+              </span>
               <span>{releaseYear}</span>
               {movie.runtime && <span>{movie.runtime} min</span>}
               <span className="flex items-center text-green-400 font-bold">★ {movie.vote_average?.toFixed(1)}</span>

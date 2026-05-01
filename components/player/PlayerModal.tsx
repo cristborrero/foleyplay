@@ -6,6 +6,7 @@ import ServerSelector from './ServerSelector';
 import SubtitleInjector from './SubtitleInjector';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useSession } from 'next-auth/react';
+import MediaRating from '@/components/cards/MediaRating';
 
 export default function PlayerModal() {
   const { player, closePlayer } = useModal();
@@ -65,9 +66,12 @@ export default function PlayerModal() {
           {/* Header */}
           <div className="flex items-center justify-between px-3 sm:px-4 md:px-8 py-2 sm:py-3 shrink-0">
             <div>
-              <p className="text-white font-bold text-sm sm:text-base md:text-lg leading-tight">{player.title}</p>
+              <div className="flex items-center gap-2">
+                <p className="text-white font-bold text-sm sm:text-base md:text-lg leading-tight">{player.title}</p>
+                <MediaRating id={player.tmdbId} mediaType={player.mediaType} className="text-[10px] text-gray-300 border border-gray-600 px-1 py-0.5 rounded-sm font-medium" />
+              </div>
               {player.mediaType === 'tv' && player.season && (
-                <p className="text-gray-400 text-sm">
+                <p className="text-gray-400 text-sm mt-0.5">
                   Temporada {player.season} — Episodio {player.episode}
                 </p>
               )}

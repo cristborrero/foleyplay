@@ -15,7 +15,7 @@ export default function SimilarRow({ items, mediaType }: SimilarRowProps) {
       <h3 className="text-white text-xl font-bold mb-4">Títulos similares</h3>
       <div data-tv-row className="flex space-x-4 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none' }}>
         {items.slice(0, 12).map((item) => {
-          const imagePath = item.poster_path || item.backdrop_path;
+          const imagePath = item.poster_path;
           if (!imagePath) return null;
           return (
             <Link

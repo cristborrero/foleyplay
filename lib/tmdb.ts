@@ -38,7 +38,7 @@ export const tmdb = {
     fetchTMDB<TMDBResponse>(`/${mediaType}/top_rated`, { page: page.toString() }),
   
   getDetail: (mediaType: 'movie' | 'tv', id: number) =>
-    fetchTMDB<TMDBDetail>(`/${mediaType}/${id}`, { append_to_response: 'credits,videos,similar,external_ids' }),
+    fetchTMDB<TMDBDetail>(`/${mediaType}/${id}`, { append_to_response: 'credits,videos,similar,external_ids,release_dates,content_ratings' }),
     
   getSeason: (tvId: number, seasonNumber: number) => 
     fetchTMDB<{ episodes: TMDBEpisode[] }>(`/tv/${tvId}/season/${seasonNumber}`),
@@ -49,3 +49,21 @@ export const tmdb = {
   getDiscover: (mediaType: 'movie' | 'tv', params: Record<string, string> = {}) => 
     fetchTMDB<TMDBResponse>(`/discover/${mediaType}`, params)
 };
+
+export function extractRating(detail: TMDBDetail): string {
+  if (detail.media_type === 'tv' || detail.name) {
+    if (detail.content_ratings?.results) {
+      const usRating = detail.content_ratings.results.find((r) => r.iso_3166_1 === 'US' && r.rating !== '');
+      if (usRating) return usRating.rating;
+    }
+  } else {
+    if (detail.release_dates?.results) {
+      const usRelease = detail.release_dates.results.find((r) => r.iso_3166_1 === 'US');
+      if (usRelease && usRelease.release_dates.length > 0) {
+        const rated = usRelease.release_dates.find((d) => d.certification !== '');
+        if (rated) return rated.certification;
+      }
+    }
+  }
+  return 'NR';
+}

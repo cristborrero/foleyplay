@@ -5,6 +5,7 @@ import { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TMDBMedia } from '@/types/tmdb';
 import { useModal } from '@/lib/modal-context';
+import MediaRating from './MediaRating';
 
 interface MovieCardProps {
   media: TMDBMedia;
@@ -17,7 +18,7 @@ export default function MovieCard({ media, isLargeRow = false, mediaType }: Movi
   const [hovered, setHovered] = useState(false);
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const imagePath = isLargeRow ? media.poster_path : media.backdrop_path || media.poster_path;
+  const imagePath = media.poster_path; // ALWAYS poster as requested
   if (!imagePath) return null;
 
   const title = media.title || media.name || '';
@@ -66,7 +67,7 @@ export default function MovieCard({ media, isLargeRow = false, mediaType }: Movi
       <motion.div
         animate={{ scale: hovered ? 1.04 : 1 }}
         transition={{ duration: 0.25, ease: 'easeOut' }}
-        className={`relative w-full ${isLargeRow ? 'aspect-2/3' : 'aspect-video'} rounded-lg overflow-hidden bg-[#111]`}
+        className={`relative w-full aspect-[2/3] rounded-lg overflow-hidden bg-[#111]`}
       >
         {/* Image */}
         <Image
@@ -82,13 +83,17 @@ export default function MovieCard({ media, isLargeRow = false, mediaType }: Movi
         <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/10 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 px-2 pb-2 pt-6">
           <p className="text-white text-[11px] font-semibold leading-tight truncate">{title}</p>
-          {score !== null && (
-            <div className="flex items-center gap-1 mt-0.5">
-              <span className={`text-[10px] font-bold ${scoreColor}`}>{score}%</span>
-              <span className="text-gray-500 text-[9px]">·</span>
-              <span className="text-gray-400 text-[9px]">{year}</span>
-            </div>
-          )}
+          <div className="flex items-center gap-1 mt-0.5 flex-wrap">
+            <MediaRating id={media.id} mediaType={resolvedMediaType} />
+            {score !== null && (
+              <>
+                <span className="text-gray-500 text-[9px]">·</span>
+                <span className={`text-[10px] font-bold ${scoreColor}`}>{score}%</span>
+              </>
+            )}
+            <span className="text-gray-500 text-[9px]">·</span>
+            <span className="text-gray-400 text-[9px]">{year}</span>
+          </div>
         </div>
 
         {/* Hover panel — slides up from bottom */}
@@ -105,6 +110,7 @@ export default function MovieCard({ media, isLargeRow = false, mediaType }: Movi
               {/* Title + badges */}
               <p className="text-white text-xs font-bold leading-tight truncate mb-1">{title}</p>
               <div className="flex items-center gap-1.5 mb-1.5 flex-wrap">
+                <MediaRating id={media.id} mediaType={resolvedMediaType} />
                 {score !== null && (
                   <span className={`text-[10px] font-bold ${scoreColor}`}>{score}%</span>
                 )}

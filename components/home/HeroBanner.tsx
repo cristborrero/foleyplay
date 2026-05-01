@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { TMDBMedia } from '@/types/tmdb';
 import { useModal } from '@/lib/modal-context';
 
+import MediaRating from '@/components/cards/MediaRating';
+
 const ROTATION_INTERVAL = 8000;
 
 export default function HeroBanner() {
@@ -49,6 +51,9 @@ export default function HeroBanner() {
     movie.overview?.length > 150
       ? `${movie.overview.substring(0, 150)}...`
       : movie.overview;
+  
+  const score = movie.vote_average ? Math.round(movie.vote_average * 10) : null;
+  const scoreColor = !score ? 'text-gray-400' : score >= 70 ? 'text-green-400' : score >= 50 ? 'text-yellow-400' : 'text-red-400';
 
   return (
     <div className="relative h-[55vh] sm:h-[70vh] md:h-[85vh] w-full overflow-hidden">
@@ -89,6 +94,17 @@ export default function HeroBanner() {
           <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 sm:mb-4 drop-shadow-lg leading-tight">
             {title}
           </h1>
+          
+          <div className="flex items-center gap-2 mb-3 sm:mb-4">
+            <MediaRating id={movie.id} mediaType={movie.media_type || 'movie'} className="text-[10px] sm:text-xs text-gray-200 border border-gray-500 px-1.5 py-0.5 rounded-sm font-semibold" />
+            {score !== null && (
+              <>
+                <span className={`text-[12px] sm:text-sm font-bold ${scoreColor}`}>★ {score}%</span>
+              </>
+            )}
+            {movie.release_date && <span className="text-gray-400 text-sm">{movie.release_date.slice(0, 4)}</span>}
+          </div>
+
           <p className="hidden sm:block text-gray-200 text-sm md:text-base mb-4 sm:mb-6 drop-shadow-md leading-relaxed max-w-xl">
             {overview}
           </p>

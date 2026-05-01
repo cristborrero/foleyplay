@@ -351,15 +351,15 @@ export default function DetailModal() {
                     METADATA BAR
                 ══════════════════════════════════════════════════════════ */}
                 <div className="px-4 sm:px-6 md:px-8 pt-5 pb-4 flex items-center gap-3 flex-wrap">
-                  <span className={`font-bold text-sm ${scoreColor}`}>{score}%</span>
-
-                  {year && <span className="text-gray-300 text-sm">{year}</span>}
-
                   {certification && (
-                    <span className="border border-gray-500 text-gray-300 text-xs px-1.5 py-0.5 rounded">
+                    <span className="border border-gray-500 text-gray-300 text-xs px-1.5 py-0.5 rounded font-semibold">
                       {certification}
                     </span>
                   )}
+
+                  <span className={`font-bold text-sm ${scoreColor}`}>★ {score}%</span>
+
+                  {year && <span className="text-gray-300 text-sm">{year}</span>}
 
                   {data.runtime && (
                     <span className="text-gray-300 text-sm flex items-center gap-1">

@@ -37,7 +37,7 @@ function SearchContent() {
   useEffect(() => {
     fetch('/api/tmdb/trending/all/day')
       .then(r => r.json())
-      .then(d => setPopular((d.results || []).filter((m: TMDBMedia) => m.backdrop_path).slice(0, 18)))
+      .then(d => setPopular((d.results || []).filter((m: TMDBMedia) => m.poster_path).slice(0, 18)))
       .catch(() => {});
   }, []);
 
