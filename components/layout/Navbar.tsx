@@ -161,6 +161,7 @@ export default function Navbar() {
                 <Link href="/history" className="px-6 py-3.5 text-base text-gray-300">
                   Continuar Viendo
                 </Link>
+                {isAdmin && (
                   <Link href="/admin/users" className="px-6 py-3.5 text-base text-fp-lime">
                     Administración
                   </Link>
