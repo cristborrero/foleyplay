@@ -40,8 +40,19 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative h-screen w-full flex flex-col" style={{ background: 'linear-gradient(135deg, #0a0a0a 0%, #110505 50%, #0a0a0a 100%)' }}>
-      <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(ellipse at 50% 0%, rgba(229,9,20,0.12) 0%, transparent 60%)' }} />
+    <div className="relative h-screen w-full flex flex-col bg-black">
+      {/* Background Image with Overlay */}
+      <div 
+        className="absolute inset-0 z-0" 
+        style={{ 
+          backgroundImage: 'url(/bg-login-foleyplay.webp)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.5
+        }} 
+      />
+      <div className="absolute inset-0 z-0 bg-gradient-to-t from-black via-transparent to-black/60" />
+      <div className="absolute inset-0 z-0 bg-black/40" />
 
       <header className="absolute top-0 w-full p-4 md:p-8 z-50">
         <Link href="/">

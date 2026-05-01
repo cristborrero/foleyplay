@@ -1,8 +1,8 @@
 # 📋 Instrucciones para Claude Code: Netflix Clone Personal — Full Stack
 
 > **Documento de instrucciones paso a paso**
-> Propósito: Que Claude Code construya un clon de Netflix personal con Next.js 15, TypeScript, TMDB API, múltiples fuentes de streaming embed (VidSrc, SuperEmbed, Embed.su), MongoDB, NextAuth y Tailwind CSS. El resultado final será una web app instalable en Android TV via Capacitor.
-> Uso: Estrictamente personal. No comercial. Para aprendizaje y disfrute en TV personal.
+> Propósito: Que Claude Code construya un clon de Netflix personal con Next.js 16, TypeScript, TMDB API, múltiples fuentes de streaming embed (VidSrc, SuperEmbed, Embed.su), MongoDB, NextAuth y Tailwind CSS.
+> Uso: Estrictamente personal. No comercial. Para aprendizaje y disfrute.
 
 ---
 
@@ -24,8 +24,6 @@ Necesito que construyas un clon de Netflix personal con las siguientes caracter�
 - Autenticación con **NextAuth** (Google OAuth o credenciales simples).
 - **MongoDB** para guardar: watchlist personal, historial de visualización, calificaciones personales.
 - Soporte completo de **subtítulos en español latino** inyectables al player.
-- App **instalable en Android TV** via Capacitor (APK por sideload).
-- Navegación con **control remoto / D-pad** para TV.
 
 Antes de continuar, si tienes dudas sobre el stack, la estructura o el entorno de desarrollo, pregúntame ahora.
 
@@ -53,9 +51,6 @@ Usa exactamente este stack. No propongas alternativas a menos que haya un proble
 - **SuperEmbed** — `https://multiembed.mov/`
 - **Embed.su** — `https://embed.su/embed/`
 - **OpenSubtitles API** (gratuita, tier básico) — subtítulos en español latino
-
-### Android TV
-- **Capacitor v6** — wrapper nativo para generar APK desde la web
 
 ### Herramientas de desarrollo
 - **ESLint + Prettier** configurados
@@ -179,14 +174,6 @@ netflix-clone/
 │   ├── Watchlist.ts
 │   ├── History.ts
 │   └── Rating.ts
-├── hooks/
-│   ├── useWatchlist.ts
-│   ├── useHistory.ts
-│   └── useTVNavigation.ts        ← Hook para D-pad del control remoto TV
-├── types/
-│   ├── tmdb.ts                   ← Tipos TypeScript para respuestas TMDB
-│   └── app.ts                    ← Tipos generales de la app
-├── capacitor.config.ts           ← Configuración para Android TV
 ├── .env.local.example
 ├── .env.local                    ← (en .gitignore)
 ├── .gitignore
@@ -432,12 +419,12 @@ Construye el Navbar en `components/layout/Navbar.tsx`:
 - **Izquierda**: logo de la app en rojo.
 - **Centro** (desktop): links de navegación: Inicio | Películas | Series | Mi Lista.
 - **Derecha**: barra de búsqueda colapsable (ícono que se expande al click) + avatar del usuario con menú desplegable (Mi cuenta | Cerrar sesión).
-- **Móvil/TV**: menú hamburguesa que muestra los links en un panel lateral.
+- **Móvil/Desktop**: menú hamburguesa en móvil, links directos en desktop. Barra superior con scroll-to-solid.
 
-### Comportamiento en TV:
-- Todos los elementos deben ser navegables con D-pad.
-- El foco debe ser visible con un outline claro.
-- Al presionar D-pad abajo desde el Navbar, el foco debe pasar al primer elemento del contenido.
+### Comportamiento:
+- Al hacer scroll, el fondo cambia de transparente a negro con blur.
+- Barra de búsqueda colapsable funcional.
+- Menú de perfil funcional.
 
 Construye el Navbar completo con animaciones Framer Motion. Espera aprobación.
 
@@ -460,10 +447,9 @@ Construye el Hero Banner en `components/home/HeroBanner.tsx`:
 - El título destacado debe rotarse automáticamente cada 8 segundos entre los primeros 5 títulos de trending.
 - Transición suave entre títulos con fade.
 
-### Comportamiento en TV:
-- Los botones deben recibir foco con D-pad.
-- Al presionar Enter sobre "Reproducir", abrir el PlayerModal directamente.
-- Al presionar Enter sobre "Más info", abrir el DetailModal.
+### Comportamiento:
+- Al hacer click en "Reproducir", abrir el PlayerModal directamente.
+- Al hacer click en "Más info", abrir el DetailModal.
 
 Construye el HeroBanner completo. Espera aprobación.
 
@@ -480,7 +466,7 @@ Construye el ContentRow en `components/home/ContentRow.tsx` y el MovieCard en `c
 - Fila de cards con scroll horizontal.
 - Flechas de navegación izquierda/derecha que aparecen en hover.
 - Scroll suave al hacer click en las flechas (avanza ~4 cards).
-- En TV: navegación horizontal con D-pad izquierda/derecha, la fila activa se resalta.
+
 
 ### MovieCard (hover expandido, tipo Netflix):
 - **Estado normal**: poster vertical, bordes redondeados.
@@ -492,9 +478,8 @@ Construye el ContentRow en `components/home/ContentRow.tsx` y el MovieCard en `c
 - La card expandida no debe salirse de la pantalla (detectar si está al borde y expandir en dirección contraria).
 - Animaciones con Framer Motion.
 
-### En TV:
-- El hover se reemplaza por el estado de foco (D-pad).
-- Al presionar Enter: abrir el DetailModal.
+### Comportamiento:
+- Al hacer click: abrir el DetailModal.
 
 Construye ambos componentes completos. Espera aprobación.
 
@@ -551,10 +536,9 @@ Construye el PlayerModal en `components/player/PlayerModal.tsx` y el ServerSelec
 - Al abrir el PlayerModal, registrar el título en el historial vía `POST /api/history`.
 - Al cerrar, actualizar el progreso en `PATCH /api/history`.
 
-### Comportamiento en TV:
-- El foco debe ir directamente al iframe al abrir.
-- El D-pad debe controlar el player nativo del iframe.
-- Escape o Back del control remoto cierra el modal.
+### Registro en historial:
+- Al abrir el PlayerModal, registrar el título en el historial vía `POST /api/history`.
+- Al cerrar, actualizar el progreso en `PATCH /api/history`.
 
 Construye el PlayerModal y ServerSelector completos. Espera aprobación.
 
@@ -618,86 +602,11 @@ Construye las tres páginas. Espera aprobación.
 
 ---
 
-## PASO 18 — Navegación D-pad para Android TV
-
-**[Entregar después de aprobar las páginas]**
-
-Construye el hook `hooks/useTVNavigation.ts` y aplícalo a todos los componentes interactivos:
-
-### El hook debe:
-- Escuchar eventos `keydown` para las teclas del control remoto:
-  - `ArrowUp` / `ArrowDown` / `ArrowLeft` / `ArrowRight` — navegación entre elementos
-  - `Enter` — seleccionar elemento con foco
-  - `Escape` / `Backspace` — cerrar modal o volver atrás
-  - `MediaPlay` / `MediaPause` — controlar reproducción
-- Mantener un registro del elemento con foco activo.
-- Al navegar entre filas (arriba/abajo), recordar qué posición horizontal tenía el foco en cada fila.
-- El foco debe ser siempre visible: outline de 3px en color rojo/blanco sobre el elemento activo.
-
-### Aplicarlo en:
-- Navbar (navegación entre links)
-- HeroBanner (entre los dos botones)
-- ContentRow (navegación horizontal entre cards + navegación entre filas)
-- DetailModal (entre botones y entre episodios)
-- PlayerModal (entre servers)
-- Páginas de búsqueda, watchlist e historial
-
-### Optimización para TV:
-- En Android TV, detectar si el dispositivo es TV con `window.matchMedia('(hover: none) and (pointer: coarse)')` y activar el modo TV automáticamente.
-- En modo TV, deshabilitar los hover states y activar únicamente los focus states.
-- El tamaño de fuente en modo TV debe aumentar un 20% para visibilidad a distancia.
-
-Construye el hook y aplícalo a todos los componentes. Espera aprobación.
-
 ---
 
-## PASO 19 — Configuración de Capacitor para Android TV
+## PASO 18 — Variables de Entorno y Archivos de Configuración
 
-**[Entregar después de aprobar la navegación TV]**
 
-Configura Capacitor para generar el APK de Android TV:
-
-### 19.1 — Instalación y configuración
-Instala Capacitor y configura `capacitor.config.ts`:
-```typescript
-// Configuraciones necesarias:
-// - appId: com.personal.netflixclone
-// - appName: Mi Netflix
-// - webDir: out (output de Next.js export)
-// - server: { url: 'http://TU_IP_LOCAL:3000' } (para desarrollo en TV)
-// - android: { buildOptions: { keystorePath, keystoreAlias } }
-```
-
-### 19.2 — Configuración de Next.js para export estático
-Ajusta `next.config.ts` para soportar `output: 'export'` de Next.js necesario para Capacitor. Documenta qué features de Next.js no funcionan en modo estático y cómo manejarlas (API routes → usar servidor externo o Vercel).
-
-### 19.3 — AndroidManifest.xml para Android TV
-Genera las modificaciones necesarias al `AndroidManifest.xml`:
-- Declarar `android.software.leanback` como feature requerida (para TV).
-- Marcar `android.hardware.touchscreen` como no requerido.
-- Configurar el intent-filter para el lanzador de TV.
-- Agregar permisos de internet.
-
-### 19.4 — Script de build
-Crea un script `build-tv.sh` que:
-1. Hace `npm run build` de Next.js.
-2. Ejecuta `npx cap sync android`.
-3. Abre Android Studio (o genera el APK directamente con Gradle).
-
-### 19.5 — Instrucciones de sideload
-Documenta paso a paso cómo instalar el APK en un Android TV via ADB:
-```bash
-adb connect TU_IP_TV:5555
-adb install netflix-clone.apk
-```
-
-Construye la configuración completa de Capacitor. Espera aprobación.
-
----
-
-## PASO 20 — Variables de Entorno y Archivos de Configuración
-
-**[Entregar junto con o después de Capacitor]**
 
 Crea los archivos de configuración finales:
 
@@ -734,7 +643,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
 ### 20.2 — `.gitignore`
-Asegúrate de incluir: `.env.local`, `node_modules/`, `.next/`, `android/`, `ios/`.
+- **Git**: asegura incluir `.env.local`, `node_modules/` y `.next/` en el `.gitignore`.
 
 ### 20.3 — `README.md`
 Crea un README completo con:
@@ -743,7 +652,6 @@ Crea un README completo con:
 - Pasos de instalación.
 - Configuración de variables de entorno.
 - Cómo ejecutar en desarrollo.
-- Cómo generar el APK para TV.
 - Créditos y APIs usadas.
 
 Construye todos los archivos de configuración. Espera aprobación.
@@ -786,23 +694,16 @@ Antes de dar el proyecto por listo, verifica y prueba lo siguiente:
 - [ ] La búsqueda retorna resultados en tiempo real.
 - [ ] Los filtros por tipo funcionan.
 
-**Navegación TV:**
-- [ ] El D-pad navega entre todos los elementos interactivos.
-- [ ] El foco es siempre visible.
-- [ ] Enter abre modales y selecciona elementos.
-- [ ] Escape cierra modales.
-
-**Android TV:**
-- [ ] El APK se genera correctamente.
-- [ ] La app instala via ADB.
-- [ ] La UI se ve correctamente en pantalla de TV.
+**Búsqueda:**
+- [ ] La búsqueda retorna resultados en tiempo real.
+- [ ] Los filtros por tipo funcionan.
 
 ### 21.2 — Entregable final
 
 Al pasar todas las pruebas, entrega:
 - ✅ Checklist completo de lo construido.
 - 📋 Instrucciones paso a paso para correr el proyecto desde cero.
-- ⚙️ Instrucciones para generar y desplegar el APK de TV.
+
 - ⚠️ Lista de limitaciones conocidas y mejoras futuras sugeridas.
 
 ---
@@ -812,10 +713,10 @@ Al pasar todas las pruebas, entrega:
 - **Prioriza que funcione** sobre la perfección del código. Primero end-to-end funcionando, luego optimización.
 - **TypeScript estricto**: todos los componentes y funciones deben tener tipos correctos, sin `any`.
 - **Manejo de errores**: los fallos de API (TMDB caído, stream que no carga) deben mostrar mensajes amigables al usuario, nunca pantallas en blanco.
-- **Experiencia TV primero**: recuerda que el destino final es una TV con control remoto. Todos los elementos interactivos deben ser claramente focusables.
+- **Experiencia de Usuario**: prioriza la fluidez de navegación y la claridad de los elementos interactivos.
 - **Seguridad**: la TMDB API key y las credenciales de MongoDB NUNCA deben llegar al cliente. Siempre server-side.
 - **No localStorage**: evitar localStorage para datos importantes; usar MongoDB para persistencia real. Usar estado de React o Context para datos temporales.
-- **Responsive**: aunque el destino principal es TV (1920x1080), la app debe funcionar también en navegador de escritorio y móvil durante el desarrollo.
+- **Responsive**: la app debe ser totalmente responsiva, funcionando perfectamente en desktop, tablets y dispositivos móviles.
 - **Performance**: usar `next/image` para todas las imágenes, lazy loading en filas inferiores, skeleton loaders en todas las secciones que cargan datos async.
 
 ---

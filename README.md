@@ -1,6 +1,6 @@
 # FoleyPlay
 
-Plataforma de streaming educativa y no comercial construida como demostración técnica full-stack. Replica la experiencia de Netflix con autenticación real, catálogo desde TMDB, reproductores embebidos con ad-blocking proxy, subtítulos sincronizados, panel de administración con control de acceso por roles, y soporte Android TV vía Capacitor.
+Plataforma de streaming educativa y no comercial construida como demostración técnica full-stack. Replica la experiencia de Netflix con autenticación real, catálogo desde TMDB, reproductores embebidos con ad-blocking proxy, subtítulos sincronizados, panel de administración con control de acceso por roles, y una interfaz web optimizada y responsiva.
 
 ## Stack
 
@@ -12,7 +12,6 @@ Plataforma de streaming educativa y no comercial construida como demostración t
 | Animaciones | Framer Motion |
 | Auth | NextAuth v5 beta (Credentials + Google OAuth) |
 | Base de datos | MongoDB Atlas + Mongoose |
-| Mobile/TV | Capacitor Android 8 |
 
 ## Requisitos previos
 
@@ -74,14 +73,13 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 - Roles jerárquicos: `user` / `admin` / `superadmin`
 - Panel de administración en `/admin/users` — listar, aprobar, eliminar y promover usuarios
 - Catálogo TMDB con carruseles lazy-load y HeroBanner rotativo
-- Página `/movies` con catálogo de películas por género
+- Páginas `/movies` y `/tv` con catálogo de películas y series por género
 - Búsqueda con filtros por tipo, género y año
 - Reproductores embebidos con ad-blocking proxy server-side
 - Multi-audio vía UnlimPlay y VidLink
 - Subtítulos overlay sincronizados manualmente
 - Watchlist, historial de reproducción y calificaciones (like/dislike)
 - Perfil de usuario con avatar generado por iniciales
-- Soporte D-Pad para Android TV
 
 ## Proveedores de stream
 
@@ -102,17 +100,6 @@ El registro es público pero el acceso requiere aprobación. Flujo:
 3. Usuario puede iniciar sesión y usar la plataforma
 
 Para definir el superadmin inicial, configurar `ADMIN_EMAIL` en `.env.local`.
-
-## Android TV (Capacitor)
-
-```bash
-# Cambiar server.url en capacitor.config.ts a la URL de producción
-npm run build
-npx cap sync android
-# Abrir en Android Studio o instalar via ADB
-```
-
-> ⚠️ `capacitor.config.ts` tiene `server.url` apuntando a IP local para desarrollo. Cambiar a URL pública antes de distribuir el APK.
 
 ## Créditos
 

@@ -13,8 +13,7 @@
 4. [Variables de entorno en Vercel](#4-variables-de-entorno-en-vercel)
 5. [Después del primer deploy](#5-después-del-primer-deploy)
 6. [Dominio personalizado (opcional)](#6-dominio-personalizado-opcional)
-7. [Capacitor / Android TV](#7-capacitor--android-tv)
-8. [Checklist final](#8-checklist-final)
+7. [Checklist final](#7-checklist-final)
 
 ---
 
@@ -156,38 +155,8 @@ Si querés usar `foleyplay.com` o similar en vez de `foleyplay.vercel.app`:
 
 ---
 
-## 7. Capacitor / Android TV
 
-El archivo `capacitor.config.ts` actualmente apunta a tu IP local. Antes de distribuir el APK:
-
-### 7.1 Actualizar la URL
-
-Editar `capacitor.config.ts`:
-```ts
-// Cambiar esto:
-server: {
-  url: 'http://172.18.16.70:3000',   // ← IP local
-  cleartext: true
-}
-
-// Por esto:
-server: {
-  url: 'https://foleyplay.vercel.app',  // ← URL de producción
-}
-```
-
-### 7.2 Rebuild de Android
-
-```bash
-npm run build
-npx cap sync android
-npx cap open android
-# → Build → Generate Signed APK en Android Studio
-```
-
----
-
-## 8. Checklist final
+## 7. Checklist final
 
 Antes de compartir la URL con usuarios:
 
@@ -209,9 +178,6 @@ Antes de compartir la URL con usuarios:
 - [ ] Usuario aprobado puede acceder después de re-login
 - [ ] TMDB carga contenido (browse, búsqueda, detallas)
 
-### Android TV (si aplica)
-- [ ] `capacitor.config.ts` actualizado a URL de producción
-- [ ] APK generado y testeado
 
 ---
 
