@@ -38,7 +38,8 @@
 │  │  /login     │  │  /browse         │  │  /tmdb/...    │  │
 │  │  /register  │  │  /movie/[id]     │  │  /history     │  │
 │  └─────────────┘  │  /tv/[id]        │  │  /watchlist   │  │
-│                   │  /movies         │  │  /tv-shows    │  │
+│                   │  /movies         │  │  /tv          │  │
+│                   │  /tv             │  │  /search       │  │
 │                   │  /search         │  │  /subtitles   │  │
 │                   │  /watchlist      │  │  /proxy/player│  │
 │                   │  /history        │  │  /admin/...   │  │
@@ -69,7 +70,7 @@
 | `/register` | Registro de cuenta nueva | Público |
 | `/browse` | Home principal — Hero + carruseles | Autenticado |
 | `/movies` | Catálogo de películas por género | Autenticado |
-| `/tv-shows` | Catálogo de series por género | Autenticado |
+| `/tv` | Catálogo de series por género | Autenticado |
 | `/movie/[id]` | Página completa de película con player | Autenticado |
 | `/tv/[id]` | Página de serie con selector de temporada/episodio | Autenticado |
 | `/search` | Búsqueda con debounce y filtros | Autenticado |
@@ -155,7 +156,7 @@
 │   │   ├── layout.tsx
 │   │   ├── browse/page.tsx
 │   │   ├── movies/page.tsx
-│   │   ├── tv-shows/page.tsx
+│   │   ├── tv/page.tsx
 │   │   ├── movie/[id]/page.tsx
 │   │   ├── tv/[id]/page.tsx
 │   │   ├── search/page.tsx
@@ -216,7 +217,7 @@
 | Roles y permisos | ✅ Completo |
 | HeroBanner rotativo | ✅ Completo |
 | Carruseles lazy-load | ✅ Completo |
-| Catálogos (/movies, /tv-shows) | ✅ Completo |
+| Catálogos (/movies, /tv) | ✅ Completo |
 | PlayerModal con servers | ✅ Completo |
 | Ad-blocking proxy | ✅ Completo |
 | Subtítulos overlay | ✅ Completo |
@@ -231,4 +232,4 @@
 - **Eliminación de soporte TV**: El proyecto fue simplificado eliminando Capacitor, Android SDK y componentes específicos de TV para enfocarse en una experiencia web premium.
 - **Middleware Edge-safe**: Autenticación desacoplada para funcionar en el Edge Runtime de Vercel.
 - **Proxy ad-blocker**: Inyección de scripts para bloquear popups en los iframes de streaming.
-- **Pure Web Implementation**: Rutas como `/movies` y `/tv-shows` usan componentes web nativos en lugar de shims para TV.
+- **Pure Web Implementation**: Rutas como `/movies` y `/tv` usan componentes web nativos en lugar de shims para TV.
