@@ -22,7 +22,12 @@ export default function TVCard({ media, mediaType }: TVCardProps) {
   const scoreColor = !score ? 'text-gray-400' : score >= 70 ? 'text-green-400' : score >= 50 ? 'text-yellow-400' : 'text-red-400';
   const resolvedType = mediaType || (media.media_type as 'movie' | 'tv') || 'movie';
 
-  const navigate = () => router.push(`/${resolvedType}/${media.id}`);
+  const navigate = () => {
+    const path = resolvedType === 'tv'
+      ? `/tv-app/show/${media.id}`
+      : `/tv-app/movie/${media.id}`;
+    router.push(path);
+  };
 
   return (
     <div
