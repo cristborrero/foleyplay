@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'FoleyPlay',
   webDir: 'out',
   server: {
-    url: 'https://foleyplay.vercel.app/tv/browse',
+    url: 'https://foleyplay.vercel.app/tv-app/browse',
     cleartext: false
   }
 };

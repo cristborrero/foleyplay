@@ -8,12 +8,12 @@ import { Home, Search, Film, Tv2, Bookmark, User, LogOut } from 'lucide-react';
 import { useTVSidebar } from './TVSidebarContext';
 
 const NAV_ITEMS = [
-  { icon: Home,     label: 'Inicio',    href: '/tv/browse' },
-  { icon: Search,   label: 'Buscador',  href: '/tv/search' },
-  { icon: Film,     label: 'Películas', href: '/tv/movies' },
-  { icon: Tv2,      label: 'Series',    href: '/tv/tv-shows' },
-  { icon: Bookmark, label: 'Mi Lista',  href: '/tv/watchlist' },
-  { icon: User,     label: 'Perfil',    href: '/tv/profile' },
+  { icon: Home,     label: 'Inicio',    href: '/tv-app/browse' },
+  { icon: Search,   label: 'Buscador',  href: '/tv-app/search' },
+  { icon: Film,     label: 'Películas', href: '/tv-app/movies' },
+  { icon: Tv2,      label: 'Series',    href: '/tv-app/tv-shows' },
+  { icon: Bookmark, label: 'Mi Lista',  href: '/tv-app/watchlist' },
+  { icon: User,     label: 'Perfil',    href: '/tv-app/profile' },
 ];
 
 interface TVSidebarProps {
@@ -70,7 +70,7 @@ export default function TVSidebar({ expanded, onClose }: TVSidebarProps) {
       {/* Nav */}
       <nav className="flex flex-col gap-1 px-2 flex-1 pt-2">
         {NAV_ITEMS.map(({ icon: Icon, label, href }) => {
-          const active = href === '/tv/browse' ? pathname === href : pathname.startsWith(href);
+          const active = href === '/tv-app/browse' ? pathname === href : pathname.startsWith(href);
           return (
             <button
               key={label}

@@ -8,7 +8,7 @@ import TVBackHandler from '@/components/layout/TVBackHandler';
 import TVFocusManager from './TVFocusManager';
 import { TVSidebarProvider, useTVSidebar } from './TVSidebarContext';
 
-const HOME_PATHS = ['/tv/browse', '/tv/movies', '/tv/tv-shows'];
+const HOME_PATHS = ['/tv-app/browse', '/tv-app/movies', '/tv-app/tv-shows'];
 
 function TVContentHeader() {
   const pathname = usePathname();
