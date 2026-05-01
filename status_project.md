@@ -5,7 +5,7 @@
 
 ## Resumen ejecutivo
 
-**FoleyPlay** es una plataforma de streaming educativa y no comercial construida como demostración técnica de habilidades full-stack. Replica la experiencia de Netflix con autenticación real, catálogo desde TMDB, reproductores embebidos con ad-blocking proxy, subtítulos sincronizados, panel de administración con control de acceso por roles, y una arquitectura 100% web optimizada para producción en Vercel.
+**FoleyPlay** es una plataforma de streaming educativa y no comercial con una identidad visual moderna y disruptiva en verde lima (#CEFF00). Replica la experiencia de Netflix con autenticación real, catálogo desde TMDB, reproductores embebidos con ad-blocking proxy, subtítulos sincronizados, panel de administración con control de acceso por roles, y una arquitectura 100% web optimizada para producción en Vercel.
 
 ---
 
@@ -224,6 +224,8 @@
 | Watchlist e Historial | ✅ Completo |
 | Búsqueda con filtros | ✅ Completo |
 | PWA (Installable) | ✅ Completo |
+| Rebranding (Verde Lima) | ✅ Completo |
+| Calificación de contenido (G-R) | ✅ Completo |
 
 ---
 
@@ -233,3 +235,5 @@
 - **Middleware Edge-safe**: Autenticación desacoplada para funcionar en el Edge Runtime de Vercel.
 - **Proxy ad-blocker**: Inyección de scripts para bloquear popups en los iframes de streaming.
 - **Pure Web Implementation**: Rutas como `/movies` y `/tv` usan componentes web nativos en lugar de shims para TV.
+- **Identidad Visual FoleyPlay**: Rebranding total alejándose de la estética de Netflix para adoptar un diseño "Lime Green" (#CEFF00) consistente en toda la interfaz.
+- **Normalización de Clasificación**: Implementación de un sistema unificado de clasificación de contenido (G, PG, PG-13, R, NC-17) que mapea ratings internacionales de TMDB a un estándar reconocible.
