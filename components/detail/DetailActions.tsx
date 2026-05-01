@@ -82,7 +82,7 @@ export default function DetailActions({ tmdbId, mediaType, title, posterPath }: 
         onClick={() => {
           window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }}
-        className="bg-white text-black font-bold py-2 px-4 sm:px-6 rounded flex items-center text-sm sm:text-base hover:bg-gray-200 transition-colors outline-none focus:ring-2 focus:ring-red-500"
+        className="bg-white text-black font-bold py-2 px-4 sm:px-6 rounded flex items-center text-sm sm:text-base hover:bg-gray-200 transition-colors outline-none focus:ring-2 focus:ring-fp-lime"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 mr-1.5 sm:mr-2">
           <path d="M8 5v14l11-7z" />
@@ -95,7 +95,7 @@ export default function DetailActions({ tmdbId, mediaType, title, posterPath }: 
         tabIndex={0}
         onClick={toggleWatchlist}
         disabled={isLoading}
-        className="bg-[#333] text-white font-bold py-2 px-4 sm:px-6 rounded flex items-center text-sm sm:text-base hover:bg-[#444] transition-colors disabled:opacity-50 outline-none focus:ring-2 focus:ring-red-500"
+        className="bg-[#333] text-white font-bold py-2 px-4 sm:px-6 rounded flex items-center text-sm sm:text-base hover:bg-[#444] transition-colors disabled:opacity-50 outline-none focus:ring-2 focus:ring-fp-lime"
       >
         {inWatchlist ? (
           <>

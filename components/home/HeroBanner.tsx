@@ -53,7 +53,7 @@ export default function HeroBanner() {
       : movie.overview;
   
   const score = movie.vote_average ? Math.round(movie.vote_average * 10) : null;
-  const scoreColor = !score ? 'text-gray-400' : score >= 70 ? 'text-green-400' : score >= 50 ? 'text-yellow-400' : 'text-red-400';
+  const scoreColor = !score ? 'text-gray-400' : score >= 70 ? 'text-green-400' : score >= 50 ? 'text-yellow-400' : 'text-fp-lime';
 
   return (
     <div className="relative h-[55vh] sm:h-[70vh] md:h-[85vh] w-full overflow-hidden">
@@ -77,7 +77,7 @@ export default function HeroBanner() {
           />
           <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-[#0a0a0a]/30 to-transparent" />
           <div className="absolute inset-0 bg-linear-to-r from-black/75 via-black/30 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-red-950/10 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-lime-950/10 to-transparent" />
         </motion.div>
       </AnimatePresence>
 
@@ -112,7 +112,7 @@ export default function HeroBanner() {
           <div className="flex flex-row gap-2 sm:gap-3">
             <button
               onClick={() => openPlayer({ tmdbId: movie.id, mediaType: movie.media_type || 'movie', title })}
-              className="flex items-center px-4 py-2 sm:px-7 sm:py-2.5 bg-white text-black rounded-md font-bold text-sm sm:text-base hover:bg-white/90 transition-all hover:[box-shadow:0_0_20px_rgba(255,255,255,0.3)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
+              className="flex items-center px-4 py-2 sm:px-7 sm:py-2.5 bg-white text-black rounded-md font-bold text-sm sm:text-base hover:bg-white/90 transition-all hover:[box-shadow:0_0_20px_rgba(255,255,255,0.3)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fp-lime"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2">
                 <path fillRule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clipRule="evenodd" />
@@ -121,7 +121,7 @@ export default function HeroBanner() {
             </button>
             <Link
               href={`/${movie.media_type || 'movie'}/${movie.id}`}
-              className="flex items-center px-4 py-2 sm:px-7 sm:py-2.5 bg-white/10 text-white rounded-md font-bold text-sm sm:text-base border border-white/20 hover:bg-white/20 hover:border-red-600/50 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
+              className="flex items-center px-4 py-2 sm:px-7 sm:py-2.5 bg-white/10 text-white rounded-md font-bold text-sm sm:text-base border border-white/20 hover:bg-white/20 hover:border-fp-lime/50 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fp-lime"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
@@ -141,7 +141,7 @@ export default function HeroBanner() {
               onClick={() => setCurrentIndex(i)}
               className={`h-0.5 rounded-full transition-all duration-300 ${
                 i === currentIndex
-                  ? 'w-8 bg-red-500 shadow-[0_0_6px_rgba(229,9,20,0.8)]'
+                  ? 'w-8 bg-fp-lime shadow-[0_0_6px_rgba(206,255,0,0.8)]'
                   : 'w-2 bg-white/30 hover:bg-white/60'
               }`}
             />

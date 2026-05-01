@@ -24,7 +24,7 @@ export default function MovieCard({ media, isLargeRow = false, mediaType }: Movi
   const title = media.title || media.name || '';
   const year = media.release_date?.slice(0, 4) || media.first_air_date?.slice(0, 4) || '';
   const score = media.vote_average ? Math.round(media.vote_average * 10) : null;
-  const scoreColor = !score ? 'text-gray-400' : score >= 70 ? 'text-green-400' : score >= 50 ? 'text-yellow-400' : 'text-red-400';
+  const scoreColor = !score ? 'text-gray-400' : score >= 70 ? 'text-green-400' : score >= 50 ? 'text-yellow-400' : 'text-fp-lime';
   const overview = media.overview
     ? media.overview.length > 110 ? media.overview.slice(0, 110) + '…' : media.overview
     : '';

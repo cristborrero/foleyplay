@@ -10,7 +10,7 @@ export default function Footer() {
 
         {/* Logo */}
         <Image
-          src="/logo-foleyplay.png"
+          src="/logo.webp"
           alt="FoleyPlay"
           width={160}
           height={50}

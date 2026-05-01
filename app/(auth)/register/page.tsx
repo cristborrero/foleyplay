@@ -65,7 +65,7 @@ export default function RegisterPage() {
           <h1 className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8">Crear cuenta</h1>
 
           {error && (
-            <p className="bg-red-950/50 border border-red-800/50 text-red-300 p-3 rounded-lg mb-4 text-sm">
+            <p className="bg-lime-950/20 border border-fp-lime/30 text-fp-lime p-3 rounded-lg mb-4 text-sm">
               {error}
             </p>
           )}
@@ -74,7 +74,7 @@ export default function RegisterPage() {
             <input
               type="text"
               placeholder="Nombre"
-              className="bg-fp-elevated text-white p-3.5 sm:p-4 rounded-lg border border-fp-border outline-none focus:border-red-600/60 focus:bg-[#1f1f1f] focus:[box-shadow:0_0_0_1px_rgba(229,9,20,0.3)] transition-all placeholder:text-gray-600"
+              className="bg-fp-elevated text-white p-3.5 sm:p-4 rounded-lg border border-fp-border outline-none focus:border-fp-lime/60 focus:bg-[#1f1f1f] focus:[box-shadow:0_0_0_1px_rgba(206,255,0,0.3)] transition-all placeholder:text-gray-600"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
@@ -82,7 +82,7 @@ export default function RegisterPage() {
             <input
               type="email"
               placeholder="Email"
-              className="bg-fp-elevated text-white p-3.5 sm:p-4 rounded-lg border border-fp-border outline-none focus:border-red-600/60 focus:bg-[#1f1f1f] focus:[box-shadow:0_0_0_1px_rgba(229,9,20,0.3)] transition-all placeholder:text-gray-600"
+              className="bg-fp-elevated text-white p-3.5 sm:p-4 rounded-lg border border-fp-border outline-none focus:border-fp-lime/60 focus:bg-[#1f1f1f] focus:[box-shadow:0_0_0_1px_rgba(206,255,0,0.3)] transition-all placeholder:text-gray-600"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -90,7 +90,7 @@ export default function RegisterPage() {
             <input
               type="password"
               placeholder="Contraseña"
-              className="bg-fp-elevated text-white p-3.5 sm:p-4 rounded-lg border border-fp-border outline-none focus:border-red-600/60 focus:bg-[#1f1f1f] focus:[box-shadow:0_0_0_1px_rgba(229,9,20,0.3)] transition-all placeholder:text-gray-600"
+              className="bg-fp-elevated text-white p-3.5 sm:p-4 rounded-lg border border-fp-border outline-none focus:border-fp-lime/60 focus:bg-[#1f1f1f] focus:[box-shadow:0_0_0_1px_rgba(206,255,0,0.3)] transition-all placeholder:text-gray-600"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -99,7 +99,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="bg-red-600 text-white font-bold p-3.5 sm:p-4 rounded-lg mt-2 hover:bg-red-500 hover:[box-shadow:0_0_20px_rgba(229,9,20,0.5)] transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-fp-lime text-black font-bold p-3.5 sm:p-4 rounded-lg mt-2 hover:bg-fp-lime-bright hover:[box-shadow:0_0_20px_rgba(206,255,0,0.5)] transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? 'Registrando...' : 'Registrarse'}
             </button>
@@ -107,7 +107,7 @@ export default function RegisterPage() {
 
           <div className="mt-10 text-gray-500 text-sm">
             ¿Ya tenés una cuenta?{' '}
-            <Link href="/login" className="text-gray-200 hover:text-red-400 transition-colors">
+            <Link href="/login" className="text-gray-200 hover:text-fp-lime transition-colors">
               Iniciar sesión
             </Link>
           </div>

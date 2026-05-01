@@ -10,6 +10,35 @@ interface MediaRatingProps {
   className?: string;
 }
 
+function normalizeRating(r: string): string {
+  const rating = r.toUpperCase().replace(/[^A-Z0-9-]/g, '');
+  
+  const mappings: Record<string, string> = {
+    'TV-Y': 'G',
+    'TV-Y7': 'PG',
+    'TV-G': 'G',
+    'TV-PG': 'PG',
+    'TV-14': 'PG-13',
+    'TV-MA': 'R',
+    '12': 'PG-13',
+    '15': 'R',
+    '18': 'NC-17',
+    '7': 'G',
+    '10': 'PG',
+    '13': 'PG-13',
+    '16': 'R',
+  };
+
+  if (mappings[rating]) return mappings[rating];
+  
+  // Clean up common variations
+  if (rating.includes('PG13')) return 'PG-13';
+  if (rating.includes('NC17')) return 'NC-17';
+  if (rating === 'APPROVED' || rating === 'PASSED') return 'G';
+  
+  return rating;
+}
+
 export default function MediaRating({ id, mediaType, className = "text-[9px] text-gray-300 border border-gray-600 px-1 rounded-sm leading-tight font-medium" }: MediaRatingProps) {
   const [rating, setRating] = useState<string | null>(null);
 
@@ -51,8 +80,9 @@ export default function MediaRating({ id, mediaType, className = "text-[9px] tex
         
         if (r === '') r = 'NR';
         
-        ratingCache.set(cacheKey, r);
-        if (isMounted) setRating(r);
+        const normalized = normalizeRating(r);
+        ratingCache.set(cacheKey, normalized);
+        if (isMounted) setRating(normalized);
       })
       .catch(() => {
         if (isMounted) setRating('NR');

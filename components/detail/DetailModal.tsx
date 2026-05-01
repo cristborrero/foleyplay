@@ -25,13 +25,29 @@ function formatRuntime(min: number) {
 }
 
 function getCertification(data: TMDBDetail, mediaType: 'movie' | 'tv'): string {
+  let r = '';
   if (mediaType === 'movie') {
     const us = data.release_dates?.results?.find(r => r.iso_3166_1 === 'US');
-    const cert = us?.release_dates?.find(rd => rd.certification)?.certification;
-    return cert || '';
+    r = us?.release_dates?.find(rd => rd.certification)?.certification || '';
+  } else {
+    const us = data.content_ratings?.results?.find(r => r.iso_3166_1 === 'US');
+    r = us?.rating || '';
   }
-  const us = data.content_ratings?.results?.find(r => r.iso_3166_1 === 'US');
-  return us?.rating || '';
+
+  if (!r) return '';
+
+  const rating = r.toUpperCase().replace(/[^A-Z0-9-]/g, '');
+  const mappings: Record<string, string> = {
+    'TV-Y': 'G', 'TV-Y7': 'PG', 'TV-G': 'G', 'TV-PG': 'PG', 'TV-14': 'PG-13', 'TV-MA': 'R',
+    '12': 'PG-13', '15': 'R', '18': 'NC-17', '7': 'G', '10': 'PG', '13': 'PG-13', '16': 'R'
+  };
+
+  if (mappings[rating]) return mappings[rating];
+  if (rating.includes('PG13')) return 'PG-13';
+  if (rating.includes('NC17')) return 'NC-17';
+  if (rating === 'APPROVED' || rating === 'PASSED') return 'G';
+  
+  return rating;
 }
 
 // ─── sub-components ──────────────────────────────────────────────────────────
@@ -178,7 +194,7 @@ export default function DetailModal() {
   const creators = data?.created_by?.map(c => c.name).join(', ') || '';
   const isTopRated = (data?.vote_average ?? 0) >= 7.5 && (data?.vote_count ?? 0) >= 500;
 
-  const scoreColor = score >= 70 ? 'text-green-400' : score >= 50 ? 'text-yellow-400' : 'text-red-400';
+  const scoreColor = score >= 70 ? 'text-green-400' : score >= 50 ? 'text-yellow-400' : 'text-fp-lime';
 
   return (
     <AnimatePresence>
@@ -213,7 +229,7 @@ export default function DetailModal() {
             ══════════════════════════════════════════════════════════ */}
             {loading || !data ? (
               <div className="min-h-[40vh] sm:min-h-[52vh] flex items-center justify-center bg-[#1a1a1a]">
-                <div className="w-10 h-10 border-2 border-red-600 border-t-transparent rounded-full animate-spin" />
+                <div className="w-10 h-10 border-2 border-fp-lime border-t-transparent rounded-full animate-spin" />
               </div>
             ) : (
               <>

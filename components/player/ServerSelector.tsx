@@ -44,13 +44,13 @@ export default function ServerSelector({ mediaType, tmdbId, imdbId, season, epis
                 onClick={() => { setSelectedProviderId(provider.id); setIframeKey(k => k + 1); }}
                 className={`relative px-3 py-1.5 rounded-md whitespace-nowrap font-medium text-xs transition-all ${
                   isActive
-                    ? 'bg-red-600 text-white shadow-lg shadow-red-900/30'
+                    ? 'bg-fp-lime text-black shadow-lg shadow-lime-900/30'
                     : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
                 }`}
               >
                 {provider.name}
                 {direct && (
-                  <span className={`ml-1.5 text-[9px] font-bold uppercase tracking-wider ${isActive ? 'text-red-200' : 'text-green-400'}`}>
+                  <span className={`ml-1.5 text-[9px] font-bold uppercase tracking-wider ${isActive ? 'text-black/60' : 'text-fp-lime'}`}>
                     Multi-audio
                   </span>
                 )}

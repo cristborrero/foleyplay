@@ -9,8 +9,8 @@
 @source not "../**/*.txt";
 
 @theme {
-  --color-fp-red: #e50914;
-  --color-fp-red-bright: #ff1a1a;
+  --color-fp-lime: #CEFF00;
+  --color-fp-lime-bright: #d4ff1a;
   --color-fp-black: #0a0a0a;
   --color-fp-surface: #111111;
   --color-fp-elevated: #1a1a1a;
@@ -50,40 +50,40 @@ body {
   background: #444;
 }
 
-/* Focus — neon red glow */
+/* Focus — lime green glow */
 *:focus {
   outline: none;
 }
 
 *:focus-visible {
-  outline: 2px solid var(--color-fp-red);
+  outline: 2px solid var(--color-fp-lime);
   outline-offset: 3px;
   border-radius: 4px;
-  box-shadow: 0 0 0 1px rgba(229, 9, 20, 0.3), 0 0 12px rgba(229, 9, 20, 0.4);
+  box-shadow: 0 0 0 1px rgba(206, 255, 0, 0.3), 0 0 12px rgba(206, 255, 0, 0.4);
 }
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--color-fp-red);
+  outline: 2px solid var(--color-fp-lime);
   outline-offset: 3px;
-  box-shadow: 0 0 0 1px rgba(229, 9, 20, 0.3), 0 0 12px rgba(229, 9, 20, 0.4);
+  box-shadow: 0 0 0 1px rgba(206, 255, 0, 0.3), 0 0 12px rgba(206, 255, 0, 0.4);
 }
 
 /* Neon glow utilities */
-.neon-red {
-  box-shadow: 0 0 8px rgba(229, 9, 20, 0.7), 0 0 20px rgba(229, 9, 20, 0.4), 0 0 40px rgba(229, 9, 20, 0.2);
+.neon-lime {
+  box-shadow: 0 0 8px rgba(206, 255, 0, 0.7), 0 0 20px rgba(206, 255, 0, 0.4), 0 0 40px rgba(206, 255, 0, 0.2);
 }
 
-.neon-red-sm {
-  box-shadow: 0 0 6px rgba(229, 9, 20, 0.5), 0 0 12px rgba(229, 9, 20, 0.2);
+.neon-lime-sm {
+  box-shadow: 0 0 6px rgba(206, 255, 0, 0.5), 0 0 12px rgba(206, 255, 0, 0.2);
 }
 
 .neon-border {
-  border: 1px solid rgba(229, 9, 20, 0.4);
-  box-shadow: 0 0 8px rgba(229, 9, 20, 0.2), inset 0 0 8px rgba(229, 9, 20, 0.05);
+  border: 1px solid rgba(206, 255, 0, 0.4);
+  box-shadow: 0 0 8px rgba(206, 255, 0, 0.2), inset 0 0 8px rgba(206, 255, 0, 0.05);
 }
 
 .neon-text {
-  text-shadow: 0 0 10px rgba(229, 9, 20, 0.8), 0 0 20px rgba(229, 9, 20, 0.5);
+  text-shadow: 0 0 10px rgba(206, 255, 0, 0.8), 0 0 20px rgba(206, 255, 0, 0.5);
 }
 

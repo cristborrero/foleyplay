@@ -94,7 +94,7 @@ export default function Navbar() {
                 {isAdmin && (
                   <>
                     <div className="border-t border-gray-800/60 my-2" />
-                    <Link href="/admin/users" className="block px-4 py-2 text-sm text-red-400 hover:text-red-300 hover:bg-white/5 transition-colors">
+                    <Link href="/admin/users" className="block px-4 py-2 text-sm text-fp-lime hover:text-fp-lime-bright hover:bg-white/5 transition-colors">
                       Administración
                     </Link>
                   </>
@@ -161,14 +161,13 @@ export default function Navbar() {
                 <Link href="/history" className="px-6 py-3.5 text-base text-gray-300">
                   Continuar Viendo
                 </Link>
-                {isAdmin && (
-                  <Link href="/admin/users" className="px-6 py-3.5 text-base text-red-400">
+                  <Link href="/admin/users" className="px-6 py-3.5 text-base text-fp-lime">
                     Administración
                   </Link>
                 )}
                 <button
                   onClick={() => import('next-auth/react').then(({ signOut }) => signOut({ callbackUrl: '/login' }))}
-                  className="text-left px-6 py-3.5 text-base text-red-400"
+                  className="text-left px-6 py-3.5 text-base text-fp-lime"
                 >
                   Cerrar sesión
                 </button>

@@ -65,7 +65,7 @@ export default function LoginPage() {
           <h1 className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8">Iniciar sesión</h1>
 
           {error && (
-            <p className="bg-red-950/50 border border-red-800/50 text-red-300 p-3 rounded-lg mb-4 text-sm">
+            <p className="bg-lime-950/20 border border-fp-lime/30 text-fp-lime p-3 rounded-lg mb-4 text-sm">
               {error}
             </p>
           )}
@@ -99,7 +99,7 @@ export default function LoginPage() {
             <input
               type="email"
               placeholder="Email"
-              className="bg-fp-elevated text-white p-3.5 sm:p-4 rounded-lg border border-fp-border outline-none focus:border-red-600/60 focus:bg-[#1f1f1f] focus:[box-shadow:0_0_0_1px_rgba(229,9,20,0.3)] transition-all placeholder:text-gray-600"
+              className="bg-fp-elevated text-white p-3.5 sm:p-4 rounded-lg border border-fp-border outline-none focus:border-fp-lime/60 focus:bg-[#1f1f1f] focus:[box-shadow:0_0_0_1px_rgba(206,255,0,0.3)] transition-all placeholder:text-gray-600"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -107,7 +107,7 @@ export default function LoginPage() {
             <input
               type="password"
               placeholder="Contraseña"
-              className="bg-fp-elevated text-white p-3.5 sm:p-4 rounded-lg border border-fp-border outline-none focus:border-red-600/60 focus:bg-[#1f1f1f] focus:[box-shadow:0_0_0_1px_rgba(229,9,20,0.3)] transition-all placeholder:text-gray-600"
+              className="bg-fp-elevated text-white p-3.5 sm:p-4 rounded-lg border border-fp-border outline-none focus:border-fp-lime/60 focus:bg-[#1f1f1f] focus:[box-shadow:0_0_0_1px_rgba(206,255,0,0.3)] transition-all placeholder:text-gray-600"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -115,16 +115,16 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="bg-red-600 text-white font-bold p-3.5 sm:p-4 rounded-lg mt-2 hover:bg-red-500 hover:[box-shadow:0_0_20px_rgba(229,9,20,0.5)] transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="bg-fp-lime text-black font-bold p-3.5 sm:p-4 rounded-lg mt-2 hover:bg-fp-lime-bright hover:[box-shadow:0_0_20px_rgba(206,255,0,0.5)] transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              {isLoading && <div className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />}
+              {isLoading && <div className="w-4 h-4 border-2 border-black/40 border-t-black rounded-full animate-spin" />}
               {isLoading ? 'Iniciando...' : 'Iniciar sesión'}
             </button>
           </form>
 
           <div className="mt-10 text-gray-500 text-sm">
             ¿Primera vez en FoleyPlay?{' '}
-            <Link href="/register" className="text-gray-200 hover:text-red-400 transition-colors">
+            <Link href="/register" className="text-gray-200 hover:text-fp-lime transition-colors">
               Crear cuenta
             </Link>
           </div>
