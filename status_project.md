@@ -230,7 +230,7 @@
 | PWA (Installable)               | ✅ Completo |
 | Rebranding (Verde Lima)         | ✅ Completo |
 | Calificación de contenido (G-R) | ✅ Completo |
-| Normalización de Media         | ✅ Completo |
+| Normalización de Media          | ✅ Completo |
 
 ---
 
