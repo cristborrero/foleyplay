@@ -37,6 +37,24 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
       return NextResponse.json(data, { status: response.status });
     }
 
+    // Inject media_type if it's a list response and missing
+    if (data.results && Array.isArray(data.results)) {
+      let inferredType: 'movie' | 'tv' | null = null;
+      
+      if (slug[0] === 'movie' || (slug[0] === 'discover' && slug[1] === 'movie') || (slug[0] === 'trending' && slug[1] === 'movie')) {
+        inferredType = 'movie';
+      } else if (slug[0] === 'tv' || (slug[0] === 'discover' && slug[1] === 'tv') || (slug[0] === 'trending' && slug[1] === 'tv')) {
+        inferredType = 'tv';
+      }
+
+      if (inferredType) {
+        data.results = data.results.map((item: { media_type?: string }) => ({
+          ...item,
+          media_type: item.media_type || inferredType
+        }));
+      }
+    }
+
     return NextResponse.json(data);
   } catch (error) {
     console.error('TMDB Proxy Error:', error);

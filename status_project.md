@@ -1,4 +1,5 @@
 # FoleyPlay — Estado del Proyecto
+
 > Última actualización: mayo 2026
 
 ---
@@ -11,19 +12,19 @@
 
 ## Stack tecnológico
 
-| Capa | Tecnología | Versión |
-|---|---|---|
-| Framework | Next.js (App Router, Turbopack) | 16.2.4 |
-| UI | React | 19.2.4 |
-| Lenguaje | TypeScript | 5 |
-| Estilos | Tailwind CSS v4 | 4.x |
-| Animaciones | Framer Motion | 12.38.0 |
-| Iconos | Lucide React | 1.11.0 |
-| Auth | NextAuth v5 beta | 5.0.0-beta.31 |
-| Base de datos | MongoDB + Mongoose | 9.5.0 |
-| Contraseñas | bcryptjs | 3.0.3 |
-| HLS | hls.js | 1.6.16 |
-| Consumet | @consumet/extensions | 1.8.8 |
+| Capa          | Tecnología                      | Versión       |
+| ------------- | ------------------------------- | ------------- |
+| Framework     | Next.js (App Router, Turbopack) | 16.2.4        |
+| UI            | React                           | 19.2.4        |
+| Lenguaje      | TypeScript                      | 5             |
+| Estilos       | Tailwind CSS v4                 | 4.x           |
+| Animaciones   | Framer Motion                   | 12.38.0       |
+| Iconos        | Lucide React                    | 1.11.0        |
+| Auth          | NextAuth v5 beta                | 5.0.0-beta.31 |
+| Base de datos | MongoDB + Mongoose              | 9.5.0         |
+| Contraseñas   | bcryptjs                        | 3.0.3         |
+| HLS           | hls.js                          | 1.6.16        |
+| Consumet      | @consumet/extensions            | 1.8.8         |
 
 ---
 
@@ -63,23 +64,23 @@
 
 ### Páginas
 
-| Ruta | Descripción | Acceso |
-|---|---|---|
-| `/` | Redirect a `/browse` (autenticado) o `/login` | Público |
-| `/login` | Login email/password + Google OAuth | Público |
-| `/register` | Registro de cuenta nueva | Público |
-| `/browse` | Home principal — Hero + carruseles | Autenticado |
-| `/movies` | Catálogo de películas por género | Autenticado |
-| `/tv` | Catálogo de series por género | Autenticado |
-| `/movie/[id]` | Página completa de película con player | Autenticado |
-| `/tv/[id]` | Página de serie con selector de temporada/episodio | Autenticado |
-| `/search` | Búsqueda con debounce y filtros | Autenticado |
-| `/watchlist` | Mi lista personal | Autenticado |
-| `/history` | Continuar viendo | Autenticado |
-| `/profile` | Edición de nombre, avatar por iniciales | Autenticado |
-| `/admin/users` | Panel de gestión de usuarios | admin / superadmin |
-| `/legal/terms` | Términos de uso | Público |
-| `/legal/privacy` | Política de privacidad | Público |
+| Ruta             | Descripción                                        | Acceso             |
+| ---------------- | -------------------------------------------------- | ------------------ |
+| `/`              | Redirect a `/browse` (autenticado) o `/login`      | Público            |
+| `/login`         | Login email/password + Google OAuth                | Público            |
+| `/register`      | Registro de cuenta nueva                           | Público            |
+| `/browse`        | Home principal — Hero + carruseles                 | Autenticado        |
+| `/movies`        | Catálogo de películas por género                   | Autenticado        |
+| `/tv`            | Catálogo de series por género                      | Autenticado        |
+| `/movie/[id]`    | Página completa de película con player             | Autenticado        |
+| `/tv/[id]`       | Página de serie con selector de temporada/episodio | Autenticado        |
+| `/search`        | Búsqueda con debounce y filtros                    | Autenticado        |
+| `/watchlist`     | Mi lista personal                                  | Autenticado        |
+| `/history`       | Continuar viendo                                   | Autenticado        |
+| `/profile`       | Edición de nombre, avatar por iniciales            | Autenticado        |
+| `/admin/users`   | Panel de gestión de usuarios                       | admin / superadmin |
+| `/legal/terms`   | Términos de uso                                    | Público            |
+| `/legal/privacy` | Política de privacidad                             | Público            |
 
 ---
 
@@ -87,39 +88,40 @@
 
 ### Layout
 
-| Archivo | Descripción |
-|---|---|
-| `components/layout/Navbar.tsx` | Barra superior con logo, menú, búsqueda, dropdown usuario. Scroll-to-solid effect. |
-| `components/layout/Footer.tsx` | Logo FoleyPlay, links legales, disclaimer educativo, atribución TMDB obligatoria. |
-| `components/layout/Providers.tsx` | Wrapper `SessionProvider` de NextAuth para toda la app. |
-| `components/layout/PageTransition.tsx` | Fade+slide entre rutas usando `AnimatePresence` + `usePathname()`. |
+| Archivo                                | Descripción                                                                        |
+| -------------------------------------- | ---------------------------------------------------------------------------------- |
+| `components/layout/Navbar.tsx`         | Barra superior con logo, menú, búsqueda, dropdown usuario. Scroll-to-solid effect. |
+| `components/layout/Footer.tsx`         | Logo FoleyPlay, links legales, disclaimer educativo, atribución TMDB obligatoria.  |
+| `components/layout/Providers.tsx`      | Wrapper `SessionProvider` de NextAuth para toda la app.                            |
+| `components/layout/PageTransition.tsx` | Fade+slide entre rutas usando `AnimatePresence` + `usePathname()`.                 |
 
 ### Carruseles y home
 
-| Archivo | Descripción |
-|---|---|
-| `components/home/HeroBanner.tsx` | Hero rotativo cada 8s. Cross-fade de imágenes (Framer Motion). |
-| `components/home/ContentRow.tsx` | Fila scrolleable con lazy load via IntersectionObserver. |
-| `components/home/UserContentRow.tsx` | Fila para datos del usuario (historial, watchlist). |
+| Archivo                              | Descripción                                                    |
+| ------------------------------------ | -------------------------------------------------------------- |
+| `components/home/HeroBanner.tsx`     | Hero rotativo cada 8s. Cross-fade de imágenes (Framer Motion). |
+| `components/home/ContentRow.tsx`     | Fila scrolleable con lazy load via IntersectionObserver.       |
+| `components/home/UserContentRow.tsx` | Fila para datos del usuario (historial, watchlist).            |
 
 ### Cards
 
-| Archivo | Descripción |
-|---|---|
+| Archivo                          | Descripción                                                             |
+| -------------------------------- | ----------------------------------------------------------------------- |
 | `components/cards/MovieCard.tsx` | Card con hover panel. Usa `resolvedMediaType` para navegación correcta. |
 
 ### Modales
 
-| Archivo | Descripción |
-|---|---|
+| Archivo                             | Descripción                                              |
+| ----------------------------------- | -------------------------------------------------------- |
 | `components/detail/DetailModal.tsx` | Modal overlay con hero, metadata, cast, trailers y tabs. |
-| `components/player/PlayerModal.tsx` | Modal fullscreen para reproducción. |
+| `components/player/PlayerModal.tsx` | Modal fullscreen para reproducción.                      |
 
 ---
 
 ## Modelos de base de datos
 
 ### User
+
 ```typescript
 {
   name: string,
@@ -133,11 +135,13 @@
 ```
 
 ### Watchlist
+
 ```typescript
 { userId, tmdbId, mediaType: 'movie'|'tv', title, posterPath, addedAt }
 ```
 
 ### History
+
 ```typescript
 { userId, tmdbId, mediaType, title, posterPath, season?, episode?, watchedAt, progress: 0-100 }
 ```
@@ -210,22 +214,23 @@
 
 ## Estado actual — qué funciona
 
-| Feature | Estado |
-|---|---|
-| Login / Registro / OAuth | ✅ Completo |
-| Sistema de aprobación | ✅ Completo |
-| Roles y permisos | ✅ Completo |
-| HeroBanner rotativo | ✅ Completo |
-| Carruseles lazy-load | ✅ Completo |
-| Catálogos (/movies, /tv) | ✅ Completo |
-| PlayerModal con servers | ✅ Completo |
-| Ad-blocking proxy | ✅ Completo |
-| Subtítulos overlay | ✅ Completo |
-| Watchlist e Historial | ✅ Completo |
-| Búsqueda con filtros | ✅ Completo |
-| PWA (Installable) | ✅ Completo |
-| Rebranding (Verde Lima) | ✅ Completo |
+| Feature                         | Estado      |
+| ------------------------------- | ----------- |
+| Login / Registro / OAuth        | ✅ Completo |
+| Sistema de aprobación           | ✅ Completo |
+| Roles y permisos                | ✅ Completo |
+| HeroBanner rotativo             | ✅ Completo |
+| Carruseles lazy-load            | ✅ Completo |
+| Catálogos (/movies, /tv)        | ✅ Completo |
+| PlayerModal con servers         | ✅ Completo |
+| Ad-blocking proxy               | ✅ Completo |
+| Subtítulos overlay              | ✅ Completo |
+| Watchlist e Historial           | ✅ Completo |
+| Búsqueda con filtros            | ✅ Completo |
+| PWA (Installable)               | ✅ Completo |
+| Rebranding (Verde Lima)         | ✅ Completo |
 | Calificación de contenido (G-R) | ✅ Completo |
+| Normalización de Media         | ✅ Completo |
 
 ---
 
@@ -236,4 +241,5 @@
 - **Proxy ad-blocker**: Inyección de scripts para bloquear popups en los iframes de streaming.
 - **Pure Web Implementation**: Rutas como `/movies` y `/tv` usan componentes web nativos en lugar de shims para TV.
 - **Identidad Visual FoleyPlay**: Rebranding total alejándose de la estética de Netflix para adoptar un diseño "Lime Green" (#CEFF00) consistente en toda la interfaz.
-- **Normalización de Clasificación**: Implementación de un sistema unificado de clasificación de contenido (G, PG, PG-13, R, NC-17) que mapea ratings internacionales de TMDB a un estándar reconocible.
+- **Normalización de Datos de Imagen**: Implementación de un sistema de fallback visual y normalización de campos (`poster_path` vs `posterPath`) para garantizar la carga de carátulas independientemente de la fuente de datos.
+- **Inyección Dinámica de Media Type**: El proxy API inyecta automáticamente metadatos de `media_type` en respuestas de descubrimiento, eliminando fallas de navegación en listas filtradas.

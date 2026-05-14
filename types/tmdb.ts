@@ -6,8 +6,9 @@ export interface TMDBMedia {
   original_name?: string;
   overview: string;
   poster_path: string | null;
+  posterPath?: string | null;
   backdrop_path: string | null;
-  media_type: 'movie' | 'tv';
+  media_type?: 'movie' | 'tv';
   vote_average: number;
   release_date?: string;
   first_air_date?: string;

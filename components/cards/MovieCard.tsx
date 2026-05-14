@@ -13,13 +13,12 @@ interface MovieCardProps {
   mediaType?: 'movie' | 'tv';
 }
 
-export default function MovieCard({ media, isLargeRow = false, mediaType }: MovieCardProps) {
+export default function MovieCard({ media, mediaType }: MovieCardProps) {
   const { openPlayer, openDetail } = useModal();
   const [hovered, setHovered] = useState(false);
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const imagePath = media.poster_path; // ALWAYS poster as requested
-  if (!imagePath) return null;
+  const [imageError, setImageError] = useState(false);
+  const imagePath = media.poster_path || media.posterPath;
 
   const title = media.title || media.name || '';
   const year = media.release_date?.slice(0, 4) || media.first_air_date?.slice(0, 4) || '';
@@ -67,17 +66,29 @@ export default function MovieCard({ media, isLargeRow = false, mediaType }: Movi
       <motion.div
         animate={{ scale: hovered ? 1.04 : 1 }}
         transition={{ duration: 0.25, ease: 'easeOut' }}
-        className={`relative w-full aspect-[2/3] rounded-lg overflow-hidden bg-[#111]`}
+        className={`relative w-full aspect-[2/3] rounded-lg overflow-hidden bg-[#111] border border-white/5`}
       >
-        {/* Image */}
-        <Image
-          src={`https://image.tmdb.org/t/p/w500${imagePath}`}
-          alt={title}
-          fill
-          className={`object-cover transition-all duration-300 ${hovered ? 'brightness-75' : 'brightness-100'}`}
-          sizes="(max-width: 768px) 40vw, (max-width: 1024px) 22vw, 16vw"
-          loading="lazy"
-        />
+        {/* Image / Fallback */}
+        {imagePath && !imageError ? (
+          <Image
+            src={`https://image.tmdb.org/t/p/w500${imagePath}`}
+            alt={title}
+            fill
+            className={`object-cover transition-all duration-300 ${hovered ? 'brightness-75' : 'brightness-100'}`}
+            sizes="(max-width: 768px) 40vw, (max-width: 1024px) 22vw, 16vw"
+            loading="lazy"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center bg-linear-to-br from-gray-800 to-gray-900">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-10 h-10 text-gray-600 mb-2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6.75a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6.75v10.5a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+              </svg>
+              <span className="text-[10px] text-gray-400 font-medium uppercase tracking-wider line-clamp-3">
+                {title}
+              </span>
+          </div>
+        )}
 
         {/* Permanent gradient + info */}
         <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/10 to-transparent" />

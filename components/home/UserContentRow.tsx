@@ -9,7 +9,8 @@ interface UserItem {
   tmdbId: number;
   mediaType: 'movie' | 'tv';
   title: string;
-  posterPath: string;
+  posterPath?: string;
+  poster_path?: string;
   progress?: number;
   season?: number;
   episode?: number;
@@ -69,27 +70,32 @@ export default function UserContentRow({ title, fetchUrl, showProgress = false }
           className="flex space-x-2 sm:space-x-3 overflow-x-scroll py-3 sm:py-4 pr-3 sm:pr-4 md:pr-8 lg:pr-12"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          {items.map((item) => (
-            <Link
-              key={item._id}
-              href={`/${item.mediaType}/${item.tmdbId}`}
-              className="flex-none w-[110px] sm:w-[140px] md:w-[175px] group/card"
-            >
-              <div className="relative aspect-2/3 rounded-md overflow-hidden bg-gray-800">
-                {item.posterPath ? (
-                  <Image
-                    src={`https://image.tmdb.org/t/p/w300${item.posterPath}`}
-                    alt={item.title}
-                    fill
-                    className="object-cover transition-opacity duration-300 group-hover/card:opacity-80"
-                    sizes="200px"
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-gray-500 text-xs p-2 text-center">
-                    {item.title}
-                  </div>
-                )}
+          {items.map((item) => {
+            const currentPosterPath = item.posterPath || item.poster_path;
+            return (
+              <Link
+                key={item._id}
+                href={`/${item.mediaType}/${item.tmdbId}`}
+                className="flex-none w-[110px] sm:w-[140px] md:w-[175px] group/card"
+              >
+                <div className="relative aspect-2/3 rounded-md overflow-hidden bg-gray-800">
+                  {currentPosterPath ? (
+                    <Image
+                      src={`https://image.tmdb.org/t/p/w300${currentPosterPath}`}
+                      alt={item.title}
+                      fill
+                      className="object-cover transition-opacity duration-300 group-hover/card:opacity-80"
+                      sizes="200px"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center bg-linear-to-br from-gray-800 to-gray-900 p-2 text-center">
+                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-8 h-8 text-gray-600 mb-1">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6.75a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6.75v10.5a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                        </svg>
+                      <span className="text-[10px] text-gray-500 line-clamp-2">{item.title}</span>
+                    </div>
+                  )}
                 {showProgress && item.progress !== undefined && (
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-700">
                     <div
@@ -108,7 +114,8 @@ export default function UserContentRow({ title, fetchUrl, showProgress = false }
                 {item.title}
               </p>
             </Link>
-          ))}
+            );
+          })}
         </div>
 
         <button
