@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "pages:build": "npx @cloudflare/next-on-pages && node scripts/cf-post-build.js"
   },
   "dependencies": {
     "@consumet/extensions": "^1.8.8",
