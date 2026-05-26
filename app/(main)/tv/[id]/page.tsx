@@ -5,6 +5,8 @@ import SeasonSelector from '@/components/detail/SeasonSelector';
 import CastRow from '@/components/detail/CastRow';
 import SimilarRow from '@/components/detail/SimilarRow';
 
+export const runtime = 'edge';
+
 export default async function TVPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   try {

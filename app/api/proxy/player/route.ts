@@ -1,10 +1,6 @@
 import { NextRequest } from 'next/server';
-import { fetch as undiciFetch, Agent } from 'undici';
 
-export const runtime = 'nodejs';
-
-// Some providers (2embed.cc) use self-signed certs — bypass for known domains only
-const agent = new Agent({ connect: { rejectUnauthorized: false } });
+export const runtime = 'edge';
 
 const ALLOWED_DOMAINS = [
   '2embed.cc',
@@ -149,8 +145,7 @@ export async function GET(req: NextRequest) {
   if (!allowed) return new Response('Domain not allowed', { status: 403 });
 
   try {
-    const upstream = await undiciFetch(target, {
-      dispatcher: agent,
+    const upstream = await fetch(target, {
       headers: {
         'User-Agent':
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',

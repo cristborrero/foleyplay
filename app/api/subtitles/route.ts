@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { searchSubtitles } from '@/lib/subtitles';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
