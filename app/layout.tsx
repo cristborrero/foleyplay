@@ -16,6 +16,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "FoleyPlay",
   description: "Tu plataforma de streaming",
+  icons: {
+    icon: '/icon.png',
+    apple: '/apple-icon.png',
+  }
 };
 
 export default function RootLayout({
