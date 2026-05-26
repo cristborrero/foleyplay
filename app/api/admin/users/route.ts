@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import dbConnect from '@/lib/mongodb';
-import { User } from '@/models/User';
+import { getDb } from '@/lib/db';
+import { users } from '@/db/schema';
+import { eq, desc } from 'drizzle-orm';
+
+export const runtime = 'edge';
 
 async function getRequesterRole(req: NextRequest): Promise<{ email: string | null; role: string }> {
   const secret = req.nextUrl.searchParams.get('secret');
@@ -22,15 +25,20 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ message: 'No autorizado' }, { status: 401 });
     }
 
-    await dbConnect();
-    const users = await User
-      .find({})
-      .select('name email approved role createdAt')
-      .sort({ createdAt: -1 })
-      .lean();
+    const db = getDb();
+    const userList = await db.select({
+      id: users.id,
+      name: users.name,
+      email: users.email,
+      approved: users.approved,
+      role: users.role,
+      createdAt: users.createdAt,
+    })
+      .from(users)
+      .orderBy(desc(users.createdAt));
 
-    return NextResponse.json(users);
-  } catch {
+    return NextResponse.json(userList);
+  } catch (error) {
     return NextResponse.json({ message: 'Error del servidor' }, { status: 500 });
   }
 }
@@ -47,8 +55,8 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ message: 'Email requerido' }, { status: 400 });
     }
 
-    await dbConnect();
-    const target = await User.findOne({ email }).lean();
+    const db = getDb();
+    const [target] = await db.select().from(users).where(eq(users.email, email)).limit(1);
     if (!target) {
       return NextResponse.json({ message: 'Usuario no encontrado' }, { status: 404 });
     }
@@ -65,9 +73,9 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ message: 'Solo el superadmin puede eliminar admins' }, { status: 403 });
     }
 
-    await User.findOneAndDelete({ email });
+    await db.delete(users).where(eq(users.email, email));
     return NextResponse.json({ message: 'Usuario eliminado' });
-  } catch {
+  } catch (error) {
     return NextResponse.json({ message: 'Error del servidor' }, { status: 500 });
   }
 }

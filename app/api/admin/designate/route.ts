@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import dbConnect from '@/lib/mongodb';
-import { User } from '@/models/User';
+import { getDb } from '@/lib/db';
+import { users } from '@/db/schema';
+import { eq } from 'drizzle-orm';
+
+export const runtime = 'edge';
 
 export async function POST(req: NextRequest) {
   try {
@@ -24,8 +27,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'Parámetros inválidos' }, { status: 400 });
     }
 
-    await dbConnect();
-    const target = await User.findOne({ email }).lean();
+    const db = getDb();
+    const [target] = await db.select().from(users).where(eq(users.email, email)).limit(1);
     if (!target) {
       return NextResponse.json({ message: 'Usuario no encontrado' }, { status: 404 });
     }
@@ -35,12 +38,12 @@ export async function POST(req: NextRequest) {
     }
 
     const update = makeAdmin
-      ? { role: 'admin', approved: true }
-      : { role: 'user' };
+      ? { role: 'admin' as const, approved: true }
+      : { role: 'user' as const };
 
-    await User.findOneAndUpdate({ email }, update);
+    await db.update(users).set(update).where(eq(users.email, email));
     return NextResponse.json({ message: 'Rol actualizado' });
-  } catch {
+  } catch (error) {
     return NextResponse.json({ message: 'Error del servidor' }, { status: 500 });
   }
 }

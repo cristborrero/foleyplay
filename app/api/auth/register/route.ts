@@ -1,7 +1,10 @@
 import { NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
-import dbConnect from '@/lib/mongodb';
-import { User } from '@/models/User';
+import { getDb } from '@/lib/db';
+import { users } from '@/db/schema';
+import { eq } from 'drizzle-orm';
+
+export const runtime = 'edge';
 
 export async function POST(req: Request) {
   try {
@@ -21,9 +24,9 @@ export async function POST(req: Request) {
       );
     }
 
-    await dbConnect();
+    const db = getDb();
 
-    const existingUser = await User.findOne({ email });
+    const [existingUser] = await db.select().from(users).where(eq(users.email, email)).limit(1);
     if (existingUser) {
       return NextResponse.json(
         { message: 'El usuario ya existe' },
@@ -32,15 +35,17 @@ export async function POST(req: Request) {
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
+    const newId = typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : Math.random().toString(36).substring(2);
 
-    const user = await User.create({
+    const [createdUser] = await db.insert(users).values({
+      id: newId,
       name,
       email,
       password: hashedPassword,
-    });
+    }).returning();
 
     return NextResponse.json(
-      { message: 'Usuario creado exitosamente', userId: user._id },
+      { message: 'Usuario creado exitosamente', userId: createdUser.id },
       { status: 201 }
     );
   } catch (error) {

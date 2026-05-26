@@ -2,8 +2,9 @@ import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import bcrypt from 'bcryptjs';
-import dbConnect from './mongodb';
-import { User } from '@/models/User';
+import { getDb } from './db';
+import { users } from '@/db/schema';
+import { eq } from 'drizzle-orm';
 import { authConfig } from './auth.config';
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
@@ -24,9 +25,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           return null;
         }
 
-        await dbConnect();
-
-        const user = await User.findOne({ email: credentials.email });
+        const db = getDb();
+        const [user] = await db.select().from(users).where(eq(users.email, credentials.email as string)).limit(1);
 
         if (!user || !user.password) {
           return null;
@@ -45,7 +45,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         let approved = user.approved;
 
         if (user.email === process.env.ADMIN_EMAIL && role !== 'superadmin') {
-          await User.findByIdAndUpdate(user._id, { role: 'superadmin', approved: true });
+          await db.update(users)
+            .set({ role: 'superadmin', approved: true })
+            .where(eq(users.id, user.id));
           role = 'superadmin';
           approved = true;
         } else if (role === 'admin' || role === 'superadmin') {
@@ -53,7 +55,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         }
 
         return {
-          id: user._id.toString(),
+          id: user.id,
           email: user.email,
           name: user.name,
           image: user.image,
@@ -68,24 +70,33 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (account?.provider !== 'credentials') {
         try {
           if (!user.email) return true;
-          await dbConnect();
-          let dbUser = await User.findOne({ email: user.email });
+          const db = getDb();
+          let [dbUser] = await db.select().from(users).where(eq(users.email, user.email)).limit(1);
+          
           if (!dbUser) {
             const isSuperAdmin = user.email === process.env.ADMIN_EMAIL;
-            dbUser = await User.create({
-              name: user.name || user.email?.split('@')[0] || 'Usuario',
+            const newId = typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : Math.random().toString(36).substring(2);
+            const [createdUser] = await db.insert(users).values({
+              id: newId,
+              name: user.name || user.email.split('@')[0] || 'Usuario',
               email: user.email,
               approved: isSuperAdmin,
               role: isSuperAdmin ? 'superadmin' : 'user',
-            });
+            }).returning();
+            dbUser = createdUser;
           } else if (user.email === process.env.ADMIN_EMAIL && dbUser.role !== 'superadmin') {
-            dbUser = await User.findByIdAndUpdate(dbUser._id, { role: 'superadmin', approved: true }, { new: true }) ?? dbUser;
+            const [updatedUser] = await db.update(users)
+              .set({ role: 'superadmin', approved: true })
+              .where(eq(users.id, dbUser.id))
+              .returning();
+            dbUser = updatedUser || dbUser;
           }
-          user.id = dbUser._id.toString();
+          
+          user.id = dbUser.id;
           (user as Record<string, unknown>).approved =
             dbUser.role === 'admin' || dbUser.role === 'superadmin' ? true : dbUser.approved;
           (user as Record<string, unknown>).role = dbUser.role || 'user';
-        } catch {
+        } catch (e) {
           // No bloqueamos el login si la DB falla
         }
       }

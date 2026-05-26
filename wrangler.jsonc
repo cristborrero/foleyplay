@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "foleyplay",
+  "compatibility_date": "2024-04-03",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "foleyplay-db",
+      "database_id": "YOUR_PRODUCTION_D1_DATABASE_ID_HERE"
+    }
+  ]
+}

@@ -1,7 +1,10 @@
 import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import dbConnect from '@/lib/mongodb';
-import { Watchlist } from '@/models/Watchlist';
+import { getDb } from '@/lib/db';
+import { watchlist } from '@/db/schema';
+import { eq, and, desc } from 'drizzle-orm';
+
+export const runtime = 'edge';
 
 export async function GET(req: Request) {
   try {
@@ -10,10 +13,13 @@ export async function GET(req: Request) {
       return NextResponse.json({ message: 'No autorizado' }, { status: 401 });
     }
 
-    await dbConnect();
-    const watchlist = await Watchlist.find({ userId: session.user.id }).sort({ addedAt: -1 });
+    const db = getDb();
+    const list = await db.select()
+      .from(watchlist)
+      .where(eq(watchlist.userId, session.user.id))
+      .orderBy(desc(watchlist.addedAt));
 
-    return NextResponse.json(watchlist);
+    return NextResponse.json(list);
   } catch (error) {
     console.error('Error fetching watchlist:', error);
     return NextResponse.json({ message: 'Error fetching watchlist' }, { status: 500 });
@@ -33,25 +39,31 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: 'Datos incompletos' }, { status: 400 });
     }
 
-    await dbConnect();
+    const db = getDb();
 
     // Check if it already exists
-    const existing = await Watchlist.findOne({
-      userId: session.user.id,
-      tmdbId,
-      mediaType
-    });
+    const [existing] = await db.select()
+      .from(watchlist)
+      .where(and(
+        eq(watchlist.userId, session.user.id),
+        eq(watchlist.tmdbId, Number(tmdbId)),
+        eq(watchlist.mediaType, mediaType)
+      ))
+      .limit(1);
 
     if (existing) {
       // Remove if it exists (Toggle functionality)
-      await Watchlist.deleteOne({ _id: existing._id });
+      await db.delete(watchlist).where(eq(watchlist.id, existing.id));
       return NextResponse.json({ message: 'Removido de la lista', added: false });
     }
 
+    const newId = typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : Math.random().toString(36).substring(2);
+
     // Add if it doesn't exist
-    await Watchlist.create({
+    await db.insert(watchlist).values({
+      id: newId,
       userId: session.user.id,
-      tmdbId,
+      tmdbId: Number(tmdbId),
       mediaType,
       title,
       posterPath
