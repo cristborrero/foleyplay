@@ -9,7 +9,7 @@
     {
       "binding": "DB",
       "database_name": "foleyplay-db",
-      "database_id": "YOUR_PRODUCTION_D1_DATABASE_ID_HERE"
+      "database_id": "ee6e5707-7245-4227-b6ef-ad8d168dc201"
     }
   ]
 }
