@@ -41,7 +41,7 @@ export default function MovieCard({ media, mediaType }: MovieCardProps) {
   const handlePlay = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    openPlayer({ tmdbId: media.id, mediaType: resolvedMediaType, title });
+    openPlayer({ tmdbId: media.id, mediaType: resolvedMediaType, title, posterPath: imagePath ?? undefined });
   };
 
   const handleInfo = (e: React.MouseEvent) => {

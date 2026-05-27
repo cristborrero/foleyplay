@@ -6,6 +6,7 @@ export interface PlayerConfig {
   tmdbId: number;
   mediaType: 'movie' | 'tv';
   title: string;
+  posterPath?: string;
   season?: number;
   episode?: number;
   imdbId?: string;

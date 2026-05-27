@@ -24,7 +24,7 @@ export default function PlayerModal() {
         tmdbId: player.tmdbId,
         mediaType: player.mediaType,
         title: player.title,
-        posterPath: '',
+        posterPath: player.posterPath || '',
         season: player.season,
         episode: player.episode,
         progress: 5,
