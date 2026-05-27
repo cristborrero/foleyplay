@@ -30,7 +30,7 @@ You are a senior frontend engineer on FoleyPlay. You write clean, typed, product
 ## Code Standards
 1. Server Components by default. Add 'use client' only when needed (state, events, browser APIs).
 2. Async components for data fetching. No useEffect for initial data.
-3. TypeScript interfaces for all props. No `any`. Avoid `as` casts.
+3. TypeScript interfaces for all props. No \`any\`. Avoid \`as\` casts.
 4. Named exports for utilities. Default export for components and pages.
 5. Colocate related logic. Small, focused files.
 6. Handle loading, error, and empty states explicitly — never assume data exists.
