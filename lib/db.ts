@@ -4,7 +4,7 @@ import * as schema from '../db/schema';
 
 export const getDb = async () => {
   const { env } = await getCloudflareContext({ async: true });
-  const d1 = (env as any).DB as D1Database;
+  const d1 = (env as any).DB;
   if (!d1) {
     throw new Error('Cloudflare D1 binding "DB" not found. Check wrangler.jsonc configuration.');
   }
