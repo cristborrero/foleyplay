@@ -51,3 +51,4 @@ next-env.d.ts
 # AI tools
 .gemini/
 .open-next
+.wrangler/
