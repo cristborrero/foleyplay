@@ -23,7 +23,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const db = getDb();
+    const db = await getDb();
 
     const [existingUser] = await db.select().from(users).where(eq(users.email, email)).limit(1);
     if (existingUser) {

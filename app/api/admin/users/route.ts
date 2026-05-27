@@ -24,7 +24,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ message: 'No autorizado' }, { status: 401 });
     }
 
-    const db = getDb();
+    const db = await getDb();
     const userList = await db.select({
       id: users.id,
       name: users.name,
@@ -54,7 +54,7 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ message: 'Email requerido' }, { status: 400 });
     }
 
-    const db = getDb();
+    const db = await getDb();
     const [target] = await db.select().from(users).where(eq(users.email, email)).limit(1);
     if (!target) {
       return NextResponse.json({ message: 'Usuario no encontrado' }, { status: 404 });

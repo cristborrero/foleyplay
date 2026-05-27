@@ -25,7 +25,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           return null;
         }
 
-        const db = getDb();
+        const db = await getDb();
         const [user] = await db.select().from(users).where(eq(users.email, credentials.email as string)).limit(1);
 
         if (!user || !user.password) {
@@ -70,7 +70,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (account?.provider !== 'credentials') {
         try {
           if (!user.email) return true;
-          const db = getDb();
+          const db = await getDb();
           let [dbUser] = await db.select().from(users).where(eq(users.email, user.email)).limit(1);
           
           if (!dbUser) {

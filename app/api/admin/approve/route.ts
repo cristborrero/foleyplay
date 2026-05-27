@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'Parámetros inválidos' }, { status: 400 });
     }
 
-    const db = getDb();
+    const db = await getDb();
     const [result] = await db.update(users)
       .set({ approved })
       .where(eq(users.email, email))

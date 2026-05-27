@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
     const mediaType = req.nextUrl.searchParams.get('mediaType');
     if (!tmdbId || !mediaType || !['movie', 'tv'].includes(mediaType)) return NextResponse.json({ score: null });
     
-    const db = getDb();
+    const db = await getDb();
     const [rating] = await db.select()
       .from(ratings)
       .where(and(
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: 'Datos incompletos' }, { status: 400 });
     }
     
-    const db = getDb();
+    const db = await getDb();
     const [existing] = await db.select()
       .from(ratings)
       .where(and(
@@ -80,7 +80,7 @@ export async function DELETE(req: NextRequest) {
     const mediaType = req.nextUrl.searchParams.get('mediaType');
     if (!tmdbId || !mediaType) return NextResponse.json({ message: 'Datos incompletos' }, { status: 400 });
     
-    const db = getDb();
+    const db = await getDb();
     await db.delete(ratings)
       .where(and(
         eq(ratings.userId, session.user.id),

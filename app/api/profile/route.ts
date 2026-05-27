@@ -10,7 +10,7 @@ export async function GET() {
     const session = await auth();
     if (!session?.user?.id) return NextResponse.json({ message: 'No autorizado' }, { status: 401 });
     
-    const db = getDb();
+    const db = await getDb();
     const [user] = await db.select({
       name: users.name,
       email: users.email,
@@ -32,7 +32,7 @@ export async function PATCH(req: Request) {
     const { name } = await req.json();
     if (!name?.trim() || name.trim().length > 100) return NextResponse.json({ message: 'Nombre inválido' }, { status: 400 });
 
-    const db = getDb();
+    const db = await getDb();
     await db.update(users).set({ name: name.trim() }).where(eq(users.id, session.user.id));
     return NextResponse.json({ message: 'Perfil actualizado' });
   } catch (error) {

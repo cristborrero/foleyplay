@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'Parámetros inválidos' }, { status: 400 });
     }
 
-    const db = getDb();
+    const db = await getDb();
     const [target] = await db.select().from(users).where(eq(users.email, email)).limit(1);
     if (!target) {
       return NextResponse.json({ message: 'Usuario no encontrado' }, { status: 404 });

@@ -12,7 +12,7 @@ export async function GET(req: Request) {
       return NextResponse.json({ message: 'No autorizado' }, { status: 401 });
     }
 
-    const db = getDb();
+    const db = await getDb();
     const list = await db.select()
       .from(history)
       .where(eq(history.userId, session.user.id))
@@ -39,7 +39,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: 'Datos incompletos' }, { status: 400 });
     }
 
-    const db = getDb();
+    const db = await getDb();
 
     // Check if it already exists
     const [existing] = await db.select()
