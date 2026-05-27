@@ -2,6 +2,8 @@ import NextAuth from 'next-auth';
 import { NextResponse } from 'next/server';
 import { authConfig } from '@/lib/auth.config';
 
+export const runtime = 'edge';
+
 const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
