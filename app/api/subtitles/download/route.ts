@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
-export const runtime = 'edge';
 
 const API_KEY = process.env.OPENSUBTITLES_API_KEY;
 const USER_AGENT = process.env.OPENSUBTITLES_USER_AGENT || 'FoleyPlayApp v1.0';

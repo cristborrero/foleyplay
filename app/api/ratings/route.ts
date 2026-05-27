@@ -4,7 +4,6 @@ import { getDb } from '@/lib/db';
 import { ratings } from '@/db/schema';
 import { eq, and } from 'drizzle-orm';
 
-export const runtime = 'edge';
 
 export async function GET(req: NextRequest) {
   try {

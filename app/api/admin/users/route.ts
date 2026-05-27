@@ -4,7 +4,6 @@ import { getDb } from '@/lib/db';
 import { users } from '@/db/schema';
 import { eq, desc } from 'drizzle-orm';
 
-export const runtime = 'edge';
 
 async function getRequesterRole(req: NextRequest): Promise<{ email: string | null; role: string }> {
   const secret = req.nextUrl.searchParams.get('secret');

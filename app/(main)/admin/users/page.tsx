@@ -2,7 +2,6 @@ import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import AdminUsersClient from './AdminUsersClient';
 
-export const runtime = 'edge';
 
 export default async function AdminUsersPage() {
   const session = await auth();

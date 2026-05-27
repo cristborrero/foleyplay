@@ -4,7 +4,6 @@ import { getDb } from '@/lib/db';
 import { users } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 
-export const runtime = 'edge';
 
 function isAdmin(email?: string | null) {
   return email === process.env.ADMIN_EMAIL;

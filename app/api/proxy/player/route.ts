@@ -1,6 +1,5 @@
 import { NextRequest } from 'next/server';
 
-export const runtime = 'edge';
 
 const ALLOWED_DOMAINS = [
   '2embed.cc',

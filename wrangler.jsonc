@@ -1,13 +1,14 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "foleyplay",
-  "main": ".vercel/output/static/_worker.js",
+  "main": ".open-next/worker.js",
   "compatibility_date": "2026-05-26",
   "compatibility_flags": [
     "nodejs_compat"
   ],
   "assets": {
-    "directory": ".vercel/output/static"
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
   },
   "d1_databases": [
     {

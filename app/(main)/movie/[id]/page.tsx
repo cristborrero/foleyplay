@@ -5,7 +5,6 @@ import ServerSelector from '@/components/player/ServerSelector';
 import CastRow from '@/components/detail/CastRow';
 import SimilarRow from '@/components/detail/SimilarRow';
 
-export const runtime = 'edge';
 
 export default async function MoviePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
