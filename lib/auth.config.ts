@@ -6,6 +6,7 @@ export const authConfig: NextAuthConfig = {
   providers: [],
   pages: { signIn: '/login' },
   session: { strategy: 'jwt' },
+  trustHost: true,
   callbacks: {
     jwt({ token }) { return token; },
     session({ session, token }) {
