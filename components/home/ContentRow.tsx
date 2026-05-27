@@ -33,7 +33,7 @@ export default function ContentRow({ title, fetchUrl, isLargeRow = false, mediaT
           setLoading(true);
           fetch(fetchUrl)
             .then(r => r.json())
-            .then(d => setMovies(d.results || []))
+            .then(d => setMovies((d.results || []).filter((m: TMDBMedia) => m.poster_path)))
             .catch(() => {})
             .finally(() => setLoading(false));
         }
