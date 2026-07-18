@@ -11,12 +11,11 @@ Plataforma de streaming educativa y no comercial construida como demostración t
 | Estilos | Tailwind CSS v4 |
 | Animaciones | Framer Motion |
 | Auth | NextAuth v5 beta (Credentials + Google OAuth) |
-| Base de datos | MongoDB Atlas + Mongoose |
+| Base de datos | Cloudflare D1 (SQLite) + Drizzle ORM |
 
 ## Requisitos previos
 
 - Node.js >= 20
-- Cuenta en MongoDB Atlas
 - Google Cloud Console — OAuth 2.0 credentials
 - TMDB API key
 - OpenSubtitles API key (opcional, para subtítulos)
@@ -29,6 +28,10 @@ cd 09-netflix-clone
 npm install
 cp .env.local.example .env.local
 # Editá .env.local con tus credenciales
+
+# Inicializá y aplicá las migraciones de la base de datos D1 localmente:
+npx wrangler d1 migrations apply foleyplay-db --local
+
 npm run dev
 ```
 
@@ -41,9 +44,6 @@ Abrí [http://localhost:3000](http://localhost:3000).
 TMDB_API_KEY=
 TMDB_BASE_URL=https://api.themoviedb.org/3
 TMDB_IMAGE_BASE_URL=https://image.tmdb.org/t/p
-
-# MongoDB Atlas
-MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/db
 
 # NextAuth
 NEXTAUTH_SECRET=
@@ -75,7 +75,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 - Catálogo TMDB con carruseles lazy-load y HeroBanner rotativo
 - Páginas `/movies` y `/tv` con catálogo de películas y series por género
 - Búsqueda con filtros por tipo, género y año
-- Reproductores embebidos con ad-blocking proxy server-side
+- Reproductores embebidos con soporte de servidores alternativos
 - Multi-audio vía UnlimPlay y VidLink
 - Subtítulos overlay sincronizados manualmente
 - Watchlist, historial de reproducción y calificaciones (like/dislike)
@@ -87,9 +87,9 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 |---|---|---|
 | UnlimPlay | Direct | ✅ |
 | VidLink | Direct | ✅ |
-| 2Embed | Proxied (ad-blocked) | ❌ |
-| StreamIMDb | Proxied (ad-blocked) | ❌ |
-| Embed.su | Direct | ❌ |
+| VidSrc.to | Direct | ❌ |
+| MultiEmbed | Direct | ❌ |
+| VidSrc.su | Direct | ❌ |
 
 ## Sistema de acceso
 

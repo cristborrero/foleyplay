@@ -1,12 +1,12 @@
 # FoleyPlay — Estado del Proyecto
 
-> Última actualización: mayo 2026
+> Última actualización: julio 2026
 
 ---
 
 ## Resumen ejecutivo
 
-**FoleyPlay** es una plataforma de streaming educativa y no comercial con una identidad visual moderna y disruptiva en verde lima (#CEFF00). Replica la experiencia de Netflix con autenticación real, catálogo desde TMDB, reproductores embebidos con ad-blocking proxy, subtítulos sincronizados, panel de administración con control de acceso por roles, y una arquitectura 100% web optimizada para producción en Vercel.
+**FoleyPlay** es una plataforma de streaming educativa y no comercial con una identidad visual moderna y disruptiva en verde lima (#CEFF00). Replica la experiencia de Netflix con autenticación real, catálogo desde TMDB, reproductores embebidos, subtítulos sincronizados, panel de administración con control de acceso por roles, y una arquitectura 100% web optimizada para producción en Cloudflare Pages.
 
 ---
 
@@ -21,7 +21,7 @@
 | Animaciones   | Framer Motion                   | 12.38.0       |
 | Iconos        | Lucide React                    | 1.11.0        |
 | Auth          | NextAuth v5 beta                | 5.0.0-beta.31 |
-| Base de datos | MongoDB + Mongoose              | 9.5.0         |
+| Base de datos | Cloudflare D1 + Drizzle ORM     | -             |
 | Contraseñas   | bcryptjs                        | 3.0.3         |
 | HLS           | hls.js                          | 1.6.16        |
 | Consumet      | @consumet/extensions            | 1.8.8         |
@@ -51,11 +51,11 @@
 └─────────────────────────────────────────────────────────────┘
          │                    │                │
          ▼                    ▼                ▼
-    NextAuth JWT          MongoDB           TMDB API
-    Google OAuth          Atlas             (cacheado 1h)
-    Credentials           4 modelos         es-ES default
-    Roles: user/admin     approved flag
-    /superadmin
+     NextAuth JWT          Cloudflare D1     TMDB API
+     Google OAuth          Local/Remote      (cacheado 1h)
+     Credentials           4 tablas          es-ES default
+     Roles: user/admin     approved flag
+     /superadmin
 ```
 
 ---
@@ -223,7 +223,7 @@
 | Carruseles lazy-load            | ✅ Completo |
 | Catálogos (/movies, /tv)        | ✅ Completo |
 | PlayerModal con servers         | ✅ Completo |
-| Ad-blocking proxy               | ✅ Completo |
+| Soporte de servidores activos   | ✅ Completo |
 | Subtítulos overlay              | ✅ Completo |
 | Watchlist e Historial           | ✅ Completo |
 | Búsqueda con filtros            | ✅ Completo |
@@ -237,9 +237,9 @@
 ## Decisiones técnicas relevantes
 
 - **Eliminación de soporte TV**: El proyecto fue simplificado eliminando Capacitor, Android SDK y componentes específicos de TV para enfocarse en una experiencia web premium.
-- **Middleware Edge-safe**: Autenticación desacoplada para funcionar en el Edge Runtime de Vercel.
-- **Proxy ad-blocker**: Inyección de scripts para bloquear popups en los iframes de streaming.
-- **Pure Web Implementation**: Rutas como `/movies` y `/tv` usan componentes web nativos en lugar de shims para TV.
+- **Middleware en Cloudflare Pages**: Mantenimiento del archivo `middleware.ts` en lugar de la convención Next.js 16 `proxy.ts` debido a limitaciones del compilador de OpenNext, obligando al empaquetador a desplegarlo en el Edge Runtime de Cloudflare.
+- **Actualización de Servidores de Streaming**: Limpieza y reemplazo de proveedores fuera de servicio (`streamimdb.me`, `embed.su`, `2embed.cc`) por alternativas activas y estables (`vidsrc.to`, `multiembed.mov`, `vidsrc.su`), agregándolos también a los dominios permitidos del proxy.
+- **Migración a Cloudflare D1 + Drizzle ORM**: Transición desde MongoDB Atlas hacia base de datos SQLite distribuida D1 con Drizzle ORM, requiriendo inicialización local vía migraciones de Wrangler para el correcto funcionamiento de las credenciales de NextAuth.
 - **Identidad Visual FoleyPlay**: Rebranding total alejándose de la estética de Netflix para adoptar un diseño "Lime Green" (#CEFF00) consistente en toda la interfaz.
 - **Normalización de Datos de Imagen**: Implementación de un sistema de fallback visual y normalización de campos (`poster_path` vs `posterPath`) para garantizar la carga de carátulas independientemente de la fuente de datos.
 - **Inyección Dinámica de Media Type**: El proxy API inyecta automáticamente metadatos de `media_type` en respuestas de descubrimiento, eliminando fallas de navegación en listas filtradas.
