@@ -8,6 +8,10 @@ const ALLOWED_DOMAINS = [
   'vidsrc.me',
   'vidsrc.to',
   'streamimdb.me',
+  'multiembed.mov',
+  'vidsrc.su',
+  'vsrc.su',
+  'vidsrc-embed.su',
 ];
 
 // Known ad network domains — their <script> tags get removed from proxied HTML

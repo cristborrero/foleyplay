@@ -27,26 +27,25 @@ export const streamProviders: StreamProvider[] = [
     getMovieUrl: (tmdbId) => `https://vidlink.pro/movie/${tmdbId}`,
     getTvUrl: (tmdbId, season, episode) => `https://vidlink.pro/tv/${tmdbId}/${season}/${episode}`,
   },
-  // ── DIRECT (browser resolves DNS) ───────────────────────────────────────
   {
-    id: '2embed',
-    name: '2Embed',
-    getMovieUrl: (tmdbId) => `https://www.2embed.cc/embed/${tmdbId}`,
-    getTvUrl: (tmdbId, season, episode) => `https://www.2embed.cc/embedtv/${tmdbId}&s=${season}&e=${episode}`,
+    id: 'vidsrc',
+    name: 'VidSrc',
+    getMovieUrl: (tmdbId) => `https://vidsrc.to/embed/movie/${tmdbId}`,
+    getTvUrl: (tmdbId, season, episode) => `https://vidsrc.to/embed/tv/${tmdbId}/${season}/${episode}`,
   },
   {
-    id: 'streamimdb',
-    name: 'StreamIMDb',
-    needsImdbId: true,
-    getMovieUrl: (tmdbId, imdbId) => imdbId ? proxy(`https://streamimdb.me/embed/${imdbId}`) : `https://www.2embed.cc/embed/${tmdbId}`,
-    getTvUrl: (tmdbId, season, episode, imdbId) => imdbId ? proxy(`https://streamimdb.me/embed/${imdbId}?s=${season}&e=${episode}`) : `https://www.2embed.cc/embedtv/${tmdbId}&s=${season}&e=${episode}`,
+    id: 'multiembed',
+    name: 'MultiEmbed',
+    getMovieUrl: (tmdbId) => `https://multiembed.mov/?video_id=${tmdbId}&tmdb=1`,
+    getTvUrl: (tmdbId, season, episode) => `https://multiembed.mov/?video_id=${tmdbId}&tmdb=1&s=${season}&e=${episode}`,
   },
   // ── DIRECT fallbacks ─────────────────────────────────────────────────────
   {
-    id: 'embedsu',
-    name: 'Embed.su',
-    getMovieUrl: (tmdbId) => `https://embed.su/embed/movie/${tmdbId}`,
-    getTvUrl: (tmdbId, season, episode) => `https://embed.su/embed/tv/${tmdbId}/${season}/${episode}`,
+    id: 'vidsrcsu',
+    name: 'VidSrc.su',
+    needsImdbId: true,
+    getMovieUrl: (tmdbId, imdbId) => imdbId ? `https://vidsrc.su/embed/movie/${imdbId}` : `https://vidsrc.su/embed/movie/${tmdbId}`,
+    getTvUrl: (tmdbId, season, episode, imdbId) => imdbId ? `https://vidsrc.su/embed/tv/${imdbId}/${season}/${episode}` : `https://vidsrc.su/embed/tv/${tmdbId}/${season}/${episode}`,
   },
 ];
 
