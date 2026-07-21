@@ -115,27 +115,61 @@ async function main() {
   console.log('🔄  Updating IPTV channel database...\n');
 
   // --- 1. Fetch source data ---
-  const [channels, streams, logos] = await Promise.all([
+  const [channels, streams, logos, tdtData] = await Promise.all([
     fetchJSON(`${IPTV_API_BASE}/channels.json`),
     fetchJSON(`${IPTV_API_BASE}/streams.json`),
     fetchJSON(`${IPTV_API_BASE}/logos.json`),
+    fetchJSON('https://www.tdtchannels.com/lists/tv.json').catch((err) => {
+      console.warn(`  ⚠️ Could not fetch TDTChannels: ${err.message}`);
+      return null;
+    }),
   ]);
 
   console.log(`\n  Channels total: ${channels.length}`);
   console.log(`  Streams total:  ${streams.length}`);
   console.log(`  Logos total:    ${logos.length}`);
+  if (tdtData) console.log(`  TDTChannels fetched successfully.`);
 
-  // --- 2. Build logos lookup: channelId -> logoUrl ---
+  // --- 2. Build TDTChannels lookup map by normalized name ---
+  /** @type {Map<string, { logo: string, streams: string[], epgId: string }>} */
+  const tdtByName = new Map();
+  if (tdtData && Array.isArray(tdtData.countries)) {
+    tdtData.countries.forEach((c) => {
+      if (Array.isArray(c.ambits)) {
+        c.ambits.forEach((amb) => {
+          if (Array.isArray(amb.channels)) {
+            amb.channels.forEach((ch) => {
+              if (!ch.name) return;
+              const normKey = ch.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+              const chStreams = (ch.options || [])
+                .filter((o) => o.url && (o.format === 'm3u8' || !o.format))
+                .map((o) => o.url);
+
+              if (chStreams.length > 0 || ch.logo) {
+                tdtByName.set(normKey, {
+                  name: ch.name,
+                  logo: ch.logo || null,
+                  streams: chStreams,
+                  epgId: ch.epg_id || null,
+                });
+              }
+            });
+          }
+        });
+      }
+    });
+  }
+
+  // --- 3. Build logos lookup: channelId -> logoUrl ---
   /** @type {Map<string, string>} */
   const logoByChannel = new Map();
   for (const logo of logos) {
     if (logo.channel && logo.url) {
-      // Prioritize logos that are in_use if present, or just store the latest
       logoByChannel.set(logo.channel, logo.url);
     }
   }
 
-  // --- 3. Build streams lookup: channelId -> [stream urls] ---
+  // --- 4. Build streams lookup: channelId -> [stream urls] ---
   /** @type {Map<string, string[]>} */
   const streamsByChannel = new Map();
   for (const stream of streams) {
@@ -146,7 +180,7 @@ async function main() {
     streamsByChannel.get(stream.channel).push(stream.url);
   }
 
-  // --- 3. Filter channels ---
+  // --- 5. Filter channels ---
   const filtered = channels.filter((ch) => {
     // Must be in target countries
     if (!TARGET_COUNTRIES.includes(ch.country)) return false;
@@ -157,16 +191,19 @@ async function main() {
     // Skip closed channels
     if (ch.closed) return false;
 
-    // Must have at least one stream
+    // Must have at least one stream (either from iptv-org or TDTChannels)
+    const normKey = ch.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const tdt = tdtByName.get(normKey);
     const urls = streamsByChannel.get(ch.id) || [];
-    if (urls.length === 0) return false;
+
+    if (urls.length === 0 && (!tdt || tdt.streams.length === 0)) return false;
 
     return true;
   });
 
   console.log(`\n  Channels after filter: ${filtered.length}`);
 
-  // --- 4. Build structured output grouped by country ---
+  // --- 6. Build structured output grouped by country ---
   /** @type {Map<string, { channels: Array }>} */
   const byCountry = new Map();
 
@@ -176,13 +213,22 @@ async function main() {
       byCountry.set(code, []);
     }
 
+    const normKey = ch.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const tdt = tdtByName.get(normKey);
+
+    // Merge streams: TDTChannels streams prioritized (higher uptime/quality)
+    const rawStreams = streamsByChannel.get(ch.id) || [];
+    const tdtStreams = tdt ? tdt.streams : [];
+    const combinedStreams = Array.from(new Set([...tdtStreams, ...rawStreams]));
+
     byCountry.get(code).push({
       id: ch.id,
       name: ch.name,
-      logo: ch.logo || logoByChannel.get(ch.id) || null,
+      logo: (tdt && tdt.logo) || ch.logo || logoByChannel.get(ch.id) || null,
+      epgId: tdt ? tdt.epgId : null,
       categories: ch.categories || [],
       website: ch.website || null,
-      streams: streamsByChannel.get(ch.id) || [],
+      streams: combinedStreams,
     });
   }
 

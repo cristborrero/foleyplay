@@ -4,6 +4,7 @@ export interface IPTVChannel {
   id: string;
   name: string;
   logo: string | null;
+  epgId?: string | null;
   categories: string[];
   website: string | null;
   streams: string[];

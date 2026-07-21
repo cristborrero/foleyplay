@@ -255,6 +255,17 @@ export default function LivePlayer({ channel, onClose }: LivePlayerProps) {
     return () => { hlsInstance?.destroy(); };
   }, [proxiedStreamUrl, streamUrl, handleStreamError]);
 
+  const [epgData, setEpgData] = useState<{ current: { title: string; description?: string | null } | null; next: { title: string } | null } | null>(null);
+
+  // Load EPG guide if channel has epgId
+  useEffect(() => {
+    if (!channel.epgId) return;
+    fetch(`/api/iptv/epg?epgId=${encodeURIComponent(channel.epgId)}`)
+      .then((r) => r.json())
+      .then((data) => setEpgData(data))
+      .catch(() => {});
+  }, [channel.epgId]);
+
   return (
     // Backdrop
     <motion.div
@@ -298,7 +309,14 @@ export default function LivePlayer({ channel, onClose }: LivePlayerProps) {
                 ) : (
                   <Radio size={16} className="text-fp-lime" />
                 )}
-                <span className="text-white font-semibold text-sm">{channel.name}</span>
+                <div>
+                  <span className="text-white font-semibold text-sm leading-none block">{channel.name}</span>
+                  {epgData?.current && (
+                    <span className="text-fp-lime text-[11px] font-medium leading-none block mt-0.5 line-clamp-1">
+                      En vivo: {epgData.current.title}
+                    </span>
+                  )}
+                </div>
               </div>
               <button
                 onClick={onClose}
