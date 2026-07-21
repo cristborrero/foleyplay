@@ -161,6 +161,25 @@ export default function LivePlayer({ channel, onClose }: LivePlayerProps) {
     return streamUrl;
   }, [streamUrl]);
 
+  // Clean logo URL: upgrade http to https
+  const logoUrl = useMemo(() => {
+    if (!channel.logo) return null;
+    if (channel.logo.startsWith('http://')) {
+      return channel.logo.replace('http://', 'https://');
+    }
+    return channel.logo;
+  }, [channel.logo]);
+
+  const handleStreamError = useCallback(() => {
+    if (streamIndex < channel.streams.length - 1) {
+      console.log(`Stream ${streamIndex + 1} failed. Auto-switching to stream ${streamIndex + 2}...`);
+      setStreamIndex((prev) => prev + 1);
+    } else {
+      setLoading(false);
+      setError(true);
+    }
+  }, [streamIndex, channel.streams.length]);
+
   // Auto-hide controls after 3s of inactivity
   const resetControlsTimer = useCallback(() => {
     setShowControls(true);
@@ -213,25 +232,28 @@ export default function LivePlayer({ channel, onClose }: LivePlayerProps) {
             video.play().catch(() => {});
           });
           hlsInstance.on(Hls.Events.ERROR, (_, data) => {
-            if (data.fatal) { setLoading(false); setError(true); hlsInstance?.destroy(); }
+            if (data.fatal) {
+              hlsInstance?.destroy();
+              handleStreamError();
+            }
           });
         } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
           video.src = proxiedStreamUrl;
           video.onloadedmetadata = () => setLoading(false);
-          video.play().catch(() => setError(true));
+          video.play().catch(() => handleStreamError());
         } else {
-          setLoading(false);
-          setError(true);
+          handleStreamError();
         }
       });
     } else {
       video.src = proxiedStreamUrl;
       video.oncanplay = () => setLoading(false);
-      video.play().catch(() => setError(true));
+      video.onerror = () => handleStreamError();
+      video.play().catch(() => handleStreamError());
     }
 
     return () => { hlsInstance?.destroy(); };
-  }, [proxiedStreamUrl, streamUrl]);
+  }, [proxiedStreamUrl, streamUrl, handleStreamError]);
 
   return (
     // Backdrop
@@ -264,11 +286,12 @@ export default function LivePlayer({ channel, onClose }: LivePlayerProps) {
               className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-black/90 to-transparent px-4 py-3 flex items-center justify-between"
             >
               <div className="flex items-center gap-3">
-                {channel.logo ? (
+                {logoUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={channel.logo}
+                    src={logoUrl}
                     alt={channel.name}
+                    referrerPolicy="no-referrer"
                     className="h-7 w-auto max-w-[72px] object-contain"
                     onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                   />
@@ -293,14 +316,12 @@ export default function LivePlayer({ channel, onClose }: LivePlayerProps) {
           {/* Loading state */}
           {loading && !error && (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 z-10">
-              {channel.logo && (
+              {logoUrl && (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
-                  src={channel.logo}
+                  src={logoUrl}
                   alt={channel.name}
-                  className="h-16 w-auto max-w-[140px] object-contain opacity-40 mb-2"
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                />
+                  referrerPolicy="no-referrer"
               )}
               <div className="w-8 h-8 border-2 border-fp-lime border-t-transparent rounded-full animate-spin" />
               <p className="text-gray-400 text-xs">Conectando señal...</p>

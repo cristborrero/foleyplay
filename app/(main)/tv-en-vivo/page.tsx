@@ -6,6 +6,25 @@ import { Search, Signal, ChevronDown, ChevronUp, Tv, Play } from 'lucide-react';
 import LivePlayer from '@/components/player/LivePlayer';
 import type { IPTVChannel, IPTVCountry } from '@/types/app';
 
+const GRADIENTS = [
+  'from-red-900/80 to-rose-950 border-red-500/20 text-red-200',
+  'from-purple-900/80 to-indigo-950 border-purple-500/20 text-purple-200',
+  'from-blue-900/80 to-slate-950 border-blue-500/20 text-blue-200',
+  'from-emerald-900/80 to-teal-950 border-emerald-500/20 text-emerald-200',
+  'from-amber-900/80 to-orange-950 border-amber-500/20 text-amber-200',
+  'from-pink-900/80 to-fuchsia-950 border-pink-500/20 text-pink-200',
+  'from-cyan-900/80 to-sky-950 border-cyan-500/20 text-cyan-200',
+];
+
+function getChannelGradient(name: string) {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const index = Math.abs(hash) % GRADIENTS.length;
+  return GRADIENTS[index];
+}
+
 // ── Channel card ─────────────────────────────────────────────────────────────
 
 function ChannelCard({
@@ -18,6 +37,17 @@ function ChannelCard({
   const [imgError, setImgError] = useState(false);
   const category = channel.categories[0] ?? null;
 
+  // Clean logo URL: upgrade http to https
+  const logoUrl = useMemo(() => {
+    if (!channel.logo) return null;
+    if (channel.logo.startsWith('http://')) {
+      return channel.logo.replace('http://', 'https://');
+    }
+    return channel.logo;
+  }, [channel.logo]);
+
+  const gradientClass = useMemo(() => getChannelGradient(channel.name), [channel.name]);
+
   return (
     <motion.button
       whileHover={{ scale: 1.03 }}
@@ -27,36 +57,40 @@ function ChannelCard({
     >
       {/* Thumbnail area 16:9 */}
       <div className="relative w-full aspect-video bg-[#111] flex items-center justify-center p-3">
-        {channel.logo && !imgError ? (
+        {logoUrl && !imgError ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={channel.logo}
+            src={logoUrl}
             alt={channel.name}
-            className="w-full h-full object-contain max-h-[48px]"
+            referrerPolicy="no-referrer"
+            className="w-full h-full object-contain max-h-[52px] filter drop-shadow-md"
             onError={() => setImgError(true)}
           />
         ) : (
-          <div className="flex flex-col items-center gap-1.5 opacity-40">
-            <Tv size={28} className="text-gray-400" />
+          /* Stylish Brand Tile Fallback */
+          <div className={`w-full h-full rounded-lg bg-gradient-to-br ${gradientClass} border flex flex-col items-center justify-center p-2 text-center shadow-inner select-none`}>
+            <span className="font-extrabold text-xs sm:text-sm tracking-wide uppercase leading-tight line-clamp-2 drop-shadow-sm">
+              {channel.name}
+            </span>
           </div>
         )}
 
         {/* Hover play overlay */}
-        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-          <div className="w-10 h-10 rounded-full bg-white/90 flex items-center justify-center">
-            <Play size={18} className="fill-black text-black ml-0.5" />
+        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+          <div className="w-10 h-10 rounded-full bg-fp-lime text-black flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+            <Play size={20} className="fill-black ml-0.5" />
           </div>
         </div>
 
         {/* Always-visible live dot */}
-        <div className="absolute top-2 left-2 flex items-center gap-1">
+        <div className="absolute top-2 left-2 flex items-center gap-1 bg-black/60 backdrop-blur-xs px-1.5 py-0.5 rounded">
           <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
           <span className="text-red-400 text-[8px] font-bold uppercase tracking-widest">Live</span>
         </div>
 
         {/* Stream count badge */}
         {channel.streams.length > 1 && (
-          <div className="absolute top-2 right-2 bg-black/60 rounded px-1.5 py-0.5">
+          <div className="absolute top-2 right-2 bg-black/60 backdrop-blur-xs rounded px-1.5 py-0.5">
             <span className="text-gray-300 text-[9px] font-medium">{channel.streams.length} señales</span>
           </div>
         )}
