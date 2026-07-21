@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import {
   X, Radio, AlertCircle, RefreshCw, Play, Pause,
   Volume2, VolumeX, Maximize, Minimize, Signal,
@@ -151,6 +151,10 @@ export default function LivePlayer({ channel, onClose }: LivePlayerProps) {
   const controls = useVideoControls(videoRef);
 
   const streamUrl = channel.streams[streamIndex];
+  const proxiedStreamUrl = useMemo(() => {
+    if (!streamUrl) return '';
+    return `/api/proxy/stream?url=${encodeURIComponent(streamUrl)}`;
+  }, [streamUrl]);
 
   // Auto-hide controls after 3s of inactivity
   const resetControlsTimer = useCallback(() => {
@@ -183,20 +187,21 @@ export default function LivePlayer({ channel, onClose }: LivePlayerProps) {
 
   // Load HLS stream
   useEffect(() => {
-    if (!videoRef.current || !streamUrl) return;
+    if (!videoRef.current || !proxiedStreamUrl) return;
     setError(false);
     setLoading(true);
 
     const video = videoRef.current;
     let hlsInstance: import('hls.js').default | null = null;
 
+    // Detect if original URL is HLS format
     const isHLS = /\.m3u8/i.test(streamUrl) || streamUrl.includes('m3u8');
 
     if (isHLS) {
       import('hls.js').then(({ default: Hls }) => {
         if (Hls.isSupported()) {
           hlsInstance = new Hls({ enableWorker: false, lowLatencyMode: true, backBufferLength: 0 });
-          hlsInstance.loadSource(streamUrl);
+          hlsInstance.loadSource(proxiedStreamUrl);
           hlsInstance.attachMedia(video);
           hlsInstance.on(Hls.Events.MANIFEST_PARSED, () => {
             setLoading(false);
@@ -206,7 +211,7 @@ export default function LivePlayer({ channel, onClose }: LivePlayerProps) {
             if (data.fatal) { setLoading(false); setError(true); hlsInstance?.destroy(); }
           });
         } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-          video.src = streamUrl;
+          video.src = proxiedStreamUrl;
           video.onloadedmetadata = () => setLoading(false);
           video.play().catch(() => setError(true));
         } else {
@@ -215,13 +220,13 @@ export default function LivePlayer({ channel, onClose }: LivePlayerProps) {
         }
       });
     } else {
-      video.src = streamUrl;
+      video.src = proxiedStreamUrl;
       video.oncanplay = () => setLoading(false);
       video.play().catch(() => setError(true));
     }
 
     return () => { hlsInstance?.destroy(); };
-  }, [streamUrl]);
+  }, [proxiedStreamUrl, streamUrl]);
 
   return (
     // Backdrop
