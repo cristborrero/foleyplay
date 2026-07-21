@@ -203,6 +203,15 @@ async function main() {
 
   console.log(`\n  Channels after filter: ${filtered.length}`);
 
+  // Helper to filter out dead/blocked logo providers like Imgur
+  function sanitizeLogo(url) {
+    if (!url) return null;
+    // Imgur dead-link placeholder: "Content not viewable in your region"
+    if (url.includes('imgur.com')) return null;
+    if (url.startsWith('http://')) return url.replace('http://', 'https://');
+    return url;
+  }
+
   // --- 6. Build structured output grouped by country ---
   /** @type {Map<string, { channels: Array }>} */
   const byCountry = new Map();
@@ -221,10 +230,12 @@ async function main() {
     const tdtStreams = tdt ? tdt.streams : [];
     const combinedStreams = Array.from(new Set([...tdtStreams, ...rawStreams]));
 
+    const finalLogo = sanitizeLogo((tdt && tdt.logo) || ch.logo || logoByChannel.get(ch.id) || null);
+
     byCountry.get(code).push({
       id: ch.id,
       name: ch.name,
-      logo: (tdt && tdt.logo) || ch.logo || logoByChannel.get(ch.id) || null,
+      logo: finalLogo,
       epgId: tdt ? tdt.epgId : null,
       categories: ch.categories || [],
       website: ch.website || null,

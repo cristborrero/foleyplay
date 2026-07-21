@@ -37,9 +37,10 @@ function ChannelCard({
   const [imgError, setImgError] = useState(false);
   const category = channel.categories[0] ?? null;
 
-  // Clean logo URL: upgrade http to https
+  // Clean logo URL: discard dead Imgur links & upgrade http to https
   const logoUrl = useMemo(() => {
     if (!channel.logo) return null;
+    if (channel.logo.includes('imgur.com')) return null;
     if (channel.logo.startsWith('http://')) {
       return channel.logo.replace('http://', 'https://');
     }
