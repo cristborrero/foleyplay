@@ -153,7 +153,12 @@ export default function LivePlayer({ channel, onClose }: LivePlayerProps) {
   const streamUrl = channel.streams[streamIndex];
   const proxiedStreamUrl = useMemo(() => {
     if (!streamUrl) return '';
-    return `/api/proxy/stream?url=${encodeURIComponent(streamUrl)}`;
+    // Proxy only unencrypted http:// streams to bypass Mixed Content.
+    // Secure https:// streams load directly (avoiding Cloudflare port limits).
+    if (streamUrl.startsWith('http://')) {
+      return `/api/proxy/stream?url=${encodeURIComponent(streamUrl)}`;
+    }
+    return streamUrl;
   }, [streamUrl]);
 
   // Auto-hide controls after 3s of inactivity

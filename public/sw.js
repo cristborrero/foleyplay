@@ -15,18 +15,41 @@ self.addEventListener('activate', (e) => {
   self.clients.claim();
 });
 
-// Network-first: sirve desde red, cae a cache si offline
+// Robust Fetch handler: only handle same-origin HTTP/HTTPS GET requests
 self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
-  if (e.request.url.includes('/api/')) return; // API calls nunca desde cache
+
+  let url;
+  try {
+    url = new URL(e.request.url);
+  } catch {
+    return;
+  }
+
+  // Only handle HTTP/HTTPS (filters out chrome-extension, data:, etc.)
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
+
+  // Only handle same-origin requests (avoids CORS and external asset issues)
+  if (url.origin !== self.location.origin) return;
+
+  // Do not cache API routes
+  if (url.pathname.startsWith('/api/')) return;
 
   e.respondWith(
     fetch(e.request)
       .then((res) => {
-        const clone = res.clone();
-        caches.open(CACHE).then((c) => c.put(e.request, clone));
+        // Cache successful static responses
+        if (res.ok && res.status === 200) {
+          const clone = res.clone();
+          caches.open(CACHE).then((c) => c.put(e.request, clone));
+        }
         return res;
       })
-      .catch(() => caches.match(e.request))
+      .catch(async () => {
+        const cached = await caches.match(e.request);
+        if (cached) return cached;
+        // Let it fail naturally without returning undefined to avoid Response type error
+        throw new Error('Offline and not cached');
+      })
   );
 });
