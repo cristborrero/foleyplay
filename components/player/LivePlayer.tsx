@@ -322,6 +322,9 @@ export default function LivePlayer({ channel, onClose }: LivePlayerProps) {
                   src={logoUrl}
                   alt={channel.name}
                   referrerPolicy="no-referrer"
+                  className="h-16 w-auto max-w-[140px] object-contain opacity-40 mb-2"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                />
               )}
               <div className="w-8 h-8 border-2 border-fp-lime border-t-transparent rounded-full animate-spin" />
               <p className="text-gray-400 text-xs">Conectando señal...</p>
