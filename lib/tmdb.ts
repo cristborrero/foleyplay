@@ -10,7 +10,7 @@ export async function fetchTMDB<T>(endpoint: string, params: Record<string, stri
 
   const url = new URL(`${TMDB_BASE_URL}${endpoint}`);
   url.searchParams.append('api_key', TMDB_API_KEY);
-  url.searchParams.append('language', 'es-ES');
+  url.searchParams.append('language', 'es-MX');
   
   Object.entries(params).forEach(([key, value]) => {
     url.searchParams.append(key, value);
@@ -38,7 +38,10 @@ export const tmdb = {
     fetchTMDB<TMDBResponse>(`/${mediaType}/top_rated`, { page: page.toString() }),
   
   getDetail: (mediaType: 'movie' | 'tv', id: number) =>
-    fetchTMDB<TMDBDetail>(`/${mediaType}/${id}`, { append_to_response: 'credits,videos,similar,external_ids,release_dates,content_ratings' }),
+    fetchTMDB<TMDBDetail>(`/${mediaType}/${id}`, {
+      append_to_response: 'credits,videos,similar,external_ids,release_dates,content_ratings',
+      include_video_language: 'es-MX,es,es-ES,en,null'
+    }),
     
   getSeason: (tvId: number, seasonNumber: number) => 
     fetchTMDB<{ episodes: TMDBEpisode[] }>(`/tv/${tvId}/season/${seasonNumber}`),

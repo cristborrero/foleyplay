@@ -35,6 +35,8 @@ export interface TMDBVideo {
   name: string;
   site: string;
   type: string;
+  iso_639_1?: string;
+  iso_3166_1?: string;
 }
 
 export interface TMDBDetail extends TMDBMedia {

@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import { useModal } from '@/lib/modal-context';
 import { useSession } from 'next-auth/react';
-import { TMDBDetail } from '@/types/tmdb';
+import { TMDBDetail, TMDBVideo } from '@/types/tmdb';
 
 type UserRating = 'like' | 'dislike' | null;
 
@@ -48,6 +48,38 @@ function getCertification(data: TMDBDetail, mediaType: 'movie' | 'tv'): string {
   if (rating === 'APPROVED' || rating === 'PASSED') return 'G';
   
   return rating;
+}
+
+function getTrailerScore(video: TMDBVideo): number {
+  if (video.site !== 'YouTube') return 0;
+
+  const isTrailer = video.type === 'Trailer';
+  const name = video.name.toLowerCase();
+  const lang = video.iso_639_1;
+  const region = video.iso_3166_1;
+
+  // Idioma de España
+  const isSpain = region === 'ES' || name.includes('españa') || name.includes('castellano') || name.includes('es-es');
+  
+  // Idioma Latino
+  const isLatino = name.includes('latino') || name.includes('latin') || name.includes('mex') || name.includes('mx') || name.includes('la') || name.includes('doblado') || (lang === 'es' && region && ['MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'UY', 'US'].includes(region));
+
+  if (lang === 'es') {
+    if (isLatino) {
+      return isTrailer ? 100 : 70;
+    }
+    if (isSpain) {
+      return isTrailer ? 40 : 10;
+    }
+    // Spanish general (se asume latino al ser la base del proyecto)
+    return isTrailer ? 80 : 50;
+  }
+
+  if (lang === 'en') {
+    return isTrailer ? 30 : 5;
+  }
+
+  return isTrailer ? 20 : 2;
 }
 
 // ─── sub-components ──────────────────────────────────────────────────────────
@@ -89,7 +121,7 @@ export default function DetailModal() {
     setIsMuted(true);
 
     const append = 'credits,videos,release_dates,content_ratings';
-    fetch(`/api/tmdb/${detail.mediaType}/${detail.tmdbId}?append_to_response=${append}`)
+    fetch(`/api/tmdb/${detail.mediaType}/${detail.tmdbId}?append_to_response=${append}&include_video_language=es-MX,es,es-ES,en,null`)
       .then(r => r.json())
       .then(d => setData(d))
       .catch(() => {})
@@ -188,8 +220,11 @@ export default function DetailModal() {
     : data?.first_air_date ? new Date(data.first_air_date).getFullYear() : null;
   const certification = data ? getCertification(data, detail?.mediaType || 'movie') : '';
   const score = data ? Math.round(data.vote_average * 10) : 0;
-  const trailer = data?.videos?.results?.find(v => v.type === 'Trailer' && v.site === 'YouTube');
-  const extraVideos = data?.videos?.results?.filter(v => v.site === 'YouTube') || [];
+  const sortedVideos = [...(data?.videos?.results || [])]
+    .filter(v => v.site === 'YouTube')
+    .sort((a, b) => getTrailerScore(b) - getTrailerScore(a));
+  const trailer = sortedVideos[0];
+  const extraVideos = sortedVideos;
   const director = data?.credits?.crew?.find(c => c.job === 'Director')?.name || '';
   const creators = data?.created_by?.map(c => c.name).join(', ') || '';
   const isTopRated = (data?.vote_average ?? 0) >= 7.5 && (data?.vote_count ?? 0) >= 500;

@@ -19,7 +19,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     
     // Default to Spanish unless specified otherwise
     if (!searchParams.has('language')) {
-      url.searchParams.append('language', 'es-ES');
+      url.searchParams.append('language', 'es-MX');
     }
     
     searchParams.forEach((value, key) => {
