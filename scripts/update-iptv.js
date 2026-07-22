@@ -206,13 +206,66 @@ async function main() {
   // Helper to filter out dead/blocked logo providers like Imgur
   function sanitizeLogo(url) {
     if (!url) return null;
-    // Imgur dead-link placeholder: "Content not viewable in your region"
     if (url.includes('imgur.com')) return null;
     if (url.startsWith('http://')) return url.replace('http://', 'https://');
     return url;
   }
 
-  // --- 6. Build structured output grouped by country ---
+  // --- 6. Extract unique stream URLs & validate health ---
+  /** @type {Set<string>} */
+  const allStreamUrls = new Set();
+  for (const ch of filtered) {
+    const normKey = ch.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const tdt = tdtByName.get(normKey);
+    const rawStreams = streamsByChannel.get(ch.id) || [];
+    const tdtStreams = tdt ? tdt.streams : [];
+    tdtStreams.forEach((u) => allStreamUrls.add(u));
+    rawStreams.forEach((u) => allStreamUrls.add(u));
+  }
+
+  const uniqueStreamList = Array.from(allStreamUrls);
+  console.log(`\n  🧪 Checking health of ${uniqueStreamList.length} stream signals (concurrency=40)...`);
+
+  const onlineStreams = new Set();
+  const CONCURRENCY = 40;
+
+  async function checkStream(url) {
+    try {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 3500);
+      const res = await fetch(url, {
+        method: 'HEAD',
+        signal: controller.signal,
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        },
+      }).catch(async (err) => {
+        if (err.name === 'AbortError') return null;
+        return fetch(url, {
+          method: 'GET',
+          signal: controller.signal,
+          headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Range': 'bytes=0-1024',
+          },
+        }).catch(() => null);
+      });
+
+      clearTimeout(timer);
+      if (res && (res.ok || res.status === 206 || (res.status >= 300 && res.status < 400))) {
+        onlineStreams.add(url);
+      }
+    } catch {}
+  }
+
+  for (let i = 0; i < uniqueStreamList.length; i += CONCURRENCY) {
+    const chunk = uniqueStreamList.slice(i, i + CONCURRENCY);
+    await Promise.all(chunk.map((url) => checkStream(url)));
+  }
+
+  console.log(`  ✅ Health check completed. Online signals verified: ${onlineStreams.size} / ${uniqueStreamList.length}`);
+
+  // --- 7. Build structured output grouped by country ---
   /** @type {Map<string, { channels: Array }>} */
   const byCountry = new Map();
 
@@ -225,10 +278,16 @@ async function main() {
     const normKey = ch.name.toLowerCase().replace(/[^a-z0-9]/g, '');
     const tdt = tdtByName.get(normKey);
 
-    // Merge streams: TDTChannels streams prioritized (higher uptime/quality)
     const rawStreams = streamsByChannel.get(ch.id) || [];
     const tdtStreams = tdt ? tdt.streams : [];
     const combinedStreams = Array.from(new Set([...tdtStreams, ...rawStreams]));
+
+    // Reorder streams: ONLINE streams prioritized first!
+    const verifiedStreams = combinedStreams.sort((a, b) => {
+      const aOk = onlineStreams.has(a) ? 1 : 0;
+      const bOk = onlineStreams.has(b) ? 1 : 0;
+      return bOk - aOk;
+    });
 
     const finalLogo = sanitizeLogo((tdt && tdt.logo) || ch.logo || logoByChannel.get(ch.id) || null);
 
@@ -239,11 +298,11 @@ async function main() {
       epgId: tdt ? tdt.epgId : null,
       categories: ch.categories || [],
       website: ch.website || null,
-      streams: combinedStreams,
+      streams: verifiedStreams,
     });
   }
 
-  // --- 5. Sort countries and build final output array ---
+  // --- 8. Sort countries and build final output array ---
   const output = SORT_ORDER
     .filter((code) => byCountry.has(code))
     .map((code) => ({
