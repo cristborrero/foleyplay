@@ -1,28 +1,37 @@
-'use client';
-
-import { signOut } from 'next-auth/react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Play } from 'lucide-react';
 
 export default function PendingPage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center px-4">
-      <div className="max-w-md w-full text-center">
-        <div className="w-16 h-16 rounded-full bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center mx-auto mb-6">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-yellow-400">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-          </svg>
+    <div className="relative h-screen w-full flex flex-col bg-black overflow-hidden select-none">
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center opacity-50" 
+        style={{ backgroundImage: 'url(/bg-login-foleyplay.webp)' }} 
+      />
+      <div className="absolute inset-0 z-0 bg-gradient-to-t from-black via-black/40 to-black/70" />
+
+      <header className="absolute top-0 w-full p-6 md:p-8 z-50">
+        <Link href="/">
+          <Image src="/logo.webp" alt="FoleyPlay" width={150} height={42} className="h-8 w-auto object-contain" priority />
+        </Link>
+      </header>
+
+      <div className="relative z-10 flex-1 flex items-center justify-center px-4">
+        <div className="w-full max-w-md bg-black/80 backdrop-blur-md p-8 sm:p-10 rounded-2xl border border-white/10 shadow-[0_0_60px_rgba(0,0,0,0.9)] text-center flex flex-col items-center">
+          <h1 className="text-3xl font-black text-white mb-3 tracking-tight">Acceso Directo</h1>
+          <p className="text-gray-400 text-sm mb-8">
+            Haz clic abajo para ingresar al catálogo completo.
+          </p>
+
+          <Link
+            href="/browse"
+            className="w-full flex items-center justify-center gap-3 bg-fp-lime text-black font-extrabold text-lg py-4 rounded-xl hover:bg-fp-lime-bright hover:[box-shadow:0_0_30px_rgba(206,255,0,0.6)] transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+          >
+            <span>Entrar</span>
+            <Play size={20} className="fill-black ml-1" />
+          </Link>
         </div>
-
-        <h1 className="text-white text-2xl font-bold mb-3">Acceso pendiente</h1>
-        <p className="text-gray-400 text-sm leading-relaxed mb-8">
-          Tu cuenta fue registrada correctamente. El administrador revisará tu solicitud y te habilitará el acceso en breve.
-        </p>
-
-        <button
-          onClick={() => signOut({ callbackUrl: '/login' })}
-          className="text-sm text-gray-500 hover:text-white transition-colors"
-        >
-          Cerrar sesión
-        </button>
       </div>
     </div>
   );
