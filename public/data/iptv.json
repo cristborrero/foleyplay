@@ -126,13 +126,14 @@
       {
         "id": "Azteca7.mx",
         "name": "Azteca 7",
-        "logo": null,
+        "logo": "https://i.postimg.cc/cJFBYGST/Logo-de-Azteca-7-2024-(cropped).png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.tvazteca.com/azteca7",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755499.ts",
           "http://45.189.62.33:8002/play/a0fm/index.m3u8",
           "http://177.245.131.133:8080/AZTECA7/index.m3u8"
         ]
@@ -470,13 +471,15 @@
       {
         "id": "Canal5.mx",
         "name": "Canal 5",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/0/0f/Canal5Honduras2019.png/revision/latest?cb=20201025181219&path-prefix=es",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "http://www.televisa.com/canal5/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9189.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755513.ts",
           "http://45.181.87.106/CANAL5HD/index.m3u8",
           "http://190.11.225.124:5000/live/canal5_hd/playlist.m3u8",
           "http://45.5.119.43:4000/play/a05o/index.m3u8"
@@ -552,26 +555,29 @@
       {
         "id": "CineLatino.mx",
         "name": "CineLatino",
-        "logo": null,
+        "logo": "https://i.ibb.co/GPFShhQ/Cine-Latino-logo-svg.png",
         "epgId": null,
         "categories": [
           "movies"
         ],
         "website": "http://www.cinelatino.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/46104.ts",
           "http://45.162.193.35/CINELATINO_HD/index.m3u8"
         ]
       },
       {
         "id": "ClaroSports.mx",
         "name": "Claro Sports",
-        "logo": null,
+        "logo": "https://e7.pngegg.com/pngimages/580/710/png-clipart-logo-claro-sports-graphics-vivo-logo-de-claro-text-logo.png",
         "epgId": null,
         "categories": [
           "sports"
         ],
         "website": "https://www.marca.com/claro-mx/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9177.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9178.ts",
           "https://jmp2.uk/plu-6320d2755e54db000783fd87.m3u8"
         ]
       },
@@ -631,13 +637,14 @@
       {
         "id": "DistritoComedia.mx",
         "name": "Distrito Comedia",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/DistritoComediaLOGO2018.png/960px-DistritoComediaLOGO2018.png",
+        "logo": "https://i.ibb.co/vmj4F7G/DVCOME.png",
         "epgId": null,
         "categories": [
           "comedy"
         ],
         "website": "http://televisa-networks.com/programacion/distrito-comedia/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/122586.ts",
           "http://177.234.249.135:8888/DistritoComedia/index.m3u8"
         ]
       },
@@ -840,13 +847,14 @@
       {
         "id": "ImagenTV.mx",
         "name": "Imagen TV",
-        "logo": null,
+        "logo": "https://i.postimg.cc/fygDGLYN/Logo-Imagen-TV-MX.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.imagentv.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755531.ts",
           "https://igd-it-runtime.otteravision.com/igd/it/it.m3u8",
           "https://jmp2.uk/plu-64e35aff6b1fdb0008ea8441.m3u8"
         ]
@@ -934,13 +942,16 @@
       {
         "id": "LasEstrellas.mx",
         "name": "Las Estrellas",
-        "logo": null,
+        "logo": "https://i.ibb.co/vcHMB8F/ESTRE.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.lasestrellas.tv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/79078.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/542242.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755533.ts",
           "https://channel01-onlymex.akamaized.net/hls/live/2022749/event01/index.m3u8"
         ]
       },
@@ -1027,26 +1038,28 @@
       {
         "id": "MultimediosBajio.mx",
         "name": "Multimedios Bajio",
-        "logo": null,
+        "logo": "https://i.postimg.cc/6Q7jcQpG/Multimedios-Canal-Seis-Logo.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.multimedios.com/video/bajio-tv-en-vivo/v17351",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755540.ts",
           "https://mdstrm.com/live-stream-playlist/5d4b0fec848918070128c8cb.m3u8"
         ]
       },
       {
         "id": "MultimediosCDMX.mx",
         "name": "Multimedios CDMX",
-        "logo": null,
+        "logo": "https://i.postimg.cc/6Q7jcQpG/Multimedios-Canal-Seis-Logo.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.multimedios.com/television",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755541.ts",
           "https://mdstrm.com/live-stream-playlist/5f2d9d6ff17144074bd8a284.m3u8"
         ]
       },
@@ -1092,65 +1105,70 @@
       {
         "id": "MultimediosMonterrey.mx",
         "name": "Multimedios Monterrey",
-        "logo": null,
+        "logo": "https://i.postimg.cc/6Q7jcQpG/Multimedios-Canal-Seis-Logo.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.multimediostv.com/programas",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755543.ts",
           "https://mdstrm.com/live-stream-playlist/57b4dbf5dbbfc8f16bb63ce1.m3u8"
         ]
       },
       {
         "id": "MultimediosPuebla.mx",
         "name": "Multimedios Puebla",
-        "logo": null,
+        "logo": "https://i.postimg.cc/6Q7jcQpG/Multimedios-Canal-Seis-Logo.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.multimedios.com/video/puebla-tv-en-vivo/v17946",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755545.ts",
           "https://mdstrm.com/live-stream-playlist/5d56ed29c92dd106ff01543b.m3u8"
         ]
       },
       {
         "id": "MultimediosSaltillo.mx",
         "name": "Multimedios Saltillo",
-        "logo": null,
+        "logo": "https://i.postimg.cc/6Q7jcQpG/Multimedios-Canal-Seis-Logo.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.multimedios.com/video/saltillo-tv-en-vivo/v17784",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755544.ts",
           "https://mdstrm.com/live-stream-playlist/5d5d51a4e9a40e25f4a0332c.m3u8"
         ]
       },
       {
         "id": "MVSTV.mx",
         "name": "MVS TV",
-        "logo": null,
+        "logo": "https://i.postimg.cc/Pxs4Mzcj/images-q-tbn-ANd9Gc-QQG-Kjf-BPDR89TN0-r-Q773yfdk-Pxt58e5i-Sg-s.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://mvstv.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755546.ts",
           "https://dish.akamaized.net/Content/HLS_HLS_CLR/Live/channel(mvs)/variant.m3u8"
         ]
       },
       {
         "id": "MyTimeMovieNetwork.mx",
         "name": "MyTime Movie Network",
-        "logo": null,
+        "logo": "https://i.postimg.cc/L6tmxnqy/logo-white-ovbvbhqmjlyimijy1j8jdjgrs3eyx5g0if7icg9st0.png",
         "epgId": null,
         "categories": [
           "movies"
         ],
         "website": "https://mytimemovienetwork.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/327783.ts",
           "https://appletree-mytime-samsungmexico.amagi.tv/playlist.m3u8"
         ]
       },
@@ -1530,11 +1548,12 @@
       {
         "id": "Teleritmo.mx",
         "name": "Teleritmo",
-        "logo": null,
+        "logo": "https://i.postimg.cc/KcQWmwwN/209.png",
         "epgId": null,
         "categories": [],
         "website": "https://www.multimedios.com/television",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755553.ts",
           "https://mdstrm.com/live-stream-playlist/57b4dc126338448314449d0c.m3u8"
         ]
       },
@@ -1589,11 +1608,12 @@
       {
         "id": "TUDN.mx",
         "name": "TUDN",
-        "logo": null,
+        "logo": "https://i.postimg.cc/Y9gcy00T/images-(11).png",
         "epgId": null,
         "categories": [],
         "website": "https://www.tudn.mx/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755492.ts",
           "https://streaming.alwaysdata.net/tudn.php",
           "https://streamvidex.qzz.io/videx/tudnmx/index.m3u8"
         ]
@@ -1819,52 +1839,56 @@
       {
         "id": "TVPCuliacan.mx",
         "name": "TVP Culiacan",
-        "logo": null,
+        "logo": "https://i.postimg.cc/0j67Rzh0/340.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://tvpacifico.mx/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755556.ts",
           "https://5ca3e84a76d30.streamlock.net/gpacifico1/smil:gpculiacan.smil/playlist.m3u8"
         ]
       },
       {
         "id": "TVPLosMochis.mx",
         "name": "TVP Los Mochis",
-        "logo": null,
+        "logo": "https://i.postimg.cc/0j67Rzh0/340.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://tvpacifico.mx/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755609.ts",
           "https://5ca3e84a76d30.streamlock.net/gpacifico2/mochis.smil/playlist.m3u8"
         ]
       },
       {
         "id": "TVPMazatlan.mx",
         "name": "TVP Mazatlan",
-        "logo": null,
+        "logo": "https://i.postimg.cc/0j67Rzh0/340.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://tvpacifico.mx/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755557.ts",
           "https://5ca3e84a76d30.streamlock.net/gpacifico4/smil:mazatlan.smil/playlist.m3u8"
         ]
       },
       {
         "id": "TVPObregon.mx",
         "name": "TVP Obregon",
-        "logo": null,
+        "logo": "https://i.postimg.cc/0j67Rzh0/340.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://tvpacifico.mx/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755608.ts",
           "https://5ca3e84a76d30.streamlock.net/gpacifico3/obregon.smil/playlist.m3u8"
         ]
       },
@@ -2183,13 +2207,14 @@
       {
         "id": "5tv.ar",
         "name": "5tv",
-        "logo": null,
+        "logo": "https://www.tvcinco.com/images/logo2.jpg",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "http://www.tvcinco.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/712700.ts",
           "https://617c5175c970b.streamlock.net:4444/tvcinco/live1/playlist.m3u8",
           "http://www.coninfo.net:1935/tvcinco/live1/playlist.m3u8"
         ]
@@ -2369,8 +2394,8 @@
         ],
         "website": null,
         "streams": [
-          "https://redirector.rudo.video/hls-video/c54ac2799874375c81c1672abb700870537c5223/bravo/bravo.smil/playlist.m3u8",
-          "https://redirector.rudo.video/hls-video/c54ac2799874375c81c1672abb700870537c5223/bravo/bravo.smil/playlist.m3u8?did=b2201035844768f58630b7eef"
+          "https://redirector.rudo.video/hls-video/c54ac2799874375c81c1672abb700870537c5223/bravo/bravo.smil/playlist.m3u8?did=b2201035844768f58630b7eef",
+          "https://redirector.rudo.video/hls-video/c54ac2799874375c81c1672abb700870537c5223/bravo/bravo.smil/playlist.m3u8"
         ]
       },
       {
@@ -2459,11 +2484,12 @@
       {
         "id": "Canal13LaRioja.ar",
         "name": "Canal 13 La Rioja",
-        "logo": null,
+        "logo": "https://i.postimg.cc/WbxXYHh4/latest-(21).png",
         "epgId": null,
         "categories": [],
         "website": null,
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/712723.ts",
           "http://arcast.net:1935/mp/mp/playlist.m3u8"
         ]
       },
@@ -2555,11 +2581,12 @@
       {
         "id": "Canal22.ar",
         "name": "Canal 22",
-        "logo": null,
+        "logo": "https://files.diarioportal.com/diarioportal/images/2021/11/Canal-22.jpg",
         "epgId": null,
         "categories": [],
         "website": "https://canal22web.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/780247.ts",
           "https://5f700d5b2c46f.streamlock.net/canal22/canal22/playlist.m3u8"
         ]
       },
@@ -2661,11 +2688,12 @@
       {
         "id": "Canal4Posadas.ar",
         "name": "Canal 4 Posadas",
-        "logo": null,
+        "logo": "https://canalcuatroposadas.com.ar/wp-content/uploads/2024/02/logo-web.png",
         "epgId": null,
         "categories": [],
         "website": "http://www.canalcuatroposadas.org/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/712726.ts",
           "https://iptv.ixfo.com.ar:30443/live/C4POS/playlist.m3u8"
         ]
       },
@@ -2781,11 +2809,12 @@
       {
         "id": "Canal7Jujuy.ar",
         "name": "Canal 7 Jujuy",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/1/1f/514px-Canal_Siete_Jujuy_%28Logo_2015%29.png/revision/latest?cb=20191126073719",
         "epgId": null,
         "categories": [],
         "website": "http://www.radiovisionjujuy.com.ar/canal7dejujuy",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/712727.ts",
           "https://stream.arcast.live/canal7jujuy/ngrp:canal7jujuy_all/playlist.m3u8"
         ]
       },
@@ -2896,11 +2925,12 @@
       {
         "id": "Canal9Litoral.ar",
         "name": "Canal 9 Litoral",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Canal_9_Litoral_2021.png",
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/d/d5/Canal_9_Litoral_(Logo_2021).png/revision/latest?cb=20220305163041",
         "epgId": null,
         "categories": [],
         "website": "https://9digital.com.ar/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/712728.ts",
           "https://stream.arcast.live/ahora/ahora/playlist.m3u8"
         ]
       },
@@ -3321,36 +3351,39 @@
           "http://45.185.163.75:8000/play/a016/index.m3u8",
           "http://45.134.141.161:2200/ARG/Disney_Junior/index.m3u8",
           "http://179.60.51.134:8888/DISNEY-JR/index.m3u8",
+          "http://bantel-cdn1.iptvperu.tv:1935/btnscrtn/disney_jr.stream/playlist.m3u8",
           "http://177.245.131.133:8080/DISNEYJR/index.m3u8",
           "http://45.189.62.33:8002/play/a0bz/index.m3u8",
           "http://200.91.32.158:8080/disneyjr/index.m3u8",
-          "http://tr.live.clarovtrcdn.vtrplay.com/disneyjrhdchi/vxfmt=dp/playlist.m3u8?device_profile=STB_HLS_VCAS_LIVE_HD",
-          "http://bantel-cdn1.iptvperu.tv:1935/btnscrtn/disney_jr.stream/playlist.m3u8"
+          "http://tr.live.clarovtrcdn.vtrplay.com/disneyjrhdchi/vxfmt=dp/playlist.m3u8?device_profile=STB_HLS_VCAS_LIVE_HD"
         ]
       },
       {
         "id": "EcoTV.ar",
         "name": "Eco TV",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/5/53/ECO_TV_Panama.svg/revision/latest/scale-to-width-down/751?cb=20230430190218",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.eleco.com.ar/ecotv",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/265862.ts",
           "https://stream.arcast.com.ar/ecotv/ngrp:ecotv_all/playlist.m3u8"
         ]
       },
       {
         "id": "ElGourmet.ar",
         "name": "El Gourmet",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/b/b2/El_Gourmet_logo.png",
+        "logo": "https://i.ibb.co/Bst5TmD/elgorid3er.png",
         "epgId": null,
         "categories": [
           "cooking"
         ],
         "website": "http://elgourmet.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/79470.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/79060.ts",
           "http://177.234.249.178:8888/EL-GOURMET/index.m3u8",
           "http://177.245.131.133:8080/GOURMET/index.m3u8",
           "http://200.91.32.158:8080/gourmet/index.m3u8"
@@ -3359,13 +3392,14 @@
       {
         "id": "ElNueve.ar",
         "name": "El Nueve",
-        "logo": null,
+        "logo": "https://i.postimg.cc/MT3CrmCs/Canal-9-ba-logo.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.elnueve.com.ar/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/712708.ts",
           "http://playcom.trapemn.tv:1935/transcoderip/canal9.stream/playlist.m3u8"
         ]
       },
@@ -3385,13 +3419,15 @@
       {
         "id": "ElTrece.ar",
         "name": "El Trece",
-        "logo": null,
+        "logo": "https://i.postimg.cc/cC3cyWfs/TRECE.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.eltrecetv.com.ar/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/13787.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/712710.ts",
           "https://livetrx01.vodgc.net/eltrecetv/index.m3u8",
           "http://190.108.83.69:8000/play/a01d/index.m3u8"
         ]
@@ -3399,13 +3435,14 @@
       {
         "id": "EuropaEuropa.ar",
         "name": "Europa Europa",
-        "logo": null,
+        "logo": "https://i.ibb.co/SKbQ4mG/euroapa.png",
         "epgId": null,
         "categories": [
           "series"
         ],
         "website": "https://www.europaeuropa.tv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/46125.ts",
           "http://181.119.93.83:8000/play/a1sr/index.m3u8",
           "http://200.91.32.158:8080/europa/index.m3u8"
         ]
@@ -3413,13 +3450,14 @@
       {
         "id": "FilmArts.ar",
         "name": "Film & Arts",
-        "logo": null,
+        "logo": "https://i.ibb.co/wyWS3fr/3245rewf3456gfcxhyti87.png",
         "epgId": null,
         "categories": [
           "movies"
         ],
         "website": "https://www.filmandarts.tv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/46128.ts",
           "http://200.91.32.158:8080/filmarts/index.m3u8"
         ]
       },
@@ -3581,13 +3619,14 @@
       {
         "id": "MetroTV.ar",
         "name": "Metro TV",
-        "logo": null,
+        "logo": "https://www.lametrohn.com/static/img/grupoStereo.png",
         "epgId": null,
         "categories": [
           "entertainment"
         ],
         "website": "https://www.metropolitanafm.com.ar/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/621304.ts",
           "https://streamtv12.ddns.net:5443/LiveApp/streams/193945633734205616732920.m3u8",
           "https://op-group1-swiftservehd-1.dens.tv/h/h12/index.m3u8",
           "https://op-group1-swiftservehd-1.dens.tv/h/h211/index.m3u8"
@@ -3636,13 +3675,14 @@
       {
         "id": "NeoTV.ar",
         "name": "Neo TV",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/1/1a/Neo_TV_Florencio_Varela.png/revision/latest/scale-to-width-down/1000?cb=20250702200816",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://neotvdigital.com.ar/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/712735.ts",
           "https://videostream.shockmedia.com.ar:19360/neotvdigital/neotvdigital.m3u8"
         ]
       },
@@ -3662,13 +3702,14 @@
       {
         "id": "NETTV.ar",
         "name": "NET TV",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/2/21/NETTV2018.png/revision/latest/scale-to-width-down/1000?cb=20210315130135&path-prefix=es",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.canalnet.tv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/712736.ts",
           "http://45.134.141.161:2200/ARG/Net_TV/index.m3u8",
           "https://unlimited1-us.dps.live/nettv/nettv.smil/playlist.m3u8",
           "https://unlimited6-cl.dps.live/nettv/nettv.smil/playlist.m3u8",
@@ -3705,7 +3746,7 @@
       {
         "id": "PlimPlim.ar",
         "name": "Plim Plim",
-        "logo": null,
+        "logo": "https://i.postimg.cc/YSNJNH2Q/latest-cb-20250906030459.webp",
         "epgId": null,
         "categories": [
           "animation",
@@ -3713,6 +3754,7 @@
         ],
         "website": "https://plimplim.tv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/771571.ts",
           "http://8.243.126.131:8000/play/a0od/index.m3u8"
         ]
       },
@@ -4050,13 +4092,14 @@
       {
         "id": "Telefe.ar",
         "name": "Telefe",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Telefe_%28nuevo_logo%29.png/960px-Telefe_%28nuevo_logo%29.png",
+        "logo": "https://i.postimg.cc/x8MSJbZX/330px-Telefe-(nuevo-logo).png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://telefe.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/712714.ts",
           "http://201.190.41.246:8822/play/a036/index.m3u8",
           "http://playcom.trapemn.tv:1935/transcoderip/telefe.stream/playlist.m3u8"
         ]
@@ -4112,11 +4155,12 @@
       {
         "id": "Telemax.ar",
         "name": "Telemax",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Telemax_Argentina_%282018%29.png/960px-Telemax_Argentina_%282018%29.png",
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/2/29/08%29Telemax_%282018%29.png/revision/latest?cb=20220113152551&path-prefix=es",
         "epgId": null,
         "categories": [],
         "website": "https://www.diario26.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/712740.ts",
           "https://stream-gtlc.telecentro.net.ar/hls/telemaxhls/main.m3u8"
         ]
       },
@@ -4234,13 +4278,14 @@
       {
         "id": "TyCSports.ar",
         "name": "TyC Sports",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/TyC_Sports_logo.svg/960px-TyC_Sports_logo.svg.png",
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/6/61/TyC_Sports.png/revision/latest?cb=20190620182054&path-prefix=es",
         "epgId": null,
         "categories": [
           "sports"
         ],
         "website": "http://www.tycsports.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/712754.ts",
           "http://45.181.87.106/TYCSPORTSHD/index.m3u8",
           "https://amg26268-amg26268c14-freelivesports-emea-10267.playouts.now.amagi.tv/ts-us-e2-n2/playlist/amg26268-sportsstudio-tycsports-freelivesportsemea/playlist.m3u8",
           "https://live-04-11-tyc24.vodgc.net/tyc24/index_tyc24_1080.m3u8",
@@ -4563,13 +4608,14 @@
       {
         "id": "Canal1.co",
         "name": "Canal 1",
-        "logo": null,
+        "logo": "https://www.lateja.cr/resizer/v2/A5QSG7J2ERAN7DYBXWEGY73H2I.png?smart=true&auth=5a15ccfb58e65246fec673de12905a6b5d1388294e51d358b77ca360e5c0c9d9&width=1440&height=810",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://canal1.com.co/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/601407.ts",
           "http://190.61.43.123:8081/CANAL1HD/index.m3u8",
           "http://177.234.249.135:8888/CANAL_UNO/index.m3u8",
           "http://138.121.15.230:9002/CANAL-UNO/index.m3u8",
@@ -4671,13 +4717,14 @@
       {
         "id": "CanalCapital.co",
         "name": "Canal Capital",
-        "logo": null,
+        "logo": "https://i.postimg.cc/KzSShGMh/latest-8.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.canalcapital.gov.co/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/13792.ts",
           "http://138.121.15.230:9002/CANAL-CAPITAL/index.m3u8",
           "https://mdstrm.com/live-stream-playlist/6952dc88cb62083467eb6ab4.m3u8"
         ]
@@ -4773,8 +4820,8 @@
         ],
         "website": "https://www.canalmundovision.com/",
         "streams": [
-          "https://video.ejeserver.com/live/mundovisiontv.m3u8",
-          "https://movil.ejeserver.com/live/mundovisiontv.m3u8"
+          "https://movil.ejeserver.com/live/mundovisiontv.m3u8",
+          "https://video.ejeserver.com/live/mundovisiontv.m3u8"
         ]
       },
       {
@@ -4850,26 +4897,28 @@
       {
         "id": "CanalTRO.co",
         "name": "Canal TRO",
-        "logo": null,
+        "logo": "https://i.postimg.cc/SKwqQLH1/1000-1.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.canaltro.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/13794.ts",
           "https://liveingesta118.cdnmedia.tv/canaltro2live/smil:live.smil/playlist.m3u8"
         ]
       },
       {
         "id": "CanalTROPlus.co",
         "name": "Canal TRO +",
-        "logo": null,
+        "logo": "https://i.postimg.cc/SKwqQLH1/1000-1.png",
         "epgId": null,
         "categories": [
           "entertainment"
         ],
         "website": "https://www.canaltro.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/13794.ts",
           "https://liveingesta118.cdnmedia.tv/canaltro2live/smil:troplus.smil/playlist.m3u8"
         ]
       },
@@ -5066,13 +5115,14 @@
       {
         "id": "Cristovision.co",
         "name": "Cristovision",
-        "logo": null,
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/7/78/Cristovisi%C3%B3n_Logo.png",
         "epgId": null,
         "categories": [
           "religious"
         ],
         "website": "https://cristovision.tv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/335720.ts",
           "https://5fc584f3f19c9.streamlock.net/cristovision/videocristovision/playlist.m3u8",
           "http://186.148.196.82:8001/play/a0c3"
         ]
@@ -5371,13 +5421,15 @@
       {
         "id": "NTN24.co",
         "name": "NTN24",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/c/cc/NTN_24_%282014-%29.png/revision/latest?cb=20210307130316&path-prefix=es",
         "epgId": null,
         "categories": [
           "news"
         ],
         "website": "https://www.ntn24.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/79428.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/13788.ts",
           "http://181.78.8.199:8000/play/a0a6/index.m3u8"
         ]
       },
@@ -5463,28 +5515,31 @@
       {
         "id": "RCNMas.co",
         "name": "RCN Mas",
-        "logo": null,
+        "logo": "https://i.ibb.co/CshKYKYr/MJzu-RAN-1-removebg-preview.png",
         "epgId": null,
         "categories": [
           "entertainment"
         ],
         "website": "https://www.rcntotal.com/",
         "streams": [
-          "https://jmp2.uk/plu-69de4ad924a6d521f8b0a348.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/529355.ts",
           "https://rcntv-rcnmas-1-us.plex.wurl.tv/playlist.m3u8",
-          "https://rcntv-rcnmas-1-us.roku.wurl.tv/playlist.m3u8"
+          "https://rcntv-rcnmas-1-us.roku.wurl.tv/playlist.m3u8",
+          "https://jmp2.uk/plu-69de4ad924a6d521f8b0a348.m3u8"
         ]
       },
       {
         "id": "RCNNovelas.co",
         "name": "RCN Novelas",
-        "logo": null,
+        "logo": "https://i.ibb.co/dW0RXN7/rcnnovelas.png",
         "epgId": null,
         "categories": [
           "entertainment"
         ],
         "website": "https://www.rcnnovelas.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/13785.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/13789.ts",
           "http://190.61.43.123:8081/RCNNOVELAS/index.m3u8",
           "http://181.78.8.199:8000/play/a0a7/index.m3u8"
         ]
@@ -5573,13 +5628,15 @@
       {
         "id": "SenalColombia.co",
         "name": "Senal Colombia",
-        "logo": null,
+        "logo": "https://i.postimg.cc/Wzd4YbLJ/latest-7.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.senalcolombia.tv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/13795.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/606312.ts",
           "https://streaming.rtvc.gov.co/TV_Senal_Colombia_live/smil:live.smil/playlist.m3u8"
         ]
       },
@@ -5691,13 +5748,14 @@
       {
         "id": "Teleantioquia.co",
         "name": "Teleantioquia",
-        "logo": null,
+        "logo": "https://i.postimg.cc/cCFbC0rn/1000-2.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.teleantioquia.co/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/13790.ts",
           "https://liveingesta118.cdnmedia.tv/teleantioquialive/smil:dvrlive.smil/playlist.m3u8"
         ]
       },
@@ -5717,26 +5775,28 @@
       {
         "id": "Telecafe.co",
         "name": "Telecafe",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/5/54/Telecaf%C3%A9_2020.png/revision/latest/scale-to-width-down/1000?cb=20201219143033&path-prefix=es",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://telecafe.gov.co/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/13796.ts",
           "https://liveingesta318.cdnmedia.tv/telecafelive/smil:rtmp01.smil/playlist.m3u8"
         ]
       },
       {
         "id": "Telecaribe.co",
         "name": "Telecaribe",
-        "logo": null,
+        "logo": "https://i.ibb.co/DPFpvgJN/Dise-o-sin-t-tulo-12-removebg-preview.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://telecaribe.co/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/13797.ts",
           "https://liveingesta118.cdnmedia.tv/telecaribetvlive/smil:rtmp01.smil/playlist.m3u8"
         ]
       },
@@ -5756,26 +5816,28 @@
       {
         "id": "Teleislas.co",
         "name": "Teleislas",
-        "logo": null,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo-FMG1F83m4APRilXD6LVoYca_shvmVDNqFAaAkqE3LhiJEQyfWy_v07Yk9bfj4NK70s&usqp=CAU",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://teleislas.gov.co/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/152964.ts",
           "https://5ab772334c39c.streamlock.net/live-teleislas/teleislas/playlist.m3u8"
         ]
       },
       {
         "id": "Telemedellin.co",
         "name": "Telemedellin",
-        "logo": null,
+        "logo": "https://i.postimg.cc/MTr45zmb/1000.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://telemedellin.tv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/13798.ts",
           "https://liveingesta118.cdnmedia.tv/tvtelemedellinlive/smil:rtmp01.smil/playlist.m3u8"
         ]
       },
@@ -6323,11 +6385,12 @@
       {
         "id": "CampusTV.cl",
         "name": "CampusTV",
-        "logo": null,
+        "logo": "https://icon.guard447.cyou/logos/LAT_centroamerica/hon_campus_tv.png",
         "epgId": null,
         "categories": [],
         "website": "http://campustv.utalca.cl/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9203.ts",
           "https://pantera1-100gb-cl-movistar.dps.live/campustv/campustv.smil/playlist.m3u8"
         ]
       },
@@ -6347,13 +6410,14 @@
       {
         "id": "Canal13.cl",
         "name": "Canal 13",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Canal_13_2025.svg/960px-Canal_13_2025.svg.png",
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/1/1b/Canal13GT2023.png/revision/latest?cb=20230225184026",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.13.cl/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9182.ts",
           "http://45.162.193.35/CANAL13_HD/index.m3u8",
           "https://pantera1-100gb-cl-movistar.dps.live/t13radio/t13radio.smil/playlist.m3u8",
           "http://38.250.127.17:9800/play/a067/index.m3u8",
@@ -6559,13 +6623,15 @@
       {
         "id": "ChileVision.cl",
         "name": "ChileVision",
-        "logo": null,
+        "logo": "https://i.postimg.cc/qMYhfTCW/chilevision7955-removebg-preview.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.chilevision.cl/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9826.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9828.ts",
           "http://45.162.193.35/CHILEVISION/index.m3u8"
         ]
       },
@@ -6700,13 +6766,14 @@
       {
         "id": "CRTV.cl",
         "name": "CRTV",
-        "logo": "https://i2.paste.pics/bf68b159547597c39574aec9dd7c626a.png",
+        "logo": "https://crtv.pe/wp-content/uploads/2020/08/LOGO-CR.png",
         "epgId": null,
         "categories": [
           "sports"
         ],
         "website": "https://crtvchile.cl/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/33502.ts",
           "https://stmv2.voxtvhd.com.br/crtvchile/crtvchile/playlist.m3u8"
         ]
       },
@@ -7210,13 +7277,14 @@
       {
         "id": "ITVPatagonia.cl",
         "name": "ITV Patagonia",
-        "logo": "https://rhk91h.infiniteuploads.cloud/2025/08/Logo-ITV-Patagonia.jpg",
+        "logo": "https://i.postimg.cc/y8C59SC4/Pantallazo-25-10-2025-12-55-43.jpg",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.itvpatagonia.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/721150.ts",
           "https://unlimited1-us.dps.live/itv/itv.smil/playlist.m3u8",
           "https://redirector.dps.live/hls/itv/playlist.m3u8",
           "https://unlimited1-cl.dps.live/itv/itv.smil/playlist.m3u8"
@@ -7363,6 +7431,7 @@
         ],
         "website": "https://www.lared.cl/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/231767.ts",
           "http://45.162.193.35/LA_RED/index.m3u8",
           "https://ds5i0a12qngha.cloudfront.net/ts:abr.m3u8",
           "https://iptv2.intersurtv.cl/LA_RED/index.m3u8",
@@ -8415,7 +8484,7 @@
       {
         "id": "StarChannel.cl",
         "name": "Star Channel",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Star_Channel_2020.svg/960px-Star_Channel_2020.svg.png",
+        "logo": "https://i.postimg.cc/G2vLPt1d/Star-Channel-2020.jpg",
         "epgId": null,
         "categories": [
           "movies",
@@ -8423,6 +8492,7 @@
         ],
         "website": "https://www.star-latam.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/327820.ts",
           "http://138.121.15.230:9002/STAR-CHANNEL/index.m3u8"
         ]
       },
@@ -8566,19 +8636,21 @@
         ],
         "website": "https://www.teletrak.cl/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/313197.ts",
           "https://unlimited6-cl.dps.live/sportinghd/sportinghd.smil/playlist.m3u8"
         ]
       },
       {
         "id": "Televida.cl",
         "name": "Televida",
-        "logo": null,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkQ_P2qA--nO0fQ2Pgyq6O6hA-hM2SzA2-ww&s",
         "epgId": null,
         "categories": [
           "religious"
         ],
         "website": "https://www.televida.cl/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/179972.ts",
           "https://tls-cl.cdnz.cl/televida/live/playlist.m3u8"
         ]
       },
@@ -8653,6 +8725,7 @@
         ],
         "website": "https://tvturf.cl/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/313207.ts",
           "https://tvturf4.janus.cl/playlist/stream.m3u8?d=w&id="
         ]
       },
@@ -8685,13 +8758,15 @@
       {
         "id": "TVChile.cl",
         "name": "TV Chile",
-        "logo": null,
+        "logo": "https://i.postimg.cc/BQ2tK9vJ/Logo-de-TV-Chile.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "http://www.tvchile.cl/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/542570.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/542571.ts",
           "https://mdstrm.com/live-stream-playlist/533adcc949386ce765657d7c.m3u8",
           "https://edgectc.com/TV_CHILE_HD/index.m3u8"
         ]
@@ -8943,13 +9018,14 @@
       {
         "id": "VClassicTV.cl",
         "name": "V Classic TV",
-        "logo": null,
+        "logo": "https://pbs.twimg.com/profile_images/1524926455259471888/88aaf_TF_400x400.jpg",
         "epgId": null,
         "categories": [
           "music"
         ],
         "website": "https://www.radiocoquimbo.cl/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/284178.ts",
           "https://5eaccbab48461.streamlock.net:1936/8112/8112/playlist.m3u8"
         ]
       },
@@ -8980,13 +9056,14 @@
       {
         "id": "ViaX.cl",
         "name": "Via X",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/d/d3/VIAX-oficial.png",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/8/8d/VIA_X.png",
         "epgId": null,
         "categories": [],
         "website": "https://www.canalviax.com/",
         "streams": [
-          "http://45.162.193.35/VIAX/index.m3u8",
-          "http://45.170.130.224:8000/play/a025/index.m3u8"
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/235662.ts",
+          "http://45.170.130.224:8000/play/a025/index.m3u8",
+          "http://45.162.193.35/VIAX/index.m3u8"
         ]
       },
       {
@@ -9063,11 +9140,12 @@
       {
         "id": "ZonaLatina.cl",
         "name": "Zona Latina",
-        "logo": null,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6TpmeLVvfRgRt57eEnafP7rViLBeNIElAtQ&s",
         "epgId": null,
         "categories": [],
         "website": "https://www.zonalatinatv.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/715105.ts",
           "http://45.162.193.35/ZONALATINA/index.m3u8",
           "http://45.170.130.224:8000/play/a00x/index.m3u8"
         ]
@@ -9326,13 +9404,14 @@
       {
         "id": "AsiriTV.pe",
         "name": "AsiriTV",
-        "logo": null,
+        "logo": "https://i.postimg.cc/Fs4RsPjT/images-q-tbn-ANd9Gc-SIx4-km-OXJSh-AQGHVYSg5-OVk1Wzj7fb-WS1A-s.jpg",
         "epgId": null,
         "categories": [
           "culture"
         ],
         "website": "https://asiritv.pe/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/487741.ts",
           "https://video2.lhdserver.es/asiritv/live.m3u8"
         ]
       },
@@ -9352,13 +9431,14 @@
       {
         "id": "ATV.pe",
         "name": "ATV",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/ATV_Peru_2025.svg/1920px-ATV_Peru_2025.svg.png",
+        "logo": "https://pbs.twimg.com/profile_images/1034455064633647104/SD5M8e12_400x400.jpg",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.atv.pe/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9484.ts",
           "https://d19e55ehz2il4i.cloudfront.net/ts:abr.m3u8",
           "http://187.102.210.46/ATV/index.m3u8",
           "https://alba-pe-atv-atv.stream.mediatiquestream.com/index.m3u8"
@@ -9367,13 +9447,14 @@
       {
         "id": "ATVSur.pe",
         "name": "ATV Sur",
-        "logo": null,
+        "logo": "https://cdn.m3u.cl/logo/1492_ATV_Sur.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.atv.pe/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9485.ts",
           "http://bantel-cdn1.iptvperu.tv:1935/btnscrtn/atvsur.stream/playlist.m3u8",
           "https://dnhmqt6n0lkaq.cloudfront.net/ts:abr.m3u8",
           "https://alba-pe-atv-atvsur.stream.mediatiquestream.com/index.m3u8"
@@ -9382,13 +9463,14 @@
       {
         "id": "ATVPlus.pe",
         "name": "ATV+",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/5/56/ATV%2B_logo_2020.png",
+        "logo": "https://pbs.twimg.com/profile_images/1034455064633647104/SD5M8e12_400x400.jpg",
         "epgId": null,
         "categories": [
           "news"
         ],
         "website": "https://www.atv.pe/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9484.ts",
           "http://177.234.249.178:8888/ATV/index.m3u8",
           "http://179.60.51.134:8888/ATV/index.m3u8",
           "http://bantel-cdn1.iptvperu.tv:1935/btnscrtn/atvplus.stream/playlist.m3u8",
@@ -9427,13 +9509,14 @@
       {
         "id": "BHTV.pe",
         "name": "BHTV",
-        "logo": null,
+        "logo": "https://www.m3u.cl/logo/695_BHTV.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://bhtv.pe/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/484866.ts",
           "https://sc1.wasidata.com/Bhtv/index.fmp4.m3u8"
         ]
       },
@@ -9598,13 +9681,14 @@
       {
         "id": "Conecta2TV.pe",
         "name": "Conecta2TV",
-        "logo": null,
+        "logo": "https://conecta2.pe/wp-content/uploads/2023/09/conecta2-logo.png",
         "epgId": null,
         "categories": [
           "news"
         ],
         "website": "https://conecta2.pe/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/487745.ts",
           "https://live.obslivestream.com/conecta2/index.m3u8"
         ]
       },
@@ -9773,8 +9857,8 @@
         ],
         "website": "https://exitosanoticias.pe/",
         "streams": [
-          "https://luna-4-video.mediaserver.digital/exitosatv_233b-4b49-a726-5a451262/index.m3u8",
-          "http://187.102.210.46/EXITOSA/index.m3u8"
+          "http://187.102.210.46/EXITOSA/index.m3u8",
+          "https://luna-4-video.mediaserver.digital/exitosatv_233b-4b49-a726-5a451262/index.m3u8"
         ]
       },
       {
@@ -9808,11 +9892,12 @@
       {
         "id": "ForoTV.pe",
         "name": "Foro TV",
-        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTarTiQHz2Pl0Bpx9g7JV_eaz4V4f61wtGyRw&s",
+        "logo": "https://vik384kdmf.ddns.net:8080/images/016f5f663652bb9f66f2eb264ea9a2e1.png",
         "epgId": null,
         "categories": [],
         "website": "https://www.forotv.pe/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755529.ts",
           "https://mc.servidor.stream:19360/8274/8274.m3u8"
         ]
       },
@@ -9934,13 +10019,14 @@
       {
         "id": "JN19.pe",
         "name": "JN 19",
-        "logo": null,
+        "logo": "https://cdn.m3u.cl/logo/690_JN19.png",
         "epgId": null,
         "categories": [
           "religious"
         ],
         "website": "http://www.jn19television.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/487746.ts",
           "https://servilive.com:3028/live/jntv19live.m3u8",
           "http://187.102.210.46/JN19/index.m3u8"
         ]
@@ -10148,13 +10234,14 @@
       {
         "id": "MasterTV.pe",
         "name": "Master TV",
-        "logo": null,
+        "logo": "https://mastertvradio.com/wp-content/uploads/2024/11/logoweb3.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://mastertvradio.com/tv",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/487753.ts",
           "https://live.obslivestream.com/mastertv/index.m3u8",
           "https://live-evg5.tv360.bitel.com.pe/bitel/mastertvSRT/playlist.m3u8"
         ]
@@ -10253,13 +10340,15 @@
       {
         "id": "MonterricoTV.pe",
         "name": "Monterrico TV",
-        "logo": null,
+        "logo": "https://directostv.teleame.com/wp-content/uploads/2017/10/monterricotv.png",
         "epgId": null,
         "categories": [
           "sports"
         ],
         "website": "https://hipodromodemonterrico.com.pe/monterrico/home",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/309769.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/313193.ts",
           "https://h.jcp.live.opencaster.com/play_src/index.m3u8"
         ]
       },
@@ -10279,13 +10368,14 @@
       {
         "id": "MovistarPlus.pe",
         "name": "Movistar Plus",
-        "logo": null,
+        "logo": "https://i.postimg.cc/CxtLMVH3/Movistar-Plus-2022.png",
         "epgId": null,
         "categories": [
           "entertainment"
         ],
         "website": "https://www.movistarplus.pe/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/414777.ts",
           "http://45.4.1.201:8000/play/a19y/index.m3u8"
         ]
       },
@@ -10306,13 +10396,14 @@
       {
         "id": "Nativa.pe",
         "name": "Nativa",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/4/43/Nativa.png/revision/latest/scale-to-width-down/330?cb=20220711233101&path-prefix=es",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://ntv.pe/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/598556.ts",
           "https://oneplay.iptvperu.tv:1936/static/nativa1.stream/chunks.m3u8",
           "http://187.102.210.46/NATIVATV/index.m3u8"
         ]
@@ -10334,13 +10425,14 @@
       {
         "id": "NeoTV.pe",
         "name": "Neo TV",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/1/1a/Neo_TV_Florencio_Varela.png/revision/latest/scale-to-width-down/1000?cb=20250702200816",
         "epgId": null,
         "categories": [
           "entertainment"
         ],
         "website": null,
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/712735.ts",
           "http://bantel-cdn1.iptvperu.tv:1935/btnscrtn/DigitalTV/playlist.m3u8",
           "https://live-evg7.tv360.bitel.com.pe/bitel/neotvSRT/playlist.m3u8"
         ]
@@ -10558,13 +10650,14 @@
       {
         "id": "RadioOndaDigital.pe",
         "name": "Radio Onda Digital",
-        "logo": null,
+        "logo": "https://static.mytuner.mobi/media/tvos_radios/pj5fuwe7gjeu.png",
         "epgId": null,
         "categories": [
           "music"
         ],
         "website": "https://radioondadigital.com/cabinaenvivo/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/601360.ts",
           "https://live.ondadigitaltv.com/RADIOODTV/index.m3u8"
         ]
       },
@@ -10747,8 +10840,8 @@
         "categories": [],
         "website": "https://www.selvatv.pe/senal-en-vivo/",
         "streams": [
-          "https://videoserver.tmcreativos.com:19360/selvatv/selvatv.m3u8",
-          "https://live-evg7.tv360.bitel.com.pe/bitel/selvatv/playlist.m3u8"
+          "https://live-evg7.tv360.bitel.com.pe/bitel/selvatv/playlist.m3u8",
+          "https://videoserver.tmcreativos.com:19360/selvatv/selvatv.m3u8"
         ]
       },
       {
@@ -10790,11 +10883,12 @@
       {
         "id": "SolTV.pe",
         "name": "SolTV",
-        "logo": null,
+        "logo": "https://i.postimg.cc/pdYC4cJz/images-q-tbn-ANd9Gc-S8iy-WLHmr06o4Wxa2b-Knc-ZUc1Rc-Vqgo-VWYiw-s.png",
         "epgId": null,
         "categories": [],
         "website": "https://soltvperu.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/715104.ts",
           "https://live20.bozztv.com/giatv/giatv-soltvenvivo/soltvenvivo/chunks.m3u8"
         ]
       },
@@ -10827,11 +10921,12 @@
       {
         "id": "SuperCanal.pe",
         "name": "Super Canal",
-        "logo": null,
+        "logo": "https://i.postimg.cc/mgWrkm7s/images-q-tbn-ANd9Gc-Qbs8dv6o-HDos-CSsqwcai-J8j7f5t-TEOv-HPjg-s.jpg",
         "epgId": null,
         "categories": [],
         "website": "https://www.supercanal.com.pe/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/85565.ts",
           "https://live.obslivestream.com/supercanal/index.m3u8",
           "https://live-evg7.tv360.bitel.com.pe/bitel/supercanalSRT/playlist.m3u8"
         ]
@@ -10885,8 +10980,8 @@
         "categories": [],
         "website": "https://radionoticiasatipo.com/tv-en-vivo/",
         "streams": [
-          "https://live-evg7.tv360.bitel.com.pe/bitel/teleselva/playlist.m3u8",
-          "https://7.innovatestream.pe:19360/tvnoticiassatipo/tvnoticiassatipo.m3u8"
+          "https://7.innovatestream.pe:19360/tvnoticiassatipo/tvnoticiassatipo.m3u8",
+          "https://live-evg7.tv360.bitel.com.pe/bitel/teleselva/playlist.m3u8"
         ]
       },
       {
@@ -10979,8 +11074,8 @@
         ],
         "website": "https://www.turbomix.com.pe/",
         "streams": [
-          "https://live-evg11.tv360.bitel.com.pe/bitel/turbomixSRT/playlist.m3u8",
-          "https://7.innovatestream.pe:19360/turbomixoficial/turbomixoficial.m3u8"
+          "https://7.innovatestream.pe:19360/turbomixoficial/turbomixoficial.m3u8",
+          "https://live-evg11.tv360.bitel.com.pe/bitel/turbomixSRT/playlist.m3u8"
         ]
       },
       {
@@ -10997,13 +11092,14 @@
       {
         "id": "TVCosmos.pe",
         "name": "TV Cosmos",
-        "logo": null,
+        "logo": "https://directostv.teleame.com/wp-content/uploads/2017/10/TV-Cosmos-Per%C3%BA-en-vivo-Online.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://tvcosmos.pe",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/192747.ts",
           "https://videoserver.tmcreativos.com:19360/tvcosmos/tvcosmos.m3u8"
         ]
       },
@@ -11036,13 +11132,15 @@
       {
         "id": "TVMAX.pe",
         "name": "TV MAX",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/0/08/TVMAX_logo.png/revision/latest?cb=20220208160004&path-prefix=es",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": null,
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/265854.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/265861.ts",
           "https://live-evg8.tv360.bitel.com.pe/bitel/nexSRT_TRA/playlist.m3u8"
         ]
       },
@@ -11076,13 +11174,14 @@
       {
         "id": "TVPeruNoticias.pe",
         "name": "TV Peru Noticias",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/TV_Per%C3%BA_Noticias_-_2019_logo.png/960px-TV_Per%C3%BA_Noticias_-_2019_logo.png",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Tv_Per%C3%BA_-_Logo_2019_Reducido_%28TVPE%29.svg/1200px-Tv_Per%C3%BA_-_Logo_2019_Reducido_%28TVPE%29.svg.png",
         "epgId": null,
         "categories": [
           "news"
         ],
         "website": "https://www.tvperu.gob.pe/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9504.ts",
           "http://bantel-cdn1.iptvperu.tv:1935/btnscrtn/tvperunoticias.stream/playlist.m3u8"
         ]
       },
@@ -11178,13 +11277,14 @@
       {
         "id": "Unitel.pe",
         "name": "Unitel",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/d/de/Unitel_HD_Logo.png/revision/latest?cb=20220209081052",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://unitelperu.pe/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/79397.ts",
           "https://play.agenciastreaming.com:8081/uniteltv/index.m3u8"
         ]
       },
@@ -11202,11 +11302,12 @@
       {
         "id": "UranioTV.pe",
         "name": "Uranio TV",
-        "logo": null,
+        "logo": "https://uraniotv.pe/wp-content/uploads/2021/11/favicon.png",
         "epgId": null,
         "categories": [],
         "website": "https://uraniotv.pe/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/85563.ts",
           "https://live.obslivestream.com/uraniotv/index.m3u8",
           "https://live-evg8.tv360.bitel.com.pe/bitel/uranioyurimaguasSRT/playlist.m3u8"
         ]
@@ -11228,26 +11329,28 @@
       {
         "id": "ViaAltomayo.pe",
         "name": "Via Altomayo",
-        "logo": null,
+        "logo": "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/042013/via_alto_mayo.png?itok=EGPtW5nL",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.viaaltomayotv.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/29124.ts",
           "https://live.obslivestream.com/viaaltomayomux/index.m3u8"
         ]
       },
       {
         "id": "ViaTelevision.pe",
         "name": "Via Television",
-        "logo": null,
+        "logo": "https://viatelevision.pe/wp-content/uploads/2021/11/logo-retina.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://viatelevision.pe/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/33516.ts",
           "https://videoserver.tmcreativos.com:19360/cablerasvia/cablerasvia.m3u8"
         ]
       },
@@ -11404,8 +11507,8 @@
         ],
         "website": "https://zelevesuperradio.com.pe/",
         "streams": [
-          "https://live-evg11.tv360.bitel.com.pe/bitel/zeleve/playlist.m3u8",
-          "https://7.innovatestream.pe:19360/zelevetv/zelevetv.m3u8"
+          "https://7.innovatestream.pe:19360/zelevetv/zelevetv.m3u8",
+          "https://live-evg11.tv360.bitel.com.pe/bitel/zeleve/playlist.m3u8"
         ]
       }
     ]
@@ -11548,26 +11651,28 @@
       {
         "id": "CanalI.ve",
         "name": "Canal I",
-        "logo": null,
+        "logo": "https://1.bp.blogspot.com/-0FE68z623Tc/YAr67TeUQGI/AAAAAAAADFo/dD-ZDlxA-n4ojv57MYnnr-uTeM52PbecQCLcBGAsYHQ/s580/canal-i-venezuela.png",
         "epgId": null,
         "categories": [
           "news"
         ],
         "website": "http://canal-i.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/442359.ts",
           "https://streaming.canal-i.com/canal-i/live/master.m3u8"
         ]
       },
       {
         "id": "CanalOnce.ve",
         "name": "Canal Once",
-        "logo": null,
+        "logo": "https://i.postimg.cc/sDpj2VP1/Canal-Once-logo-2025.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "http://www.canal11delzulia.com.ve/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755517.ts",
           "https://tv.streamcasthd.com:3676/live/canal11delzulialive.m3u8"
         ]
       },
@@ -11665,13 +11770,14 @@
       {
         "id": "Globovision.ve",
         "name": "Globovision",
-        "logo": null,
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Logo-Globovisi%C3%B3n.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://globovision.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/18468.ts",
           "http://138.186.23.7:8082/GLOBOVISION/index.m3u8",
           "http://181.78.8.199:8000/play/a09k/index.m3u8"
         ]
@@ -11745,13 +11851,14 @@
       {
         "id": "IVC.ve",
         "name": "IVC",
-        "logo": null,
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/7/7e/IVC_Network_Logo.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.ivcnetworks.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/47787.ts",
           "http://138.186.23.7:8082/IVC/index.m3u8"
         ]
       },
@@ -11862,13 +11969,14 @@
       {
         "id": "MeridianoTV.ve",
         "name": "Meridiano TV",
-        "logo": null,
+        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/0/06/Logo_Meridiano_Televisi%C3%B3n_%28Venezuela%29.png/250px-Logo_Meridiano_Televisi%C3%B3n_%28Venezuela%29.png",
         "epgId": null,
         "categories": [
           "sports"
         ],
         "website": "https://meridiano.net/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/18469.ts",
           "http://181.78.8.199:8000/play/a0fr/index.m3u8",
           "https://e1.viginet.vectormax.com:5210/quickstart/114-934-21/index.m3u8"
         ]
@@ -11988,6 +12096,7 @@
         ],
         "website": "https://www.promar.tv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/475606.ts",
           "http://vcp1.myplaytv.com:1935/promar/promar/playlist.m3u8",
           "https://vcp.myplaytv.com/promar/promar/playlist.m3u8"
         ]
@@ -12061,13 +12170,14 @@
       {
         "id": "TeleAragua.ve",
         "name": "TeleAragua",
-        "logo": null,
+        "logo": "https://i.postimg.cc/HsMmxCw9/eip-L1Fhf-W4Msg-E9Sn-Xppv6RChvz-Eyw3gy-Bv-Jnp-Bgibg08Mr-KERk8ckne3IL9Eh-V.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "http://tla.gob.ve/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/18461.ts",
           "http://45.173.198.59:8080/hls/nginx3.m3u8?tla="
         ]
       },
@@ -12114,13 +12224,14 @@
       {
         "id": "Telesur.ve",
         "name": "Telesur",
-        "logo": null,
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/TeleSUR-Logo.svg/1280px-TeleSUR-Logo.svg.png",
         "epgId": null,
         "categories": [
           "news"
         ],
         "website": "https://www.telesurtv.net/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/18473.ts",
           "https://mblenmain01.telesur.ultrabase.net/mblivev3/480p/playlist.m3u8",
           "https://mblenmain01.telesur.ultrabase.net/mblivev3/hd/playlist.m3u8",
           "https://mblesmain01.telesur.ultrabase.net/mbliveMain/hd/playlist.m3u8",
@@ -12133,13 +12244,14 @@
       {
         "id": "Televen.ve",
         "name": "Televen",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Televen_%282024%29.svg/1920px-Televen_%282024%29.svg.png",
+        "logo": "https://directostv.teleame.com/wp-content/uploads/2018/01/Televen-TV-en-directo-Online.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "http://www.televen.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/85728.ts",
           "http://138.186.23.7:8082/TELEVEN/index.m3u8",
           "http://181.78.8.199:8000/play/a09j/index.m3u8"
         ]
@@ -12238,13 +12350,14 @@
       {
         "id": "TVFamilia.ve",
         "name": "TV Familia",
-        "logo": null,
+        "logo": "https://i.postimg.cc/zvxM8rPg/tv-familia.png",
         "epgId": null,
         "categories": [
           "family"
         ],
         "website": "https://www.tvfamilia.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/513718.ts",
           "https://59d39900ebfb8.streamlock.net/tvfamilia_270p/tvfamilia_270p/playlist.m3u8",
           "https://cloudusa.streamingconnect.com/tvfamiliatvbox/tvfamiliaweb.m3u8"
         ]
@@ -12317,13 +12430,14 @@
       {
         "id": "ValeTV.ve",
         "name": "Vale TV",
-        "logo": null,
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_de_VALE_TV.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "http://valetv.info/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/18462.ts",
           "https://59d39900ebfb8.streamlock.net/valetv_480/valetv_480/playlist.m3u8",
           "https://vcp2.myplaytv.com/valetv/valetv/playlist.m3u8"
         ]
@@ -12331,13 +12445,14 @@
       {
         "id": "Venevision.ve",
         "name": "Venevision",
-        "logo": null,
+        "logo": "https://directostv.teleame.com/wp-content/uploads/2020/09/Venevision-en-vivo-Online.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "http://www.venevision.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/18466.ts",
           "http://177.234.249.178:8888/VENEVISION/index.m3u8",
           "http://181.78.8.199:8000/play/a0if/index.m3u8",
           "https://venevision-ioriver-cdn.encoders.immergo.tv/3/streamPlaylist.m3u8"
@@ -12508,13 +12623,14 @@
       {
         "id": "CanalSur.ec",
         "name": "Canal Sur",
-        "logo": null,
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/8/82/Logo_de_Canal_Sur_1.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.loja.gob.ec/contenido/canal-sur",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614782.ts",
           "https://avm.ecuamedia.net/canalsur/live/playlist.m3u8"
         ]
       },
@@ -12612,13 +12728,14 @@
       {
         "id": "EcotelTV.ec",
         "name": "Ecotel TV",
-        "logo": null,
+        "logo": "https://i.postimg.cc/kGBqF8ct/unnamed.png",
         "epgId": null,
         "categories": [
           "news"
         ],
         "website": "https://www.ecotel.tv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/2431.ts",
           "https://ecoteltv.streamseguro.com:5443/LiveApp/streams/streaming.m3u8"
         ]
       },
@@ -12664,8 +12781,8 @@
           "http://45.224.97.181:9999/Ecuavisa/index.m3u8",
           "http://177.234.249.178:8888/ECUAVISA/index.m3u8",
           "http://179.60.51.134:8888/ECUAVISA/index.m3u8",
-          "https://dai.google.com/linear/hls/event/GyPkTVDZSXGhpOvxPK7m2g/master.m3u8",
-          "https://redirector.dps.live/hls-video/c54ac2799874375c81c1672abb700870537c5223/ecuavisa/ecuavisa.smil/playlist.m3u8"
+          "https://redirector.dps.live/hls-video/c54ac2799874375c81c1672abb700870537c5223/ecuavisa/ecuavisa.smil/playlist.m3u8",
+          "https://dai.google.com/linear/hls/event/GyPkTVDZSXGhpOvxPK7m2g/master.m3u8"
         ]
       },
       {
@@ -12867,13 +12984,14 @@
       {
         "id": "LatacungaTV.ec",
         "name": "LatacungaTV",
-        "logo": null,
+        "logo": "https://assets.teleon.tv/180_webp/latacunga-tv-ec.webp",
         "epgId": null,
         "categories": [
           "entertainment"
         ],
         "website": "https://www.latacungatv.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/765994.ts",
           "https://stmv1.voxtvhd.com.br/latacungatv/latacungatv/playlist.m3u8"
         ]
       },
@@ -12933,13 +13051,14 @@
       {
         "id": "Manavision.ec",
         "name": "Manavision",
-        "logo": null,
+        "logo": "https://i.postimg.cc/bNYBw6nQ/images-q-tbn-ANd9Gc-TAu-T-0RBd-UF1o-Ohin-WGe-Sw-Q7v4KQcm-Qps-K9Q-s.png",
         "epgId": null,
         "categories": [
           "culture"
         ],
         "website": "https://www.manavision.ec/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/765993.ts",
           "https://play.once.net.ec/play/Ily2oYdd3E1fi9wK2zORoRovFU9P5xM0g3CNVK2MT0M/.m3u8"
         ]
       },
@@ -13375,13 +13494,14 @@
       {
         "id": "Telerama.ec",
         "name": "Telerama",
-        "logo": null,
+        "logo": "https://i.ibb.co/fF7jykL/telerama.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.telerama.ec/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/85730.ts",
           "https://play.once.net.ec/telerama/live.tv/538.m3u8"
         ]
       },
@@ -13589,13 +13709,15 @@
       {
         "id": "Canal5.uy",
         "name": "Canal 5",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/0/0f/Canal5Honduras2019.png/revision/latest?cb=20201025181219&path-prefix=es",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://mediospublicos.uy/category/television/canal-5/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9189.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755513.ts",
           "https://tinyurl.com/canal5uy"
         ]
       },
@@ -13781,13 +13903,14 @@
       {
         "id": "CadenaA.bo",
         "name": "Cadena A",
-        "logo": null,
+        "logo": "https://i.postimg.cc/KjMGqKmC/images-1.jpg",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "http://www.cadenaa.tv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/487226.ts",
           "https://5fe2654d6127d.streamlock.net/cadenaa/videocadenaa/playlist.m3u8"
         ]
       },
@@ -13875,13 +13998,14 @@
       {
         "id": "CTV.bo",
         "name": "CTV",
-        "logo": null,
+        "logo": "https://img-evg3.tv360.bitel.com.pe/peru-image/2024/07/03/06/1719961310377/da37730bae58_640_360.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://ctvbolivia.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/601306.ts",
           "https://streaming.ctvbolivia.com/hlsweb/ctv.m3u8",
           "https://live.ctvbolivia.com/hls/ctv.m3u8"
         ]
@@ -14056,13 +14180,14 @@
       {
         "id": "ImagenTV.bo",
         "name": "Imagen TV",
-        "logo": null,
+        "logo": "https://i.postimg.cc/fygDGLYN/Logo-Imagen-TV-MX.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": null,
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/755531.ts",
           "https://lbgo.bozztv.com/ssh101/ssh101/imagentvpotosib/playlist.m3u8"
         ]
       },
@@ -14109,13 +14234,15 @@
       {
         "id": "MegaTV.bo",
         "name": "MegaTV",
-        "logo": null,
+        "logo": "https://img-evg3.tv360.bitel.com.pe/peru-image/2026/01/06/02/1767642752121/246ccab3132c_480_270.png",
         "epgId": null,
         "categories": [
           "entertainment"
         ],
         "website": "https://megatvbolivia.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/85562.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/204339.ts",
           "http://tv.istbolivia.com:1935/megatv/megatv/playlist.m3u8"
         ]
       },
@@ -14362,20 +14489,22 @@
         ],
         "website": "https://www.reduno.com.bo/",
         "streams": [
-          "http://190.181.18.82:4111/play/a005/index.m3u8",
-          "https://tv.centaurychile.com/interactiva/streams/KIgB6QvZ0L8XaSLd3211668845221245.m3u8"
+          "https://tv.centaurychile.com/interactiva/streams/KIgB6QvZ0L8XaSLd3211668845221245.m3u8",
+          "http://190.181.18.82:4111/play/a005/index.m3u8"
         ]
       },
       {
         "id": "RedUnoSantaCruz.bo",
         "name": "Red Uno Santa Cruz",
-        "logo": "https://pxcdn.reduno.com.bo/reduno/102025/1761881380017.webp?cw=800&ch=450&extw=jpg",
+        "logo": "https://i.ytimg.com/vi/shyoH296rb4/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAYmeDBvgy51guh7g8iIlM_ft53bg",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.reduno.com.bo/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/79396.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/193771.ts",
           "http://190.181.18.82:4111/play/a006/index.m3u8",
           "https://master.tucableip.com/muxredunosc/index.m3u8"
         ]
@@ -14435,13 +14564,14 @@
       {
         "id": "SolTV.bo",
         "name": "Sol TV",
-        "logo": null,
+        "logo": "https://i.postimg.cc/pdYC4cJz/images-q-tbn-ANd9Gc-S8iy-WLHmr06o4Wxa2b-Knc-ZUc1Rc-Vqgo-VWYiw-s.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://soltv.com.bo/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/715104.ts",
           "http://190.211.140.91:8081/SVTranscoder/SOLTVabr.stream/playlist.m3u8"
         ]
       },
@@ -14514,13 +14644,14 @@
       {
         "id": "TigoSports.bo",
         "name": "Tigo Sports",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Tigo_Sports_2025.png/960px-Tigo_Sports_2025.png",
+        "logo": "https://i.pinimg.com/originals/ac/06/fc/ac06fc2863a5fe2f40b041ec9b811bc7.png",
         "epgId": null,
         "categories": [
           "sports"
         ],
         "website": "http://www.tigosports.com.bo/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9176.ts",
           "https://master.tucableip.com/Amistoso/index.m3u8",
           "https://dipdxjic51jcl.cloudfront.net/out/v1/81f769d780694be488d85811331c8a4f/index.m3u8"
         ]
@@ -15082,8 +15213,8 @@
         ],
         "website": "https://www.gen.com.py/",
         "streams": [
-          "https://no.gendigi.net/origin-proxy/chunklist.m3u8",
-          "https://gentvpeer.desdeparaguay.net/gentvpeer/gentv_py_alta/master.m3u8"
+          "https://gentvpeer.desdeparaguay.net/gentvpeer/gentv_py_alta/master.m3u8",
+          "https://no.gendigi.net/origin-proxy/chunklist.m3u8"
         ]
       },
       {
@@ -15167,13 +15298,15 @@
       {
         "id": "MegaTV.py",
         "name": "Mega TV",
-        "logo": null,
+        "logo": "https://img-evg3.tv360.bitel.com.pe/peru-image/2026/01/06/02/1767642752121/246ccab3132c_480_270.png",
         "epgId": null,
         "categories": [
           "news"
         ],
         "website": "https://megacadena.com.py/mega-tv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/85562.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/204339.ts",
           "https://www.desde-paraguay.com/mega.m3u8"
         ]
       },
@@ -15602,26 +15735,28 @@
       {
         "id": "TigoSports.py",
         "name": "Tigo Sports",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Tigo_Sports_2025.png",
+        "logo": "https://i.pinimg.com/originals/ac/06/fc/ac06fc2863a5fe2f40b041ec9b811bc7.png",
         "epgId": null,
         "categories": [
           "sports"
         ],
         "website": "http://www.tigosports.com.py/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9176.ts",
           "https://live.enhdtv.com:8081/8160/index.m3u8"
         ]
       },
       {
         "id": "TigoSportsPlus.py",
         "name": "Tigo Sports+",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Tigo_Sports_2025.png/960px-Tigo_Sports_2025.png",
+        "logo": "https://i.pinimg.com/originals/ac/06/fc/ac06fc2863a5fe2f40b041ec9b811bc7.png",
         "epgId": null,
         "categories": [
           "sports"
         ],
         "website": "http://www.tigosports.com.py/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9176.ts",
           "http://45.170.130.224:8000/play/a04i/index.m3u8"
         ]
       },
@@ -15764,13 +15899,14 @@
       {
         "id": "OPA.cr",
         "name": "¡OPA!",
-        "logo": null,
+        "logo": "https://www.acontecer.co.cr/wp-content/uploads/2023/04/imagen-nacionales-38.png",
         "epgId": null,
         "categories": [
           "entertainment"
         ],
         "website": "https://www.genteopa.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/440447.ts",
           "https://5fc584f3f19c9.streamlock.net/genteopa/videogenteopa/playlist.m3u8",
           "https://5f1af61612fb5.streamlock.net/genteopa/videogenteopa_720p/playlist.m3u8"
         ]
@@ -15836,33 +15972,35 @@
         "website": "https://www.mediosdecostarica.com/2025/07/best-clasicos-tv.html",
         "streams": [
           "https://acceso.mediosdecostarica.com:3873/hybrid/play.m3u8",
-          "https://acceso.mediosdecostarica.com:3873/live/bestclasicostvlive.m3u8",
-          "https://acceso.mediosdecostarica.com:3873/multi_live/play.m3u8"
+          "https://acceso.mediosdecostarica.com:3873/multi_live/play.m3u8",
+          "https://acceso.mediosdecostarica.com:3873/live/bestclasicostvlive.m3u8"
         ]
       },
       {
         "id": "Canal1.cr",
         "name": "Canal 1",
-        "logo": "https://i.ibb.co/KhNS8Dy/cropped-logoo-1.png",
+        "logo": "https://www.lateja.cr/resizer/v2/A5QSG7J2ERAN7DYBXWEGY73H2I.png?smart=true&auth=5a15ccfb58e65246fec673de12905a6b5d1388294e51d358b77ca360e5c0c9d9&width=1440&height=810",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://canal1cr.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/601407.ts",
           "https://vid.canal1cr.com:3424/multi_live/play_720.m3u8"
         ]
       },
       {
         "id": "Canal10.cr",
         "name": "Canal 10",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/4/4f/YSTVE-TDT_%28Canal_10%29.svg/revision/latest/scale-to-width-down/1000?cb=20210620213450&path-prefix=es",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": null,
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/17582.ts",
           "https://acceso.mediosdecostarica.com:3606/hybrid/play.m3u8",
           "https://acceso.mediosdecostarica.com:3606/live/canal10costaricalive.m3u8"
         ]
@@ -15870,13 +16008,15 @@
       {
         "id": "Canal11.cr",
         "name": "Canal 11",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Repretel_11_logo.png/960px-Repretel_11_logo.png",
+        "logo": "https://cdn.mitvstatic.com/channels/gt_canal-11-guatemala_m.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "http://www.repretel.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9181.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9195.ts",
           "https://d3mstgwjcwqz1y.cloudfront.net/ts:abr.m3u8",
           "https://alba-cr-repretel-c11.stream.mediatiquestream.com/index.m3u8"
         ]
@@ -15884,13 +16024,15 @@
       {
         "id": "Canal2.cr",
         "name": "Canal 2",
-        "logo": null,
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/7/79/Canal_2_TCS.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.repretel.com/envivo-canal2/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/17579.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/17587.ts",
           "https://d2hha8xu9trvi8.cloudfront.net/ts:abr.m3u8",
           "https://alba-cr-repretel-c2.stream.mediatiquestream.com/index.m3u8"
         ]
@@ -15925,13 +16067,16 @@
       {
         "id": "Canal6.cr",
         "name": "Canal 6",
-        "logo": null,
+        "logo": "https://i0.wp.com/directostv.teleame.com/wp-content/uploads/2016/06/Canal-6-El-Salvador-en-vivo-Online.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "http://www.repretel.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/17581.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9191.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/539840.ts",
           "https://d3xpfoln9sj56.cloudfront.net/ts:abr.m3u8",
           "https://alba-cr-repretel-c6.stream.mediatiquestream.com/index.m3u8"
         ]
@@ -16041,8 +16186,8 @@
         "website": "https://www.enlace.org/",
         "streams": [
           "http://177.234.249.178:8888/ENLACE/index.m3u8",
-          "http://177.234.247.66:9975/Enlace/index.m3u8",
           "https://livecdn.enlace.plus/enlace/smil:enlace-hd.smil/playlist.m3u8",
+          "http://177.234.247.66:9975/Enlace/index.m3u8",
           "http://177.234.249.135:8888/EnlaceTV/index.m3u8"
         ]
       },
@@ -16233,13 +16378,14 @@
       {
         "id": "NicoyaTV.cr",
         "name": "NicoyaTV",
-        "logo": null,
+        "logo": "https://www.pngkey.com/png/detail/816-8164472_nicoya-tv.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.nicoyatv.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/684855.ts",
           "https://59ef525c24caa.streamlock.net/nicoyatv/nicoyatv/playlist.m3u8"
         ]
       },
@@ -16253,6 +16399,7 @@
         ],
         "website": "https://norteinformativo.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/684851.ts",
           "https://videohd.live:19360/8076/8076.m3u8"
         ]
       },
@@ -16389,13 +16536,15 @@
       {
         "id": "TDtv.cr",
         "name": "TDtv",
-        "logo": null,
+        "logo": "https://play-lh.googleusercontent.com/M8OcBSsvzdaYdna0tRBZCOy8g1Jq_w-Y3XycTDplU-M86BhqNh4HfBtLfBs0pvZW2Prm",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://cloudvideo.servers10.com/public/8230",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/201081.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/85514.ts",
           "https://cloudvideo.servers10.com:8081/8230/index.m3u8"
         ]
       },
@@ -16414,13 +16563,14 @@
       {
         "id": "TeleBrunca.cr",
         "name": "TeleBrunca",
-        "logo": null,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU4uLGOuQaNRSDK8lSiCjICHX0Ld_weJoskA&s",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.cablebruncacr.com/telebrunca",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/684853.ts",
           "https://59ef525c24caa.streamlock.net/telebrunca/telebrunca/playlist.m3u8"
         ]
       },
@@ -16491,26 +16641,28 @@
       {
         "id": "TicaVision.cr",
         "name": "TicaVision",
-        "logo": null,
+        "logo": "https://directostv.teleame.com/wp-content/uploads/2017/10/ticavision.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://ticavisiontv.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/14903.ts",
           "https://5eac7b031d945.streamlock.net/TICAVISION/TICAVISION/playlist.m3u8"
         ]
       },
       {
         "id": "TigoSports.cr",
         "name": "Tigo Sports",
-        "logo": null,
+        "logo": "https://i.pinimg.com/originals/ac/06/fc/ac06fc2863a5fe2f40b041ec9b811bc7.png",
         "epgId": null,
         "categories": [
           "sports"
         ],
         "website": "http://www.tigosports.cr/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9176.ts",
           "https://live20.bozztv.com/akamaissh101/ssh101/livetigocr/playlist.m3u8"
         ]
       },
@@ -16662,6 +16814,7 @@
         ],
         "website": "http://zurquitv.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/684854.ts",
           "https://videoserver.tmcreativos.com:19360/gesfnvpamn/gesfnvpamn.m3u8"
         ]
       }
@@ -16752,26 +16905,28 @@
       {
         "id": "Canal27.gt",
         "name": "Canal 27",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/0/06/Canal27GT2012.png/revision/latest?cb=20240826182242&path-prefix=es",
         "epgId": null,
         "categories": [
           "religious"
         ],
         "website": "https://www.canal27.org/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/193733.ts",
           "https://live.canal27.tv:3633/live/canal27live.m3u8"
         ]
       },
       {
         "id": "Canal3.gt",
         "name": "Canal 3",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Canal3Guatemala%282022Logo%29.webp/1280px-Canal3Guatemala%282022Logo%29.webp.png",
+        "logo": "https://static.wikia.nocookie.net/doblaje/images/4/40/Canal_3_Guatemala_1979-1987.png/revision/latest?cb=20170629182404&path-prefix=es",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.chapintv.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9185.ts",
           "https://d3jocgwjuhw91y.cloudfront.net/ts:abr.m3u8",
           "https://d2qsan2ut81n2k.cloudfront.net/live/6b4f0a21-94d5-4fb6-9742-0f78923723cd/medialist_5900814650867226228_hls.m3u8"
         ]
@@ -16805,13 +16960,14 @@
       {
         "id": "Canal7.gt",
         "name": "Canal 7",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/0/05/Canal_7_Guatemala_2022.png",
+        "logo": "https://directostv.teleame.com/wp-content/uploads/2016/05/Televisiete-Guatemala-en-vivo-Online.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.chapintv.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9186.ts",
           "https://d1zq2gydd8y59v.cloudfront.net/ts:abr.m3u8"
         ]
       },
@@ -17014,13 +17170,14 @@
       {
         "id": "Guatevision.gt",
         "name": "Guatevision",
-        "logo": null,
+        "logo": "https://directostv.teleame.com/wp-content/uploads/2016/05/Guatevisi%C3%B3n.png",
         "epgId": null,
         "categories": [
           "news"
         ],
         "website": "https://www.guatevision.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9184.ts",
           "https://mdstrm.com/live-stream-playlist/69f8df22a762c9b1ab3eabca.m3u8",
           "http://bantel-cdn1.iptvperu.tv:1935/btnscrtn/Guatevision.stream/playlist.m3u8"
         ]
@@ -17264,13 +17421,14 @@
       {
         "id": "RhemaTV.gt",
         "name": "Rhema TV",
-        "logo": null,
+        "logo": "https://www.rtv.live/wp-content/uploads/2025/02/logo-rhema-tv.png",
         "epgId": null,
         "categories": [
           "religious"
         ],
         "website": "https://rtv.live/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/686720.ts",
           "https://5e85d90130e77.streamlock.net/6006/6006/playlist.m3u8",
           "http://190.61.90.17:40000/play/a0iw/index.m3u8"
         ]
@@ -17304,13 +17462,14 @@
       {
         "id": "SolTV.gt",
         "name": "Sol TV",
-        "logo": "https://i.ibb.co/YXYv8sf/logo-soltv2.png",
+        "logo": "https://i.postimg.cc/pdYC4cJz/images-q-tbn-ANd9Gc-S8iy-WLHmr06o4Wxa2b-Knc-ZUc1Rc-Vqgo-VWYiw-s.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": null,
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/715104.ts",
           "https://cdn.streamhispanatv.net:3409/live/soltvlive.m3u8"
         ]
       },
@@ -17328,24 +17487,26 @@
       {
         "id": "Telemax.gt",
         "name": "Telemax",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/2/29/08%29Telemax_%282018%29.png/revision/latest?cb=20220113152551&path-prefix=es",
         "epgId": null,
         "categories": [],
         "website": "https://www.playgt.net/telemax",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/712740.ts",
           "https://cdn.streamhispanatv.net:3824/live/telemaxlive.m3u8"
         ]
       },
       {
         "id": "TigoSports.gt",
         "name": "Tigo Sports",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Tigo_Sports_2025.png/960px-Tigo_Sports_2025.png",
+        "logo": "https://i.pinimg.com/originals/ac/06/fc/ac06fc2863a5fe2f40b041ec9b811bc7.png",
         "epgId": null,
         "categories": [
           "sports"
         ],
         "website": "http://www.tigosports.gt/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9176.ts",
           "http://162.19.255.233:8080/play/UNbAl57p9hXZClOu56FCTf_5weWAERKDgrt9JpvlAiI/m3u8",
           "http://45.5.119.43:4000/play/a05t/index.m3u8"
         ]
@@ -17845,6 +18006,7 @@
         "website": "https://www.canal56rd.net/",
         "streams": [
           "https://videos.canal56.com/directe/stream/index.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/615031.ts",
           "https://vdopanel.jlahozconsulting.com/p/3124/hybrid/play.m3u8"
         ]
       },
@@ -18230,13 +18392,14 @@
       {
         "id": "DeUltimoMinutoTV.do",
         "name": "De Ultimo Minuto TV",
-        "logo": null,
+        "logo": "https://i.postimg.cc/WzjmVknV/logo-retina.png",
         "epgId": null,
         "categories": [
           "news"
         ],
         "website": "https://deultimominuto.net/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/529410.ts",
           "https://soportedvb.click:3620/live/deultimominutomedialive.m3u8"
         ]
       },
@@ -19092,13 +19255,14 @@
       {
         "id": "MITurnoTV.do",
         "name": "MI Turno TV",
-        "logo": null,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROIcZ0ZdETB4VAL1vzprSnFV3YwpkmSMmqAg&s",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://miturno.com.do/miturnotv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/284915.ts",
           "https://video.udwn.net:19360/miturnotv/miturnotv.m3u8"
         ]
       },
@@ -19367,13 +19531,14 @@
       {
         "id": "PeraviaVision.do",
         "name": "Peravia Vision",
-        "logo": null,
+        "logo": "https://i.postimg.cc/hPx7gsty/images-q-tbn-ANd9Gc-SSmldcp0Wh-RTGEZVtk6TTQgff-KIVy-Lhosuy-A-s.jpg",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://peraviavision.tv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/721799.ts",
           "https://ss2.tvrdomi.com:1936/peraviavision/peraviavision/playlist.m3u8"
         ]
       },
@@ -19706,11 +19871,12 @@
       {
         "id": "SuperCanal.do",
         "name": "Super Canal",
-        "logo": null,
+        "logo": "https://i.postimg.cc/mgWrkm7s/images-q-tbn-ANd9Gc-Qbs8dv6o-HDos-CSsqwcai-J8j7f5t-TEOv-HPjg-s.jpg",
         "epgId": null,
         "categories": [],
         "website": "http://www.supercanal.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/85565.ts",
           "https://cnn.hostlagarto.com/supercanalhd/playlist.m3u8"
         ]
       },
@@ -20004,13 +20170,14 @@
       {
         "id": "Telemax.do",
         "name": "Telemax",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/2/29/08%29Telemax_%282018%29.png/revision/latest?cb=20220113152551&path-prefix=es",
         "epgId": null,
         "categories": [
           "entertainment"
         ],
         "website": "https://telemaxrd.com.do/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/712740.ts",
           "https://edge.essastream.com/telemax/tracks-v1a1/mono.m3u8"
         ]
       },
@@ -20030,13 +20197,14 @@
       {
         "id": "Telemicro.do",
         "name": "Telemicro",
-        "logo": null,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeG__uFHPNquAommoaaqPyztmtLBntOeUafQ&s",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://telemicro.com.do/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/115529.ts",
           "http://190.122.104.210:5080/LiveApp/streams/telemicrolocal5.m3u8",
           "https://live4.telemicro.com.do/live/telemicrocast_1080p/playlist.m3u8",
           "https://live2.telemicro.com.do/live/55/playlist.m3u8"
@@ -20266,13 +20434,14 @@
       {
         "id": "Televida.do",
         "name": "Televida",
-        "logo": null,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkQ_P2qA--nO0fQ2Pgyq6O6hA-hM2SzA2-ww&s",
         "epgId": null,
         "categories": [
           "religious"
         ],
         "website": null,
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/179972.ts",
           "https://cnn.hostlagarto.com/televida/playlist.m3u8"
         ]
       },
@@ -20566,13 +20735,14 @@
       {
         "id": "TVO.do",
         "name": "TVO",
-        "logo": null,
+        "logo": "https://i.ibb.co/xDrc5MD/CORALTv.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://tvo.com.do/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/420140.ts",
           "https://videoserver.tmcreativos.com:19360/gkemzxrrmr/gkemzxrrmr.m3u8"
         ]
       },
@@ -20605,26 +20775,28 @@
       {
         "id": "Vallevision.do",
         "name": "Vallevision",
-        "logo": null,
+        "logo": "https://vallevision.com.do/wp-content/uploads/2020/10/logovalle200.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://vallevision.com.do/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/157393.ts",
           "https://streaming.telecablecentral.com.do/Vallevision/ValleHD/playlist.m3u8"
         ]
       },
       {
         "id": "VegaTeve.do",
         "name": "Vega Teve",
-        "logo": null,
+        "logo": "https://image.roku.com/developer_channels/prod/73607ba57642ea301b152f7b25833271838b434e49c9710484f58884de51a97f.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "http://www.vegateve.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/449253.ts",
           "https://cloud5.livescast.com:19360/canalvegateve/canalvegateve.m3u8"
         ]
       },
@@ -21004,13 +21176,14 @@
       {
         "id": "Telemetro.pa",
         "name": "Telemetro",
-        "logo": null,
+        "logo": "https://i.postimg.cc/FKqKNfpW/Telemetro-Panama-logo.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.telemetro.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/265876.ts",
           "http://181.78.121.15:8000/play/a001/index.m3u8"
         ]
       },
@@ -21056,13 +21229,15 @@
       {
         "id": "TVMax.pa",
         "name": "TVMax",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/0/08/TVMAX_logo.png/revision/latest?cb=20220208160004&path-prefix=es",
         "epgId": null,
         "categories": [
           "entertainment"
         ],
         "website": "https://www.tvmax-9.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/265854.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/265861.ts",
           "https://bcovlive-a.akamaihd.net/74f665e9ff8447639d4de4b8b458d8ae/us-east-1/6058004209001/playlist_dvr.m3u8"
         ]
       },
@@ -21191,26 +21366,29 @@
       {
         "id": "CampusTV.hn",
         "name": "Campus TV",
-        "logo": null,
+        "logo": "https://icon.guard447.cyou/logos/LAT_centroamerica/hon_campus_tv.png",
         "epgId": null,
         "categories": [
           "education"
         ],
         "website": "https://usap.edu/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9203.ts",
           "https://5e85d90130e77.streamlock.net/6052/6052/playlist.m3u8"
         ]
       },
       {
         "id": "Canal11.hn",
         "name": "Canal 11",
-        "logo": null,
+        "logo": "https://cdn.mitvstatic.com/channels/gt_canal-11-guatemala_m.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://canal11.hn/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9181.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9195.ts",
           "https://redirector.rudo.video/hls-video/c54ac2799874375c81c1672abb700870537c5223/canal11hn/canal11hn.smil/playlist.m3u8",
           "http://190.11.225.124:5000/live/canal11_hd/playlist.m3u8"
         ]
@@ -21291,6 +21469,7 @@
         ],
         "website": "http://cholusatsur.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9205.ts",
           "http://audiotvserver.net:1935/livemedia/cholusat/playlist.m3u8"
         ]
       },
@@ -21310,13 +21489,14 @@
       {
         "id": "CHTV.hn",
         "name": "CHTV",
-        "logo": null,
+        "logo": "https://icon.guard447.cyou/logos/LAT_centroamerica/chtv.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "http://chtv.hn/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9199.ts",
           "https://viewhn.com/chtv/live/playlist.m3u8"
         ]
       },
@@ -21390,13 +21570,14 @@
       {
         "id": "EbenezerTV.hn",
         "name": "Ebenezer TV",
-        "logo": null,
+        "logo": "https://serenotv.com/wp-content/uploads/2022/01/Canal-ebenezer-en-vivo-150x96.jpg",
         "epgId": null,
         "categories": [
           "religious"
         ],
         "website": "https://ebenezer.hn/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9206.ts",
           "https://5e85d90130e77.streamlock.net/6010/ngrp:6010_all/playlist.m3u8"
         ]
       },
@@ -21429,13 +21610,14 @@
       {
         "id": "GirasolTV.hn",
         "name": "Girasol TV",
-        "logo": null,
+        "logo": "https://girasolradiotvhn.com/wp-content/uploads/2020/10/canal-girasoltv-logo.png",
         "epgId": null,
         "categories": [
           "entertainment"
         ],
         "website": "https://girasolmultimedios.com/portal/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/322961.ts",
           "https://s.emisoras.tv:8081/girasoltv/index.m3u8",
           "https://59d39900ebfb8.streamlock.net/girasoltv/girasoltv/playlist.m3u8"
         ]
@@ -21470,13 +21652,14 @@
       {
         "id": "HCH.hn",
         "name": "HCH",
-        "logo": null,
+        "logo": "https://icon.guard447.cyou/logos/LAT_centroamerica/hon_hch.png",
         "epgId": null,
         "categories": [
           "news"
         ],
         "website": "https://hch.tv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9200.ts",
           "https://live.streamhch.com/live/streams/hch1.m3u8"
         ]
       },
@@ -21660,6 +21843,7 @@
         ],
         "website": "https://mayatv.hn/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/589998.ts",
           "https://media.streambrothers.com:19360/8036/8036.m3u8",
           "https://media.streambrothers.com:19360/8356/8356.m3u8"
         ]
@@ -21667,13 +21851,14 @@
       {
         "id": "MetroTV.hn",
         "name": "Metro TV",
-        "logo": null,
+        "logo": "https://www.lametrohn.com/static/img/grupoStereo.png",
         "epgId": null,
         "categories": [
           "entertainment"
         ],
         "website": "http://www.lametrohn.com/Metro-TV",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/621304.ts",
           "https://s.emisoras.tv:8081/metrotv/index.m3u8"
         ]
       },
@@ -21827,6 +22012,7 @@
         ],
         "website": "https://suyapamedios.hn/suyapa-tv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/536632.ts",
           "https://streamingcws30.com/suyapa2/videosuyapa2/playlist.m3u8"
         ]
       },
@@ -21990,6 +22176,7 @@
         "categories": [],
         "website": "https://www.tencanal10.tv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9194.ts",
           "https://raw.githubusercontent.com/BellezaEmporium/IPTV_Exception/master/channels/hn/tentv.m3u8"
         ]
       },
@@ -22071,13 +22258,14 @@
       {
         "id": "UNETV.hn",
         "name": "UNE TV",
-        "logo": "https://unetvhn.com/wp-content/uploads/2022/09/logo-1.png",
+        "logo": "https://i.ytimg.com/vi/GFddo1ejBjk/hqdefault.jpg",
         "epgId": null,
         "categories": [
           "news"
         ],
         "website": null,
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9198.ts",
           "https://amixtv.com:8081/unetvhn/tracks-v1a1/mono.m3u8"
         ]
       },
@@ -22156,13 +22344,14 @@
       {
         "id": "Canal10.sv",
         "name": "Canal 10",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/4/4f/YSTVE-TDT_%28Canal_10%29.svg/revision/latest/scale-to-width-down/1000?cb=20210620213450&path-prefix=es",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://noticiero.sv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/17582.ts",
           "https://5ca3e84a76d30.streamlock.net/tves/videotves/playlist.m3u8",
           "http://45.167.2.101:8000/play/a0r8/index.m3u8"
         ]
@@ -22183,13 +22372,14 @@
       {
         "id": "Canal12.sv",
         "name": "Canal 12",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/3/3f/Canal12SV2025.svg/revision/latest/scale-to-width-down/1000?cb=20250811170623&path-prefix=es",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.canal12.com.sv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/17583.ts",
           "https://d2b5h5wyivfnfl.cloudfront.net/live/53108ffe-0b7e-46ab-bc14-3a9c30010939/ts:abr.m3u8",
           "https://alba-sv-c12-c12.stream.mediatiquestream.com/index.m3u8"
         ]
@@ -22210,13 +22400,15 @@
       {
         "id": "Canal2.sv",
         "name": "Canal 2",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Canal_2_TCS.png/960px-Canal_2_TCS.png",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/7/79/Canal_2_TCS.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.tcsgo.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/17579.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/17587.ts",
           "https://signal.teleon.live/stream/canal2sv.m3u8?token=free",
           "https://telecorporacion-es.cdn.vustreams.com/live/d3e259fa-736d-46b0-b1c9-71caf946ace9/live.isml/live.m3u8"
         ]
@@ -22263,13 +22455,16 @@
       {
         "id": "Canal6.sv",
         "name": "Canal 6",
-        "logo": null,
+        "logo": "https://i0.wp.com/directostv.teleame.com/wp-content/uploads/2016/06/Canal-6-El-Salvador-en-vivo-Online.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.tcsgo.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/17581.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9191.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/539840.ts",
           "https://signal.teleon.live/stream/canal6sv.m3u8?token=free",
           "https://telecorporacion.cdn.vustreams.com/live/b164ebe7-decf-4a5a-8aea-5bb56fb92dfc/live.isml/live.m3u8"
         ]
@@ -22316,13 +22511,14 @@
       {
         "id": "ElimTV.sv",
         "name": "Elim TV",
-        "logo": null,
+        "logo": "https://i.ibb.co/5LDkgXg/descarga.png",
         "epgId": null,
         "categories": [
           "religious"
         ],
         "website": "https://www.elim.org.sv/elimtv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/150726.ts",
           "https://stream.soporteccrtv.xyz/hls/master-dveo.m3u8"
         ]
       },
@@ -22421,26 +22617,28 @@
       {
         "id": "SolTV.sv",
         "name": "SolTV",
-        "logo": null,
+        "logo": "https://i.postimg.cc/pdYC4cJz/images-q-tbn-ANd9Gc-S8iy-WLHmr06o4Wxa2b-Knc-ZUc1Rc-Vqgo-VWYiw-s.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://radiomorazan.net/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/715104.ts",
           "http://rtmp.info:1935/soltv/envivo/playlist.m3u8"
         ]
       },
       {
         "id": "SVPlus.sv",
         "name": "SV+",
-        "logo": null,
+        "logo": "https://i.postimg.cc/kG3kQC05/SVPlus.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.tcsgo.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/17588.ts",
           "http://45.167.2.101:8000/play/a0qx/index.m3u8"
         ]
       },
@@ -22460,13 +22658,14 @@
       {
         "id": "TigoSports.sv",
         "name": "Tigo Sports",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Tigo_Sports_2025.png/960px-Tigo_Sports_2025.png",
+        "logo": "https://i.pinimg.com/originals/ac/06/fc/ac06fc2863a5fe2f40b041ec9b811bc7.png",
         "epgId": null,
         "categories": [
           "sports"
         ],
         "website": "http://www.tigosports.com.sv/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9176.ts",
           "https://channel03.tigosports.com.sv/out/v1/31f36d52d558475ca18799d8ca5e4b40/index.m3u8"
         ]
       },
@@ -22565,13 +22764,14 @@
       {
         "id": "TVOCanal23.sv",
         "name": "TVO Canal 23",
-        "logo": null,
+        "logo": "https://tvocanal23.com/wp-content/uploads/2020/10/logo.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://tvocanal23.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/17593.ts",
           "http://45.167.2.101:8000/play/a0qo/index.m3u8"
         ]
       },
@@ -22598,13 +22798,14 @@
       {
         "id": "Canal10.ni",
         "name": "Canal 10",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/4/4f/YSTVE-TDT_%28Canal_10%29.svg/revision/latest/scale-to-width-down/1000?cb=20210620213450&path-prefix=es",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "http://www.canal10.com.ni/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/17582.ts",
           "https://www.canal10.com.ni/envivo"
         ]
       },
@@ -22637,13 +22838,16 @@
       {
         "id": "Canal6.ni",
         "name": "Canal 6",
-        "logo": null,
+        "logo": "https://i0.wp.com/directostv.teleame.com/wp-content/uploads/2016/06/Canal-6-El-Salvador-en-vivo-Online.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://canal6.com.ni/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/17581.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/9191.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/539840.ts",
           "http://138.117.4.70:8075/Canal06_CooTel/playlist.m3u8"
         ]
       },
@@ -22893,13 +23097,14 @@
       {
         "id": "CanalEducativo.cu",
         "name": "Canal Educativo",
-        "logo": null,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiCgNtYOmxWKP8aM_bc7yFh2wUoEMJLppUeQ&s",
         "epgId": null,
         "categories": [
           "education"
         ],
         "website": "http://www.tvcubana.icrt.cu/cartelera-de-la-tv-cubana/educativo",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/671581.ts",
           "https://tv.picta.cu/educativo/educativo_0.m3u8"
         ]
       },
@@ -22932,13 +23137,14 @@
       {
         "id": "Cubavision.cu",
         "name": "Cubavision",
-        "logo": null,
+        "logo": "https://vignette.wikia.nocookie.net/logopedia/images/5/52/Cubavisi%C3%B3nPlus2018.png/revision/latest/scale-to-width-down/2000?cb=20190822001726",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.tvcubana.icrt.cu/cartelera-de-la-tv-cubana/cubavision",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/17415.ts",
           "https://tv.picta.cu/cubavision/cubavision_0.m3u8",
           "https://tvhd.picta.cu/cubavisionhd/cubavisionhd_master.m3u8"
         ]
@@ -23005,7 +23211,7 @@
       {
         "id": "AmericaTeVe.pr",
         "name": "America TeVe",
-        "logo": null,
+        "logo": "https://static.wikia.nocookie.net/tvstations/images/a/af/Am%C3%A9rica_Tev%C3%A9_Logo.png/revision/latest/scale-to-width-down/340?cb=20210104122258",
         "epgId": null,
         "categories": [
           "general",
@@ -23013,6 +23219,7 @@
         ],
         "website": "https://www.americatevepr.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/90088.ts",
           "https://live.gideo.video/americateve2/master.m3u8"
         ]
       },
@@ -23078,8 +23285,8 @@
         ],
         "website": "https://defiance.media/",
         "streams": [
-          "https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/defiance-media/playlist.m3u8?ads.vf=vUI6YpdKlAm",
-          "https://amg01529-defiancetv-defiancemedia-glewed-tre8x.amagi.tv/playlist.m3u8"
+          "https://amg01529-defiancetv-defiancemedia-glewed-tre8x.amagi.tv/playlist.m3u8",
+          "https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/defiance-media/playlist.m3u8?ads.vf=vUI6YpdKlAm"
         ]
       },
       {
@@ -23379,6 +23586,7 @@
         ],
         "website": "https://www.101tv.es/antequera/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614842.ts",
           "https://liveingesta318.cdnmedia.tv/101weblive/smil:antequera.smil/playlist.m3u8"
         ]
       },
@@ -23398,13 +23606,14 @@
       {
         "id": "101tvCadiz.es",
         "name": "101tv Cadiz",
-        "logo": null,
+        "logo": "https://graph.facebook.com/101tvAntequera/picture?width=200&height=200",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.101tv.es/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614845.ts",
           "https://streaming101tv.es:19360/cadiz/cadiz.m3u8"
         ]
       },
@@ -23501,6 +23710,8 @@
         ],
         "website": "https://28kanala.eus/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/615100.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/505325.ts",
           "https://streaming.28kanala.eus/hls/z.m3u8"
         ]
       },
@@ -23621,7 +23832,8 @@
         ],
         "website": "https://8lamarinatv.com/",
         "streams": [
-          "https://streaming005.gestec-video.com/hls/canal24.m3u8"
+          "https://streaming005.gestec-video.com/hls/canal24.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/615010.ts"
         ]
       },
       {
@@ -23653,7 +23865,7 @@
       {
         "id": "APunt.es",
         "name": "A Punt",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Logotip_d%27%C3%80_Punt_%282017-%29.svg/960px-Logotip_d%27%C3%80_Punt_%282017-%29.svg.png",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Logotip_d%27%C3%80_Punt_%282017-%29.svg/3840px-Logotip_d%27%C3%80_Punt_%282017-%29.svg.png",
         "epgId": null,
         "categories": [
           "general",
@@ -23661,6 +23873,7 @@
         ],
         "website": "https://www.apuntmedia.es/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614995.ts",
           "https://fastly.live.brightcove.com/1846756479408303045/eu-central-1/6057955885001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoiZWFxNWh4LmVncmVzcy53YzQ3bTEiLCJhY2NvdW50X2lkIjoiNjA1Nzk1NTg4NTAwMSIsImVobiI6ImZhc3RseS5saXZlLmJyaWdodGNvdmUuY29tIiwiaXNzIjoiYmxpdmUtcGxheWJhY2stc291cmNlLWFwaSIsInN1YiI6InBhdGhtYXB0b2tlbiIsImF1ZCI6WyI2MDU3OTU1ODg1MDAxIl0sImp0aSI6IjE4NDY3NTY0Nzk0MDgzMDMwNDUifQ.o6wb_VA-TVxl3ERgr7FKLlaTjY7smErmsf73QAydySE/playlist-hls-dvr.m3u8",
           "https://bcovlive-a.akamaihd.net/8499d938ef904e39b58a4adec2ddeada/eu-west-1/6057955885001/playlist_dvr.m3u8"
         ]
@@ -23700,19 +23913,21 @@
         "categories": [],
         "website": "https://afortunadastv.com/",
         "streams": [
-          "https://cloudvideo.servers10.com:8081/8108/index.m3u8"
+          "https://cloudvideo.servers10.com:8081/8108/index.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614890.ts"
         ]
       },
       {
         "id": "AlacantiTV.es",
         "name": "Alacanti TV",
-        "logo": null,
+        "logo": "https://i.postimg.cc/BZVd5tNK/images-q-tbn-ANd9Gc-QZ9q-NL-9kd-WP3hf7s-Ez-Qho7yf-TO5RXB02u4g-s.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://alacantitv.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/615019.ts",
           "https://streaming01.gestec-video.com/hls/artequatreAlacanti.m3u8"
         ]
       },
@@ -23728,6 +23943,7 @@
         "streams": [
           "https://cls.alcarria.tv/live/alcarriatv-livestream.m3u8",
           "http://217.182.77.27/live/alcarriatv-livestream.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614914.ts",
           "https://cls.alcarria.tv/alcarriatv/livestream/playlist.m3u8"
         ]
       },
@@ -23802,7 +24018,7 @@
       {
         "id": "AragonTVInternacional.es",
         "name": "Aragon TV Internacional",
-        "logo": "https://static.wikia.nocookie.net/logopedia/images/1/12/Arag%C3%B3n_Internacional.png/revision/latest/scale-to-width-down/512",
+        "logo": "https://i.postimg.cc/WzXKJHdm/images-q-tbn-ANd9Gc-TAu-Ygk9xs-QDAF2y8t2Td-Gf-QGKM8TAUq7tt-HA-s.png",
         "epgId": null,
         "categories": [
           "general",
@@ -23810,6 +24026,7 @@
         ],
         "website": "http://www.aragontelevision.es/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614869.ts",
           "https://cartv.streaming.aranova.es/hls/live/aragontv_canal1.m3u8"
         ]
       },
@@ -23948,11 +24165,12 @@
       {
         "id": "Canal10Emporda.es",
         "name": "Canal 10 Emporda",
-        "logo": null,
+        "logo": "https://www.canal10.cat/img/logofacebook_400x400.jpg",
         "epgId": null,
         "categories": [],
         "website": "https://www.canal10.cat/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614956.ts",
           "https://ventdelnord.tv:8080/escala/directe.m3u8"
         ]
       },
@@ -23965,6 +24183,7 @@
         "website": "http://www.canal2000.com/",
         "streams": [
           "http://canal2000.berkano-systems.net/streaming/streams/canal2000-720p.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614917.ts",
           "http://canal2000.berkano-systems.net/streaming/streams/canal2000.m3u8"
         ]
       },
@@ -24001,6 +24220,7 @@
         "website": null,
         "streams": [
           "https://media2.streambrothers.com:1936/8140/8140/.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614980.ts",
           "https://media2.streambrothers.com:1936/8140/8140/playlist.m3u8"
         ]
       },
@@ -24071,7 +24291,8 @@
         "categories": [],
         "website": "https://canal56.com/",
         "streams": [
-          "https://videos.canal56.com/directe/stream/index.m3u8"
+          "https://videos.canal56.com/directe/stream/index.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/615031.ts"
         ]
       },
       {
@@ -24134,6 +24355,8 @@
         "website": "http://www.canalextremadura.es/",
         "streams": [
           "https://d2ymuyhevki1a1.cloudfront.net/wct-ddd2992e-86fc-4611-a491-7f392259e9ba/continuous/9be76611-d2cd-474d-bf19-ef702ba31b02/index.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/615055.ts",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/505273.ts",
           "https://cdnlive.codev8.net/canalextremaduralive/smil:channel1DVR.smil/playlist.m3u8?DVR="
         ]
       },
@@ -24194,13 +24417,14 @@
       {
         "id": "CanalReusTV.es",
         "name": "Canal Reus TV",
-        "logo": null,
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Canal_Reus_logo.svg/3840px-Canal_Reus_logo.svg.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.canalreustv.cat/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614932.ts",
           "https://liveingesta318.cdnmedia.tv/canalreustvlive/smil:live.smil/playlist.m3u8"
         ]
       },
@@ -24214,7 +24438,8 @@
         ],
         "website": "https://multimediasanroque.com/",
         "streams": [
-          "https://cdnlivevlc.codev8.net/aytosanroquelive/smil:channel1.smil/playlist.m3u8"
+          "https://cdnlivevlc.codev8.net/aytosanroquelive/smil:channel1.smil/playlist.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614812.ts"
         ]
       },
       {
@@ -24233,7 +24458,7 @@
       {
         "id": "CanalSur2.es",
         "name": "Canal Sur 2",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Canal_Sur_2_-_2017_logo.png/500px-Canal_Sur_2_-_2017_logo.png",
+        "logo": "https://graph.facebook.com/canalsurradioytv/picture?width=200&height=200",
         "epgId": null,
         "categories": [
           "general",
@@ -24241,6 +24466,7 @@
         ],
         "website": "http://canalsur.es/television",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614785.ts",
           "https://cdnlive.codev8.net/rtvalive/smil:channel22.smil/playlist.m3u8"
         ]
       },
@@ -24333,6 +24559,7 @@
         ],
         "website": "https://canalte.cat/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614929.ts",
           "https://ingest1-video.streaming-pro.com/canalteABR/ctestream/playlist.m3u8"
         ]
       },
@@ -24585,6 +24812,7 @@
         ],
         "website": "https://costanoroestetv.net/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614803.ts",
           "https://limited31.todostreaming.es/live/noroestetv-livestream.m3u8"
         ]
       },
@@ -24747,7 +24975,8 @@
         "website": "https://eltorotv.com/",
         "streams": [
           "https://streaming-1.eltorotv.com/lb0/eltorotv-streaming-web/index.m3u8",
-          "https://edge-nodo-002.streaming.hitcloser.net/eltorotv-streaming-web/index.m3u8"
+          "https://edge-nodo-002.streaming.hitcloser.net/eltorotv-streaming-web/index.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/327943.ts"
         ]
       },
       {
@@ -24802,6 +25031,7 @@
         ],
         "website": "http://www.estecanaltv.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614884.ts",
           "http://stream.estecanaltv.com:8009/live/stream/index.m3u8",
           "http://synclosdragos1.syncsolutions.es:8008/live3/emision/index.m3u8"
         ]
@@ -24842,7 +25072,8 @@
         ],
         "website": "https://www.eitb.eus/es/television/",
         "streams": [
-          "https://cdn1.etbon.eus/etb1/index.m3u8"
+          "https://cdn1.etbon.eus/etb1/index.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/615079.ts"
         ]
       },
       {
@@ -24856,7 +25087,8 @@
         ],
         "website": "https://www.eitb.eus/es/television/",
         "streams": [
-          "https://cdn1.etbon.eus/etb2/index.m3u8"
+          "https://cdn1.etbon.eus/etb2/index.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/615082.ts"
         ]
       },
       {
@@ -24978,7 +25210,8 @@
         ],
         "website": "https://fuengirolatv.com/",
         "streams": [
-          "https://streaming004.gestec-video.com/hls/FTV.m3u8"
+          "https://streaming004.gestec-video.com/hls/FTV.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614857.ts"
         ]
       },
       {
@@ -25107,6 +25340,7 @@
         ],
         "website": null,
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/725076.ts",
           "https://hola-play-2108fd06-86d4-44e8-9867-c35b4895a1c1-es.fast.rakuten.tv/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-6433/master.m3u8"
         ]
       },
@@ -25139,26 +25373,28 @@
       {
         "id": "ImasTV.es",
         "name": "Imas TV",
-        "logo": null,
+        "logo": "https://graph.facebook.com/television.imas/picture?width=200&height=200",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "http://imastv.es/ver-imastv-en-directo",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614911.ts",
           "https://secure3.todostreaming.es/live/imastv-livestream.m3u8"
         ]
       },
       {
         "id": "InteralmeriaTV.es",
         "name": "Interalmeria TV",
-        "logo": null,
+        "logo": "https://graph.facebook.com/Interalmeriatv/picture?width=200&height=200",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.interalmeria.tv/directo/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614806.ts",
           "https://interalmeria.tv/directo/live.m3u8"
         ]
       },
@@ -25250,9 +25486,9 @@
         ],
         "website": "https://www.rtve.es/television/",
         "streams": [
+          "https://rtvelivestream.rtve.es/rtvesec/la2/la2_main.m3u8",
           "https://rtvelivestream.rtve.es/rtvesec/la2/la2_main_dvr.m3u8",
-          "https://stream.ads.ottera.tv/playlist.m3u8?network_id=15618",
-          "https://rtvelivestream.rtve.es/rtvesec/la2/la2_main.m3u8"
+          "https://stream.ads.ottera.tv/playlist.m3u8?network_id=15618"
         ]
       },
       {
@@ -25333,7 +25569,8 @@
         ],
         "website": "https://www.lancelot.tv/",
         "streams": [
-          "https://5c0956165db0b.streamlock.net:8090/directo/_definst_/lancelot.television/master.m3u8"
+          "https://5c0956165db0b.streamlock.net:8090/directo/_definst_/lancelot.television/master.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614881.ts"
         ]
       },
       {
@@ -25359,7 +25596,8 @@
         ],
         "website": "https://liratv.es/",
         "streams": [
-          "https://cloud2.streaminglivehd.com:1936/liratv/liratv/playlist.m3u8"
+          "https://cloud2.streaminglivehd.com:1936/liratv/liratv/playlist.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614986.ts"
         ]
       },
       {
@@ -25508,7 +25746,8 @@
         ],
         "website": "https://mijascomunicacion.com/mijas-340-tv-en-directo/",
         "streams": [
-          "https://streaming004.gestec-video.com/hls/MIJAS.m3u8"
+          "https://streaming004.gestec-video.com/hls/MIJAS.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614854.ts"
         ]
       },
       {
@@ -25553,13 +25792,14 @@
       {
         "id": "MyTimeMovieNetwork.es",
         "name": "MyTime Movie Network",
-        "logo": null,
+        "logo": "https://i.postimg.cc/L6tmxnqy/logo-white-ovbvbhqmjlyimijy1j8jdjgrs3eyx5g0if7icg9st0.png",
         "epgId": null,
         "categories": [
           "movies"
         ],
         "website": "https://mytimemovienetwork.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/327783.ts",
           "https://appletree-mytimespain-rakuten.amagi.tv/playlist.m3u8"
         ]
       },
@@ -25659,13 +25899,14 @@
       {
         "id": "OndaAlgeciras.es",
         "name": "Onda Algeciras",
-        "logo": null,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAGJuq9_nSnWKVcp6hvRo0u6Cyb2a_lN0qug&s",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://ondaalgecirastv.com/en-directo/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614815.ts",
           "https://cloudtv.provideo.es/live/algecirastv-livestream.m3u8"
         ]
       },
@@ -25712,13 +25953,14 @@
       {
         "id": "ParlamentodeAndalucia.es",
         "name": "Parlamento de Andalucia",
-        "logo": null,
+        "logo": "https://pbs.twimg.com/profile_images/1381959445396119555/JMAbtoAo_200x200.jpg",
         "epgId": null,
         "categories": [
           "legislative"
         ],
         "website": "https://www.parlamentodeandalucia.es/webdinamica/portal-web-parlamento/actividadparlamentaria/parlamentoabierto/sesionesendirecto/programacion.do",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614866.ts",
           "http://193.147.254.64:1935/realizacion1/realizacion1/playlist.m3u8"
         ]
       },
@@ -25773,6 +26015,7 @@
         "website": "http://08-produccions.cat/pieratv/",
         "streams": [
           "https://5d776b1861da1.streamlock.net/piera/smil:piera.smil/playlist.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614953.ts",
           "http://51.254.47.72:1935/piera/smil:piera.smil/master.m3u8"
         ]
       },
@@ -26092,6 +26335,7 @@
         "streams": [
           "https://rmtv.akamaized.net/hls/live/2043153/rmtv-es-web/master.m3u8",
           "https://rmtv.akamaized.net/hls/live/2043154/rmtv-en-web/master.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/327980.ts",
           "https://jmp2.uk/plu-63dac28760bc8f0008a7654b.m3u8"
         ]
       },
@@ -26118,7 +26362,8 @@
         ],
         "website": "https://www.elperiodicvalencia.com/",
         "streams": [
-          "https://common01.todostreaming.es/live/ribera-livestream.m3u8"
+          "https://common01.todostreaming.es/live/ribera-livestream.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/615007.ts"
         ]
       },
       {
@@ -26361,7 +26606,8 @@
         ],
         "website": "https://teleelx.es/",
         "streams": [
-          "https://tvdirecto.teleelx.es/stream/teleelx.m3u8"
+          "https://tvdirecto.teleelx.es/stream/teleelx.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/615004.ts"
         ]
       },
       {
@@ -26708,13 +26954,14 @@
       {
         "id": "TVSabadellValles.es",
         "name": "TV Sabadell-Valles",
-        "logo": null,
+        "logo": "https://i.postimg.cc/fyqZmKyT/images-q-tbn-ANd9Gc-Tyttt-Mho-P27Bs-YHx-IIHe-Lm-CZGDZCx5MASJ9Q-s.jpg",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://tvsabadell-valles.cat/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614959.ts",
           "https://ingest1-video.streaming-pro.com/canaltaronja/sabadell/playlist.m3u8"
         ]
       },
@@ -26739,6 +26986,7 @@
         "website": "http://www.ccma.cat/tv3/directe/tv3cat/",
         "streams": [
           "https://directes3-tv-int.3catdirectes.cat/live-content/tvi-hls/master.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614920.ts",
           "https://directes-tv-int.3catdirectes.cat/live-content/tvi-hls/master.m3u8",
           "https://directes-tv-int.3catdirectes.cat/live-origin/tvi-hls/master.m3u8",
           "https://directes3-tv-es.3catdirectes.cat/live-content/tvc-hls/master.m3u8",
@@ -26853,6 +27101,7 @@
         ],
         "website": "http://www.crtvg.es/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/505277.ts",
           "https://crtvg-tvg2.flumotion.cloud/playlist.m3u8"
         ]
       },
@@ -26921,11 +27170,12 @@
       {
         "id": "UneVinalopo.es",
         "name": "Une Vinalopo",
-        "logo": null,
+        "logo": "https://graph.facebook.com/UneVinalopo/picture?width=200&height=200",
         "epgId": null,
         "categories": [],
         "website": "https://www.unevinalopo.es/directo/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/615049.ts",
           "https://streamingtvi.gestec-video.com/hls/unesd.m3u8"
         ]
       },
@@ -26939,19 +27189,21 @@
         ],
         "website": "https://universvalencia.es/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/615034.ts",
           "https://cloud2.streaminglivehd.com:1936/universfaller/universfaller/playlist.m3u8"
         ]
       },
       {
         "id": "UrolaTelebista.es",
         "name": "Urola Telebista",
-        "logo": null,
+        "logo": "https://i.postimg.cc/VN9JMx8N/images-q-tbn-ANd9Gc-TH2q2z-J-E6qb-VR91ZPUVbwh-Cj-Wv2p-H1j-SJg-s.png",
         "epgId": null,
         "categories": [
           "general"
         ],
         "website": "https://www.urolatelebista.com/",
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/615109.ts",
           "https://5940924978228.streamlock.net/j_Directo2/mp4:j_Directo2/playlist.m3u8"
         ]
       },
@@ -26993,11 +27245,12 @@
       {
         "id": "Vision6TV.es",
         "name": "Vision 6 TV",
-        "logo": null,
+        "logo": "https://graph.facebook.com/104927246235553/picture?width=200&height=200",
         "epgId": null,
         "categories": [],
         "website": null,
         "streams": [
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614905.ts",
           "https://streaming.proceso.info:8888/vision6-web/stream.m3u8"
         ]
       },
@@ -27020,7 +27273,8 @@
         "categories": [],
         "website": "http://votv.alacarta.cat/votv-en-directe",
         "streams": [
-          "https://ingest2-video.streaming-pro.com/votv/streaming_web/playlist.m3u8"
+          "https://ingest2-video.streaming-pro.com/votv/streaming_web/playlist.m3u8",
+          "http://latinotvplus.online/live/JENNY6083ESP/kEkhBbjHYH/614947.ts"
         ]
       },
       {

@@ -110,28 +110,54 @@ function ChannelCard({
   );
 }
 
+// ── Categories definition ───────────────────────────────────────────────────
+
+const CATEGORY_FILTERS = [
+  { id: 'all', label: 'Todos', icon: '📺', match: null },
+  { id: 'sports', label: 'Deportes', icon: '⚽', match: ['sports'] },
+  { id: 'news', label: 'Noticias', icon: '📰', match: ['news'] },
+  { id: 'movies', label: 'Películas y Series', icon: '🎬', match: ['movies', 'series'] },
+  { id: 'entertainment', label: 'Entretenimiento', icon: '🎭', match: ['entertainment'] },
+  { id: 'kids', label: 'Infantil y Animación', icon: '🧸', match: ['kids', 'animation'] },
+  { id: 'music', label: 'Música', icon: '🎵', match: ['music'] },
+  { id: 'culture', label: 'Cultura y Documentales', icon: '📚', match: ['culture', 'documentary', 'education'] },
+];
+
 // ── Country section ───────────────────────────────────────────────────────────
 
 function CountrySection({
   country,
   onPlay,
   searchQuery,
+  activeCategory,
 }: {
   country: IPTVCountry;
   onPlay: (channel: IPTVChannel) => void;
   searchQuery: string;
+  activeCategory: string;
 }) {
   const [expanded, setExpanded] = useState(true);
 
-  // Alphabetical sorting of channels
+  // Alphabetical sorting of channels + search & category filtering
   const filteredChannels = useMemo(() => {
     let list = country.channels;
+
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
       list = list.filter((ch) => ch.name.toLowerCase().includes(q));
     }
+
+    if (activeCategory !== 'all') {
+      const filterObj = CATEGORY_FILTERS.find((c) => c.id === activeCategory);
+      if (filterObj && filterObj.match) {
+        list = list.filter((ch) =>
+          ch.categories?.some((cat) => filterObj.match!.includes(cat.toLowerCase()))
+        );
+      }
+    }
+
     return [...list].sort((a, b) => a.name.localeCompare(b.name, 'es', { sensitivity: 'base' }));
-  }, [country.channels, searchQuery]);
+  }, [country.channels, searchQuery, activeCategory]);
 
   if (filteredChannels.length === 0) return null;
 
@@ -184,6 +210,7 @@ export default function TVEnVivoPage() {
   const [activeChannel, setActiveChannel] = useState<IPTVChannel | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCountry, setActiveCountry] = useState<string>('all');
+  const [activeCategory, setActiveCategory] = useState<string>('all');
 
   // Load the IPTV data client-side to avoid bundling 728KB into the JS chunk
   useEffect(() => {
@@ -293,24 +320,50 @@ export default function TVEnVivoPage() {
 
       {/* ── Right Content Area (Channel Grid) ── */}
       <main className="flex-1 p-4 md:p-8 overflow-y-auto md:h-[calc(100vh-56px)]">
+        
+        {/* Category Pills Bar */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-6 no-scrollbar border-b border-white/5">
+          {CATEGORY_FILTERS.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap border shrink-0 ${
+                  isActive
+                    ? 'bg-fp-lime text-black border-fp-lime shadow-md scale-105'
+                    : 'bg-[#141414] text-gray-300 border-white/10 hover:bg-[#202020] hover:border-white/20'
+                }`}
+              >
+                <span>{cat.icon}</span>
+                <span>{cat.label}</span>
+              </button>
+            );
+          })}
+        </div>
+
         {displayedCountries.map((country) => (
           <CountrySection
             key={country.code}
             country={country}
             onPlay={setActiveChannel}
             searchQuery={searchQuery}
+            activeCategory={activeCategory}
           />
         ))}
 
         {displayedCountries.every(
           (c) =>
-            !c.channels.some((ch) =>
-              ch.name.toLowerCase().includes(searchQuery.toLowerCase())
-            )
-        ) && searchQuery && (
+            !c.channels.some((ch) => {
+              const matchesSearch = !searchQuery || ch.name.toLowerCase().includes(searchQuery.toLowerCase());
+              const catObj = CATEGORY_FILTERS.find((cat) => cat.id === activeCategory);
+              const matchesCat = activeCategory === 'all' || (catObj?.match && ch.categories?.some((cat) => catObj.match!.includes(cat.toLowerCase())));
+              return matchesSearch && matchesCat;
+            })
+        ) && (
           <div className="flex flex-col items-center justify-center py-24 gap-3">
             <Tv size={40} className="text-gray-700 animate-pulse" />
-            <p className="text-gray-400 text-sm">No se encontraron canales para &ldquo;{searchQuery}&rdquo;</p>
+            <p className="text-gray-400 text-sm">No se encontraron canales para este filtro.</p>
           </div>
         )}
       </main>
