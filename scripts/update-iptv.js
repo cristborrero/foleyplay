@@ -111,11 +111,38 @@ function fetchJSON(url) {
   });
 }
 
+async function fetchText(url, timeoutMs = 12000) {
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    const res = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      },
+    });
+    clearTimeout(timer);
+    if (!res.ok) return '';
+    return await res.text();
+  } catch {
+    return '';
+  }
+}
+
+function cleanChannelName(rawName) {
+  return rawName
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // remove diacritics / combining marks
+    .replace(/[^a-zA-Z0-9\s]/g, ' ') // replace weird symbols with spaces
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 async function main() {
   console.log('🔄  Updating IPTV channel database...\n');
 
   // --- 1. Fetch source data ---
-  const [channels, streams, logos, tdtData] = await Promise.all([
+  const [channels, streams, logos, tdtData, cuateM3u, latinoM3u] = await Promise.all([
     fetchJSON(`${IPTV_API_BASE}/channels.json`),
     fetchJSON(`${IPTV_API_BASE}/streams.json`),
     fetchJSON(`${IPTV_API_BASE}/logos.json`),
@@ -123,12 +150,53 @@ async function main() {
       console.warn(`  ⚠️ Could not fetch TDTChannels: ${err.message}`);
       return null;
     }),
+    fetchText('http://cuate.click:8080/get.php?username=Licethzt2023&password=Au3vz926B98Y&type=m3u_plus'),
+    fetchText('http://latinotvplus.online:80/get.php?username=JENNY6083ESP&password=kEkhBbjHYH&type=m3u_plus&output=ts'),
   ]);
 
   console.log(`\n  Channels total: ${channels.length}`);
   console.log(`  Streams total:  ${streams.length}`);
   console.log(`  Logos total:    ${logos.length}`);
   if (tdtData) console.log(`  TDTChannels fetched successfully.`);
+  if (cuateM3u) console.log(`  cuate.click M3U playlist fetched (${(cuateM3u.length / 1024).toFixed(0)} KB).`);
+  if (latinoM3u) console.log(`  latinotvplus M3U playlist fetched (${(latinoM3u.length / 1024).toFixed(0)} KB).`);
+
+  // --- 1.5 Parse active M3U playlists into m3uByName map ---
+  /** @type {Map<string, { streams: string[], logo: string | null }>} */
+  const m3uByName = new Map();
+
+  function parseM3uContent(content) {
+    if (!content) return;
+    const lines = content.split('\n');
+    for (let i = 0; i < lines.length; i++) {
+      if (lines[i].startsWith('#EXTINF:')) {
+        const line = lines[i];
+        const streamUrl = lines[i + 1]?.trim();
+        if (!streamUrl || !streamUrl.startsWith('http')) continue;
+
+        const nameMatch = line.match(/,(.+)$/);
+        if (!nameMatch) continue;
+        const rawName = nameMatch[1].trim();
+        const cleaned = cleanChannelName(rawName);
+        const normKey = cleaned.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (!normKey) continue;
+
+        const logoMatch = line.match(/tvg-logo="([^"]+)"/);
+        const logo = logoMatch && !logoMatch[1].includes('imgur.com') ? logoMatch[1] : null;
+
+        if (!m3uByName.has(normKey)) {
+          m3uByName.set(normKey, { streams: [], logo: null });
+        }
+        const entry = m3uByName.get(normKey);
+        entry.streams.push(streamUrl);
+        if (!entry.logo && logo) entry.logo = logo;
+      }
+    }
+  }
+
+  parseM3uContent(cuateM3u);
+  parseM3uContent(latinoM3u);
+  console.log(`  M3U playlists parsed: ${m3uByName.size} unique channel entries.`);
 
   // --- 2. Build TDTChannels lookup map by normalized name ---
   /** @type {Map<string, { logo: string, streams: string[], epgId: string }>} */
@@ -217,9 +285,13 @@ async function main() {
   for (const ch of filtered) {
     const normKey = ch.name.toLowerCase().replace(/[^a-z0-9]/g, '');
     const tdt = tdtByName.get(normKey);
+    const m3u = m3uByName.get(normKey);
     const rawStreams = streamsByChannel.get(ch.id) || [];
     const tdtStreams = tdt ? tdt.streams : [];
+    const m3uStreams = m3u ? m3u.streams : [];
+
     tdtStreams.forEach((u) => allStreamUrls.add(u));
+    m3uStreams.forEach((u) => allStreamUrls.add(u));
     rawStreams.forEach((u) => allStreamUrls.add(u));
   }
 
@@ -277,10 +349,12 @@ async function main() {
 
     const normKey = ch.name.toLowerCase().replace(/[^a-z0-9]/g, '');
     const tdt = tdtByName.get(normKey);
+    const m3u = m3uByName.get(normKey);
 
     const rawStreams = streamsByChannel.get(ch.id) || [];
     const tdtStreams = tdt ? tdt.streams : [];
-    const combinedStreams = Array.from(new Set([...tdtStreams, ...rawStreams]));
+    const m3uStreams = m3u ? m3u.streams : [];
+    const combinedStreams = Array.from(new Set([...tdtStreams, ...m3uStreams, ...rawStreams]));
 
     // Reorder streams: ONLINE streams prioritized first!
     const verifiedStreams = combinedStreams.sort((a, b) => {
@@ -289,7 +363,7 @@ async function main() {
       return bOk - aOk;
     });
 
-    const finalLogo = sanitizeLogo((tdt && tdt.logo) || ch.logo || logoByChannel.get(ch.id) || null);
+    const finalLogo = sanitizeLogo((tdt && tdt.logo) || (m3u && m3u.logo) || ch.logo || logoByChannel.get(ch.id) || null);
 
     byCountry.get(code).push({
       id: ch.id,
