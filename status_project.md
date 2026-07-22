@@ -216,9 +216,11 @@
 
 | Feature                         | Estado      |
 | ------------------------------- | ----------- |
-| Login / Registro / OAuth        | ✅ Completo |
-| Sistema de aprobación           | ✅ Completo |
-| Roles y permisos                | ✅ Completo |
+| Acceso Directo 1-Click (Sin Pwd)| ✅ Completo |
+| TV en Vivo (IPTV +2,000 ch)     | ✅ Completo |
+| Guía de Programación (EPG)      | ✅ Completo |
+| Validador de Salud de Señales   | ✅ Completo |
+| Filtros por Categorías (TV)     | ✅ Completo |
 | HeroBanner rotativo             | ✅ Completo |
 | Carruseles lazy-load            | ✅ Completo |
 | Catálogos (/movies, /tv)        | ✅ Completo |
