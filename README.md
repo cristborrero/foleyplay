@@ -1,6 +1,12 @@
 <div align="center">
 
-# FOLEYPLAY 2.0
+<br />
+
+<img src="./public/logo.webp" alt="FoleyPlay Logo" width="360" />
+
+<br />
+<br />
+
 ### Next-Gen Editorial Entertainment & Cinema Streaming Experience
 
 [![Next.js](https://img.shields.io/badge/Next.js-16.2.4-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
