@@ -418,13 +418,13 @@ Construye el Navbar en `components/layout/Navbar.tsx`:
 - **Fondo**: transparente cuando el scroll está en top, negro semitransparente con blur al hacer scroll.
 - **Izquierda**: logo de la app en rojo.
 - **Centro** (desktop): links de navegación: Inicio | Películas | Series | Mi Lista.
-- **Derecha**: barra de búsqueda colapsable (ícono que se expande al click) + avatar del usuario con menú desplegable (Mi cuenta | Cerrar sesión).
+- **Derecha**: barra de búsqueda colapsable (ícono que se expande al click) + avatar del usuario con menú desplegable (Historial | Cerrar sesión).
 - **Móvil/Desktop**: menú hamburguesa en móvil, links directos en desktop. Barra superior con scroll-to-solid.
 
 ### Comportamiento:
 - Al hacer scroll, el fondo cambia de transparente a negro con blur.
 - Barra de búsqueda colapsable funcional.
-- Menú de perfil funcional.
+- Menú de usuario funcional.
 
 Construye el Navbar completo con animaciones Framer Motion. Espera aprobación.
 

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import { Search, X, Loader2, Filter } from 'lucide-react';
 import { TMDBMedia } from '@/types/tmdb';
 import MovieCard from '@/components/cards/MovieCard';
 
@@ -21,62 +22,96 @@ function SearchContent() {
   const [yearFilter, setYearFilter] = useState('');
   const [genres, setGenres] = useState<{ id: number; name: string }[]>([]);
 
-  const hasFilters = mediaFilter !== 'all' || genreFilter !== null || yearFilter !== '';
+  const hasFilters =
+    mediaFilter !== 'all' || genreFilter !== null || yearFilter !== '';
 
   useEffect(() => {
     Promise.all([
-      fetch('/api/tmdb/genre/movie/list').then(r => r.json()),
-      fetch('/api/tmdb/genre/tv/list').then(r => r.json()),
-    ]).then(([movieG, tvG]) => {
-      const all = [...(movieG.genres || []), ...(tvG.genres || [])];
-      const unique = Array.from(new Map(all.map((g: { id: number; name: string }) => [g.id, g])).values()) as { id: number; name: string }[];
-      setGenres(unique.sort((a, b) => a.name.localeCompare(b.name)));
-    }).catch(() => {});
+      fetch('/api/tmdb/genre/movie/list').then((r) => r.json()),
+      fetch('/api/tmdb/genre/tv/list').then((r) => r.json()),
+    ])
+      .then(([movieG, tvG]) => {
+        const all = [...(movieG.genres || []), ...(tvG.genres || [])];
+        const unique = Array.from(
+          new Map(
+            all.map((g: { id: number; name: string }) => [g.id, g])
+          ).values()
+        ) as { id: number; name: string }[];
+        setGenres(unique.sort((a, b) => a.name.localeCompare(b.name)));
+      })
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
     fetch('/api/tmdb/trending/all/day')
-      .then(r => r.json())
-      .then(d => setPopular((d.results || []).filter((m: TMDBMedia) => m.poster_path).slice(0, 18)))
+      .then((r) => r.json())
+      .then((d) =>
+        setPopular(
+          (d.results || [])
+            .filter((m: TMDBMedia) => m.poster_path)
+            .slice(0, 18)
+        )
+      )
       .catch(() => {});
   }, []);
 
-  useEffect(() => { setInputValue(query); }, [query]);
+  useEffect(() => {
+    setInputValue(query);
+  }, [query]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       if (inputValue !== query) {
-        router.push(inputValue ? `/search?q=${encodeURIComponent(inputValue)}` : '/search');
+        router.push(
+          inputValue ? `/search?q=${encodeURIComponent(inputValue)}` : '/search'
+        );
       }
-    }, 500);
+    }, 400);
     return () => clearTimeout(timer);
   }, [inputValue, query, router]);
 
   useEffect(() => {
-    if (!query && !hasFilters) { setResults([]); return; }
+    if (!query && !hasFilters) {
+      setResults([]);
+      return;
+    }
     setIsLoading(true);
 
     if (query) {
       fetch(`/api/tmdb/search/multi?query=${encodeURIComponent(query)}`)
-        .then(r => r.json())
-        .then(d => {
-          let items: TMDBMedia[] = (d.results || []).filter((i: TMDBMedia) => i.media_type === 'movie' || i.media_type === 'tv');
-          if (mediaFilter !== 'all') items = items.filter(m => m.media_type === mediaFilter);
-          if (genreFilter) items = items.filter(m => m.genre_ids?.includes(genreFilter));
-          if (yearFilter) items = items.filter(m => (m.release_date || m.first_air_date || '').startsWith(yearFilter));
+        .then((r) => r.json())
+        .then((d) => {
+          let items: TMDBMedia[] = (d.results || []).filter(
+            (i: TMDBMedia) => i.media_type === 'movie' || i.media_type === 'tv'
+          );
+          if (mediaFilter !== 'all')
+            items = items.filter((m) => m.media_type === mediaFilter);
+          if (genreFilter)
+            items = items.filter((m) => m.genre_ids?.includes(genreFilter));
+          if (yearFilter)
+            items = items.filter((m) =>
+              (m.release_date || m.first_air_date || '').startsWith(yearFilter)
+            );
           setResults(items);
         })
         .catch(() => {})
         .finally(() => setIsLoading(false));
     } else {
-      const types: ('movie' | 'tv')[] = mediaFilter === 'all' ? ['movie', 'tv'] : [mediaFilter];
-      const fetches = types.map(type => {
+      const types: ('movie' | 'tv')[] =
+        mediaFilter === 'all' ? ['movie', 'tv'] : [mediaFilter];
+      const fetches = types.map((type) => {
         const params = new URLSearchParams();
         if (genreFilter) params.set('with_genres', String(genreFilter));
-        if (yearFilter) params.set(type === 'movie' ? 'primary_release_year' : 'first_air_date_year', yearFilter);
+        if (yearFilter)
+          params.set(
+            type === 'movie' ? 'primary_release_year' : 'first_air_date_year',
+            yearFilter
+          );
         return fetch(`/api/tmdb/discover/${type}?${params}`)
-          .then(r => r.json())
-          .then(d => (d.results || []).map((m: TMDBMedia) => ({ ...m, media_type: type })));
+          .then((r) => r.json())
+          .then((d) =>
+            (d.results || []).map((m: TMDBMedia) => ({ ...m, media_type: type }))
+          );
       });
       Promise.all(fetches)
         .then(([a, b]) => setResults(b ? [...a, ...b] : a))
@@ -85,79 +120,161 @@ function SearchContent() {
     }
   }, [query, mediaFilter, genreFilter, yearFilter, hasFilters]);
 
-  const clearFilters = () => { setMediaFilter('all'); setGenreFilter(null); setYearFilter(''); };
+  const clearFilters = () => {
+    setMediaFilter('all');
+    setGenreFilter(null);
+    setYearFilter('');
+  };
 
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="relative mb-4">
-        <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 text-gray-400">
-            <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-          </svg>
+    <div className="w-full pb-16">
+      {/* Search Header */}
+      <div className="mb-8">
+        <h1 className="text-2xl sm:text-3xl font-black text-[#F4F6F4] tracking-tight mb-4">
+          Búsqueda y Exploración
+        </h1>
+
+        {/* Input */}
+        <div className="relative">
+          <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-[#9CA39D]">
+            <Search size={18} />
+          </div>
+          <input
+            type="text"
+            className="w-full bg-[#151815] text-[#F4F6F4] text-base sm:text-lg py-4 pl-12 pr-12 rounded-2xl border border-white/10 focus:border-white/20 outline-none transition-all placeholder:text-[#9CA39D]/60"
+            placeholder="Buscar películas, series, directores, actores..."
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            autoFocus
+          />
+          {inputValue && (
+            <button
+              onClick={() => setInputValue('')}
+              className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#9CA39D] hover:text-white transition-colors cursor-pointer"
+              aria-label="Limpiar campo"
+            >
+              <X size={18} />
+            </button>
+          )}
         </div>
-        <input
-          type="text"
-          className="w-full bg-fp-elevated text-white text-lg p-4 pl-12 rounded-xl border border-fp-border outline-none focus:border-red-600/40 focus:[box-shadow:0_0_0_1px_rgba(229,9,20,0.2)] transition-all placeholder:text-gray-600"
-          placeholder="Películas, series..."
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          autoFocus
-        />
-        {inputValue && (
-          <button onClick={() => setInputValue('')} className="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 hover:text-white transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-          </button>
-        )}
       </div>
 
-      <div className="flex flex-wrap items-center gap-2 mb-6">
+      {/* Filter Strip */}
+      <div className="flex flex-wrap items-center gap-2.5 mb-8">
+        <div className="flex items-center gap-1 text-xs text-[#9CA39D] mr-1">
+          <Filter size={13} />
+          <span>Filtros:</span>
+        </div>
+
         {(['all', 'movie', 'tv'] as MediaFilter[]).map((type) => (
-          <button key={type} onClick={() => setMediaFilter(type)}
-            className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${mediaFilter === type ? 'bg-white text-black' : 'bg-fp-elevated text-gray-300 border border-fp-border hover:border-white/30'}`}>
-            {type === 'all' ? 'Todo' : type === 'movie' ? 'Películas' : 'Series'}
+          <button
+            key={type}
+            onClick={() => setMediaFilter(type)}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+              mediaFilter === type
+                ? 'bg-fp-lime text-black font-bold'
+                : 'bg-[#151815] text-[#9CA39D] hover:text-[#F4F6F4] border border-white/[0.08] hover:border-white/20'
+            }`}
+          >
+            {type === 'all'
+              ? 'Todo'
+              : type === 'movie'
+              ? 'Películas'
+              : 'Series'}
           </button>
         ))}
+
         {genres.length > 0 && (
-          <select value={genreFilter ?? ''} onChange={e => setGenreFilter(e.target.value ? parseInt(e.target.value) : null)}
-            className="bg-fp-elevated text-gray-300 text-sm px-3 py-1.5 rounded-full border border-fp-border focus:border-white/30 outline-none cursor-pointer">
-            <option value="">Género</option>
-            {genres.map(g => <option key={g.id} value={g.id}>{g.name}</option>)}
+          <select
+            value={genreFilter ?? ''}
+            onChange={(e) =>
+              setGenreFilter(e.target.value ? parseInt(e.target.value) : null)
+            }
+            className="bg-[#151815] text-[#9CA39D] text-xs px-3.5 py-1.5 rounded-full border border-white/[0.08] hover:border-white/20 focus:border-white/30 outline-none cursor-pointer"
+          >
+            <option value="">Todos los géneros</option>
+            {genres.map((g) => (
+              <option key={g.id} value={g.id}>
+                {g.name}
+              </option>
+            ))}
           </select>
         )}
-        <input type="number" min="1900" max="2099" value={yearFilter} onChange={e => setYearFilter(e.target.value)}
+
+        <input
+          type="number"
+          min="1900"
+          max="2099"
+          value={yearFilter}
+          onChange={(e) => setYearFilter(e.target.value)}
           placeholder="Año"
-          className="w-24 bg-fp-elevated text-gray-300 text-sm px-3 py-1.5 rounded-full border border-fp-border focus:border-white/30 outline-none placeholder:text-gray-600 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" />
-        {hasFilters && <button onClick={clearFilters} className="text-xs text-gray-500 hover:text-gray-300 transition-colors ml-1">Limpiar</button>}
+          className="w-20 bg-[#151815] text-[#F4F6F4] text-xs px-3 py-1.5 rounded-full border border-white/[0.08] hover:border-white/20 focus:border-white/30 outline-none placeholder:text-[#9CA39D]/60 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+        />
+
+        {hasFilters && (
+          <button
+            onClick={clearFilters}
+            className="text-xs text-fp-lime hover:underline transition-colors ml-2 cursor-pointer font-medium"
+          >
+            Limpiar filtros
+          </button>
+        )}
       </div>
 
+      {/* Results or Trending */}
       {isLoading ? (
-        <div className="flex justify-center py-20">
-          <div className="w-10 h-10 border-2 border-red-600 border-t-transparent rounded-full animate-spin" />
+        <div className="flex flex-col items-center justify-center py-24 text-[#9CA39D] gap-3">
+          <Loader2 size={24} className="animate-spin text-fp-lime" />
+          <span className="text-sm">Buscando en el catálogo...</span>
         </div>
       ) : (query || hasFilters) && results.length === 0 ? (
-        <div className="text-center py-20">
-          <p className="text-gray-400 text-lg">Sin resultados{query ? ` para "${query}"` : ''}</p>
-          <p className="text-gray-600 text-sm mt-2">Probá con otras palabras o filtros.</p>
-        </div>
-      ) : (query || hasFilters) ? (
-        <>
-          <p className="text-gray-500 text-sm mb-4">
-            {results.length} resultado{results.length !== 1 ? 's' : ''}
-            {query ? <> para "<span className="text-white">{query}</span>"</> : ''}
+        <div className="text-center py-20 bg-[#101310] rounded-2xl border border-white/[0.08] p-8">
+          <p className="text-[#F4F6F4] text-lg font-bold">
+            No se encontraron resultados{query ? ` para "${query}"` : ''}
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-            {results.map((media) => <div key={media.id} className="w-full"><MovieCard media={media} /></div>)}
+          <p className="text-xs text-[#9CA39D] mt-2">
+            Probá ajustando las palabras clave o cambiando los filtros seleccionados.
+          </p>
+        </div>
+      ) : query || hasFilters ? (
+        <div>
+          <p className="text-xs font-semibold text-[#9CA39D] uppercase tracking-wider mb-4">
+            {results.length} resultado{results.length !== 1 ? 's' : ''}
+            {query ? (
+              <>
+                {' '}
+                para "<span className="text-[#F4F6F4]">{query}</span>"
+              </>
+            ) : (
+              ''
+            )}
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
+            {results.map((media) => (
+              <div key={media.id} className="w-full">
+                <MovieCard media={media} />
+              </div>
+            ))}
           </div>
-        </>
+        </div>
       ) : (
-        <>
-          <h2 className="text-white text-xl font-bold mb-4">Tendencias</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-            {popular.map((media) => <div key={media.id} className="w-full"><MovieCard media={media} /></div>)}
+        <div>
+          <div className="mb-4">
+            <h2 className="text-lg font-bold text-[#F4F6F4] tracking-tight">
+              Títulos Populares y Recomendados
+            </h2>
+            <p className="text-xs text-[#9CA39D]">
+              Explora lo más visto mientras realizas tu búsqueda
+            </p>
           </div>
-        </>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
+            {popular.map((media) => (
+              <div key={media.id} className="w-full">
+                <MovieCard media={media} />
+              </div>
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );
@@ -165,10 +282,16 @@ function SearchContent() {
 
 export default function SearchPage() {
   return (
-    <div className="pt-20 sm:pt-24 px-4 sm:px-5 md:px-8 lg:px-12 min-h-screen bg-fp-black">
-      <Suspense fallback={<div className="text-white pt-20">Cargando...</div>}>
-        <SearchContent />
-      </Suspense>
+    <div className="pt-24 min-h-screen bg-[#080A09]">
+      <div className="container-editorial">
+        <Suspense
+          fallback={
+            <div className="text-[#9CA39D] py-20 text-center">Cargando búsqueda...</div>
+          }
+        >
+          <SearchContent />
+        </Suspense>
+      </div>
     </div>
   );
 }

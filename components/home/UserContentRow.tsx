@@ -1,132 +1,148 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-
-interface UserItem {
-  _id: string;
-  tmdbId: number;
-  mediaType: 'movie' | 'tv';
-  title: string;
-  posterPath?: string;
-  poster_path?: string;
-  progress?: number;
-  season?: number;
-  episode?: number;
-}
+import { ChevronLeft, ChevronRight, Bookmark, Clock, ArrowRight } from 'lucide-react';
+import { useWatchlist, type WatchlistItem } from '@/hooks/useWatchlist';
+import { useHistory, type HistoryItem } from '@/hooks/useHistory';
+import MovieCard from '@/components/cards/MovieCard';
+import { TMDBMedia } from '@/types/tmdb';
 
 interface UserContentRowProps {
   title: string;
-  fetchUrl: string;
+  type?: 'history' | 'watchlist';
+  fetchUrl?: string; // backwards compatibility
+  mediaType?: 'movie' | 'tv';
   showProgress?: boolean;
 }
 
-export default function UserContentRow({ title, fetchUrl, showProgress = false }: UserContentRowProps) {
-  const [items, setItems] = useState<UserItem[]>([]);
+export default function UserContentRow({
+  title,
+  type,
+  fetchUrl,
+  mediaType,
+}: UserContentRowProps) {
+  const { watchlist } = useWatchlist();
+  const { history } = useHistory();
   const rowRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch(fetchUrl);
-        if (res.ok) {
-          const data = await res.json();
-          setItems(Array.isArray(data) ? data : []);
-        }
-      } catch (e) {
-        console.error(`UserContentRow fetch error (${fetchUrl}):`, e);
-      }
-    }
-    fetchData();
-  }, [fetchUrl]);
+  // Determine type from prop or fallback fetchUrl
+  const resolvedType =
+    type ||
+    (fetchUrl?.includes('history')
+      ? 'history'
+      : 'watchlist');
+
+  // Filter items based on type and mediaType
+  const baseItems: (HistoryItem | WatchlistItem)[] =
+    resolvedType === 'history' ? history : watchlist;
+  let items = baseItems;
+  if (mediaType) {
+    items = items.filter((item) => item.mediaType === mediaType);
+  } else if (fetchUrl?.includes('type=movie')) {
+    items = items.filter((item) => item.mediaType === 'movie');
+  } else if (fetchUrl?.includes('type=tv')) {
+    items = items.filter((item) => item.mediaType === 'tv');
+  }
 
   if (items.length === 0) return null;
+
+  const isHistory = resolvedType === 'history';
+  const Icon = isHistory ? Clock : Bookmark;
+  const destinationHref = isHistory ? '/history' : '/watchlist';
 
   const handleScroll = (direction: 'left' | 'right') => {
     if (!rowRef.current) return;
     const { scrollLeft, clientWidth } = rowRef.current;
     rowRef.current.scrollTo({
-      left: direction === 'left' ? scrollLeft - clientWidth : scrollLeft + clientWidth,
+      left:
+        direction === 'left'
+          ? scrollLeft - clientWidth * 0.75
+          : scrollLeft + clientWidth * 0.75,
       behavior: 'smooth',
     });
   };
 
   return (
-    <div className="pl-3 sm:pl-4 md:pl-8 lg:pl-12 my-6 sm:my-8">
-      <h2 className="text-white text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4">{title}</h2>
-      <div className="relative group">
-        <button
-          onClick={() => handleScroll('left')}
-          className="absolute left-0 top-0 bottom-0 z-40 w-12 bg-black/50 hover:bg-black/70 text-white opacity-0 group-hover:opacity-100 transition-opacity hidden md:flex items-center justify-center rounded-l"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-8 h-8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-          </svg>
-        </button>
-
-        <div
-          ref={rowRef}
-          className="flex space-x-2 sm:space-x-3 overflow-x-scroll py-3 sm:py-4 pr-3 sm:pr-4 md:pr-8 lg:pr-12"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {items.map((item) => {
-            const currentPosterPath = item.posterPath || item.poster_path;
-            return (
-              <Link
-                key={item._id}
-                href={`/${item.mediaType}/${item.tmdbId}`}
-                className="flex-none w-[110px] sm:w-[140px] md:w-[175px] group/card"
-              >
-                <div className="relative aspect-2/3 rounded-md overflow-hidden bg-gray-800">
-                  {currentPosterPath ? (
-                    <Image
-                      src={`https://image.tmdb.org/t/p/w300${currentPosterPath}`}
-                      alt={item.title}
-                      fill
-                      className="object-cover transition-opacity duration-300 group-hover/card:opacity-80"
-                      sizes="200px"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center bg-linear-to-br from-gray-800 to-gray-900 p-2 text-center">
-                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-8 h-8 text-gray-600 mb-1">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6.75a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6.75v10.5a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                        </svg>
-                      <span className="text-[10px] text-gray-500 line-clamp-2">{item.title}</span>
-                    </div>
-                  )}
-                {showProgress && item.progress !== undefined && (
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-700">
-                    <div
-                      className="h-full bg-red-600"
-                      style={{ width: `${Math.min(100, Math.max(0, item.progress))}%` }}
-                    />
-                  </div>
-                )}
-                {item.mediaType === 'tv' && item.season && item.episode && (
-                  <div className="absolute top-2 right-2 bg-black/80 px-1.5 py-0.5 rounded text-xs text-white">
-                    T{item.season}E{item.episode}
-                  </div>
-                )}
-              </div>
-              <p className="text-gray-300 text-xs mt-2 truncate group-hover/card:text-white transition-colors">
-                {item.title}
-              </p>
-            </Link>
-            );
-          })}
+    <section aria-label={title} className="container-editorial my-10 sm:my-14">
+      {/* Header */}
+      <div className="flex items-end justify-between gap-4 mb-4">
+        <div className="flex items-center gap-2.5">
+          <div className="p-1.5 rounded-lg bg-white/[0.06] border border-white/10 text-fp-lime">
+            <Icon size={16} />
+          </div>
+          <div>
+            <h2 className="text-lg sm:text-xl font-bold text-[#F4F6F4] tracking-tight">
+              {title}
+            </h2>
+            <p className="text-xs text-[#9CA39D]">
+              {isHistory ? 'Continúa donde lo dejaste' : 'Tus títulos guardados'}
+            </p>
+          </div>
         </div>
 
-        <button
-          onClick={() => handleScroll('right')}
-          className="absolute right-0 top-0 bottom-0 z-40 w-12 bg-black/50 hover:bg-black/70 text-white opacity-0 group-hover:opacity-100 transition-opacity hidden md:flex items-center justify-center rounded-r"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-8 h-8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-          </svg>
-        </button>
+        <div className="flex items-center gap-3">
+          <Link
+            href={destinationHref}
+            className="text-xs font-semibold text-[#9CA39D] hover:text-fp-lime flex items-center gap-1 transition-colors"
+          >
+            <span>Ver todo</span>
+            <ArrowRight size={13} />
+          </Link>
+
+          <div className="hidden md:flex items-center gap-1.5">
+            <button
+              type="button"
+              aria-label={`Desplazar ${title} a la izquierda`}
+              onClick={() => handleScroll('left')}
+              className="p-1.5 rounded-full bg-[#151815] hover:bg-[#1C201C] border border-white/10 text-[#F4F6F4] hover:text-white transition-colors cursor-pointer"
+            >
+              <ChevronLeft size={16} />
+            </button>
+            <button
+              type="button"
+              aria-label={`Desplazar ${title} a la derecha`}
+              onClick={() => handleScroll('right')}
+              className="p-1.5 rounded-full bg-[#151815] hover:bg-[#1C201C] border border-white/10 text-[#F4F6F4] hover:text-white transition-colors cursor-pointer"
+            >
+              <ChevronRight size={16} />
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+
+      {/* Rail */}
+      <div
+        ref={rowRef}
+        className="flex gap-3 sm:gap-4 overflow-x-auto pb-4 pt-2 scrollbar-none content-row-scroll"
+        style={{ scrollbarWidth: 'none' }}
+      >
+        {items.map((item) => {
+          const media: TMDBMedia = {
+            id: item.tmdbId,
+            media_type: item.mediaType,
+            title: item.mediaType === 'movie' ? item.title : undefined,
+            name: item.mediaType === 'tv' ? item.title : undefined,
+            poster_path: item.posterPath || item.poster_path || null,
+            backdrop_path: '',
+            overview: '',
+            vote_average: 0,
+            release_date: '',
+            first_air_date: '',
+          };
+
+          const key = item._id || `${item.mediaType}-${item.tmdbId}`;
+
+          return (
+            <div
+              key={key}
+              className="flex-none w-[140px] sm:w-[170px] md:w-[200px]"
+            >
+              <MovieCard media={media} mediaType={item.mediaType} />
+            </div>
+          );
+        })}
+      </div>
+    </section>
   );
 }

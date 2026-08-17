@@ -10,7 +10,7 @@ Every page has one primary goal. Design ruthlessly toward it.
 | Browse | Start watching |
 | Movie/TV detail | Play content |
 | Pricing | Select plan |
-| Onboarding | Complete profile |
+| Onboarding | Choose preferences |
 
 ## CTA Principles
 1. **One primary CTA per section** — never two equal-weight buttons side by side.
@@ -19,7 +19,7 @@ Every page has one primary goal. Design ruthlessly toward it.
 4. **Visual weight**: Primary = filled, high contrast. Secondary = outlined or ghost.
 
 ## Friction Reduction
-- Registration: ask for minimum info (email + password or social login). Name, avatar — later.
+- Registration: ask for minimum info (email + password or social login).
 - Payment: show price early, hide complexity until checkout.
 - Forms: auto-focus first field. Tab order must be logical. Enter submits.
 

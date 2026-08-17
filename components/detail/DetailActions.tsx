@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
+import { useWatchlist } from '@/hooks/useWatchlist';
+import { useHistory } from '@/hooks/useHistory';
 
 interface DetailActionsProps {
   tmdbId: number;
@@ -11,67 +12,24 @@ interface DetailActionsProps {
 }
 
 export default function DetailActions({ tmdbId, mediaType, title, posterPath }: DetailActionsProps) {
-  const { data: session } = useSession();
-  const [inWatchlist, setInWatchlist] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const { isInWatchlist, toggle, isLoading } = useWatchlist();
+  const { logView } = useHistory();
+
+  const inWatchlist = isInWatchlist(tmdbId, mediaType);
 
   useEffect(() => {
-    async function checkStatus() {
-      if (!session?.user) {
-        setIsLoading(false);
-        return;
-      }
+    // Track in view history
+    logView({
+      tmdbId,
+      mediaType,
+      title,
+      posterPath,
+      progress: 10,
+    });
+  }, [tmdbId, mediaType, title, posterPath, logView]);
 
-      try {
-        // Track history
-        fetch('/api/history', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            tmdbId,
-            mediaType,
-            title,
-            posterPath,
-            progress: 10
-          })
-        });
-
-        // Check watchlist
-        const res = await fetch('/api/watchlist');
-        if (res.ok) {
-          const wl = await res.json();
-          setInWatchlist(wl.some((item: any) => item.tmdbId === tmdbId && item.mediaType === mediaType));
-        }
-      } catch (error) {
-        console.error('Error tracking view/watchlist:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    checkStatus();
-  }, [session, tmdbId, mediaType, title, posterPath]);
-
-  const toggleWatchlist = async () => {
-    if (!session?.user) {
-      alert('Debes iniciar sesión para usar Mi Lista');
-      return;
-    }
-
-    try {
-      const res = await fetch('/api/watchlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tmdbId, mediaType, title, posterPath })
-      });
-      
-      const data = await res.json();
-      if (res.ok) {
-        setInWatchlist(data.added);
-      }
-    } catch (error) {
-      console.error('Error toggling watchlist:', error);
-    }
+  const handleToggleWatchlist = () => {
+    toggle({ tmdbId, mediaType, title, posterPath });
   };
 
   return (
@@ -82,7 +40,7 @@ export default function DetailActions({ tmdbId, mediaType, title, posterPath }: 
         onClick={() => {
           window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }}
-        className="bg-white text-black font-bold py-2 px-4 sm:px-6 rounded flex items-center text-sm sm:text-base hover:bg-gray-200 transition-colors outline-none focus:ring-2 focus:ring-fp-lime"
+        className="bg-white text-black font-bold py-2 px-4 sm:px-6 rounded flex items-center text-sm sm:text-base hover:bg-gray-200 transition-colors outline-none focus:ring-2 focus:ring-fp-lime cursor-pointer"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 mr-1.5 sm:mr-2">
           <path d="M8 5v14l11-7z" />
@@ -93,9 +51,9 @@ export default function DetailActions({ tmdbId, mediaType, title, posterPath }: 
       <button
         data-tv-card
         tabIndex={0}
-        onClick={toggleWatchlist}
+        onClick={handleToggleWatchlist}
         disabled={isLoading}
-        className="bg-[#333] text-white font-bold py-2 px-4 sm:px-6 rounded flex items-center text-sm sm:text-base hover:bg-[#444] transition-colors disabled:opacity-50 outline-none focus:ring-2 focus:ring-fp-lime"
+        className="bg-[#333] text-white font-bold py-2 px-4 sm:px-6 rounded flex items-center text-sm sm:text-base hover:bg-[#444] transition-colors disabled:opacity-50 outline-none focus:ring-2 focus:ring-fp-lime cursor-pointer"
       >
         {inWatchlist ? (
           <>

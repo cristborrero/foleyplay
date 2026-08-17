@@ -7,7 +7,7 @@ Get new users to experience value in under 60 seconds after registration.
 1. **Welcome** (step 1/4): "Bienvenido a FoleyPlay, [Name]". Single CTA: "Empezar".
 2. **Preferences** (step 2/4): Pick 3+ genres from a grid of icons. Min selection required.
 3. **Plan Selection** (step 3/4): Simplified 2-option pricing. Pre-select recommended plan.
-4. **Ready** (step 4/4): Confetti animation. "Tu perfil está listo." CTA: "Explorar catálogo".
+4. **Ready** (step 4/4): Confetti animation. "Tu configuración está lista." CTA: "Explorar catálogo".
 
 ## Design
 - Progress indicator at top (dots or numbered steps).

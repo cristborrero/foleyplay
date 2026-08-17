@@ -5,32 +5,28 @@ import { useModal } from '@/lib/modal-context';
 import ServerSelector from './ServerSelector';
 import SubtitleInjector from './SubtitleInjector';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useSession } from 'next-auth/react';
+import { useHistory } from '@/hooks/useHistory';
 import MediaRating from '@/components/cards/MediaRating';
 
 export default function PlayerModal() {
   const { player, closePlayer } = useModal();
-  const { data: session } = useSession();
+  const { logView } = useHistory();
   const [showSlowHint, setShowSlowHint] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Register in history on open
   useEffect(() => {
-    if (!player || !session?.user) return;
-    fetch('/api/history', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        tmdbId: player.tmdbId,
-        mediaType: player.mediaType,
-        title: player.title,
-        posterPath: player.posterPath || '',
-        season: player.season,
-        episode: player.episode,
-        progress: 5,
-      }),
-    }).catch(() => {});
-  }, [player?.tmdbId, session]);
+    if (!player) return;
+    logView({
+      tmdbId: player.tmdbId,
+      mediaType: player.mediaType,
+      title: player.title,
+      posterPath: player.posterPath || '',
+      season: player.season,
+      episode: player.episode,
+      progress: 5,
+    });
+  }, [player, logView]);
 
   // 30-second slow hint
   useEffect(() => {
@@ -78,7 +74,7 @@ export default function PlayerModal() {
             </div>
             <button
               onClick={closePlayer}
-              className="text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/10"
+              className="text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/10 cursor-pointer"
               aria-label="Cerrar"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">

@@ -6,8 +6,8 @@
 - No hover-only interactions — all hover behaviors need a tap equivalent.
 
 ## Navigation
-- Bottom tab bar: Home | Buscar | Mi lista | Perfil
-- Max 4 tabs. Labels required (no icon-only tabs).
+- Bottom tab bar: Home | Buscar | Mi lista
+- Max 3 tabs. Labels required (no icon-only tabs).
 - Active tab: lime accent color.
 
 ## Gestures

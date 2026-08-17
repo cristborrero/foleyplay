@@ -1,78 +1,82 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { Bookmark, Sparkles, Loader2 } from 'lucide-react';
 import MovieCard from '@/components/cards/MovieCard';
+import { useWatchlist } from '@/hooks/useWatchlist';
 import { TMDBMedia } from '@/types/tmdb';
 
-// Simulate TMDBMedia from Watchlist Model
-interface WatchlistItem {
-  _id: string;
-  tmdbId: number;
-  mediaType: 'movie' | 'tv';
-  title: string;
-  posterPath: string;
-}
-
 export default function WatchlistPage() {
-  const [watchlist, setWatchlist] = useState<WatchlistItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchWatchlist() {
-      try {
-        const res = await fetch('/api/watchlist');
-        if (res.ok) {
-          const data = await res.json();
-          setWatchlist(data);
-        }
-      } catch (error) {
-        console.error('Error fetching watchlist:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchWatchlist();
-  }, []);
+  const { watchlist, isLoading } = useWatchlist();
 
   if (isLoading) {
     return (
-      <div className="pt-24 min-h-screen bg-fp-black flex justify-center py-20">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+      <div className="pt-24 min-h-screen bg-[#080A09] flex flex-col items-center justify-center gap-3">
+        <Loader2 size={28} className="animate-spin text-fp-lime" />
+        <span className="text-xs text-[#9CA39D]">Cargando tu lista...</span>
       </div>
     );
   }
 
   return (
-    <div className="pt-20 sm:pt-24 px-3 sm:px-4 md:px-12 min-h-screen bg-fp-black">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-8">Mi Lista</h1>
+    <div className="pt-24 pb-16 min-h-screen bg-[#080A09]">
+      <div className="container-editorial">
+        {/* Header */}
+        <div className="mb-8">
+          <div className="flex items-center gap-2 text-fp-lime text-xs font-semibold uppercase tracking-wider mb-2">
+            <Bookmark size={15} />
+            <span>Colección Personal</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-black text-[#F4F6F4] tracking-tight">
+            Mi Lista
+          </h1>
+          <p className="text-xs sm:text-sm text-[#9CA39D] mt-1">
+            {watchlist.length === 1
+              ? '1 título guardado'
+              : `${watchlist.length} títulos guardados`}
+          </p>
+        </div>
 
         {watchlist.length === 0 ? (
-          <div className="text-center py-20">
-            <p className="text-gray-400 text-lg">Tu lista está vacía.</p>
-            <p className="text-gray-500 mt-2">Agrega películas y series para verlas más tarde.</p>
+          <div className="text-center py-24 px-4 bg-[#101310] rounded-2xl border border-white/[0.08] max-w-xl mx-auto">
+            <div className="w-12 h-12 rounded-full bg-fp-lime/10 border border-fp-lime/20 text-fp-lime flex items-center justify-center mx-auto mb-4">
+              <Bookmark size={20} />
+            </div>
+            <h2 className="text-lg font-bold text-[#F4F6F4] mb-2">
+              Tu lista está vacía
+            </h2>
+            <p className="text-xs text-[#9CA39D] leading-relaxed mb-6">
+              Explora nuestro catálogo y guarda las películas o series que quieras ver más tarde haciendo clic en el botón (+).
+            </p>
+            <Link
+              href="/browse"
+              className="inline-flex items-center gap-2 bg-fp-lime text-black font-bold px-6 py-2.5 rounded-xl text-xs sm:text-sm hover:bg-fp-lime-hover transition-transform hover:scale-105 active:scale-95"
+            >
+              <Sparkles size={14} />
+              <span>Explorar catálogo</span>
+            </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
             {watchlist.map((item) => {
-              // Convert to TMDBMedia format for MovieCard
               const media: TMDBMedia = {
                 id: item.tmdbId,
                 media_type: item.mediaType,
                 title: item.mediaType === 'movie' ? item.title : undefined,
                 name: item.mediaType === 'tv' ? item.title : undefined,
-                poster_path: item.posterPath,
+                poster_path: item.posterPath || item.poster_path || null,
                 backdrop_path: '',
                 overview: '',
                 vote_average: 0,
                 release_date: '',
-                first_air_date: ''
+                first_air_date: '',
               };
 
+              const key = item._id || `${item.mediaType}-${item.tmdbId}`;
+
               return (
-                <div key={item._id} className="w-full">
-                  <MovieCard media={media} />
+                <div key={key} className="w-full">
+                  <MovieCard media={media} mediaType={item.mediaType} />
                 </div>
               );
             })}

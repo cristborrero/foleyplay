@@ -4,12 +4,11 @@
 Allow users to manage their account, preferences, and subscriptions.
 
 ## Sections
-1. **Profile**: Name, avatar, email (read-only if OAuth), password change.
-2. **Preferences**: Language, content maturity rating, autoplay settings.
-3. **Notifications**: Email preferences (weekly digest, new releases).
-4. **Subscription**: Current plan, renewal date, upgrade/downgrade CTA.
-5. **Devices**: List of active sessions with logout option.
-6. **Danger Zone**: Delete account (destructive, requires confirmation modal).
+1. **Preferences**: Language, content maturity rating, autoplay settings.
+2. **Notifications**: Email preferences (weekly digest, new releases).
+3. **Subscription**: Current plan, renewal date, upgrade/downgrade CTA.
+4. **Devices**: List of active sessions with logout option.
+5. **Danger Zone**: Delete account (destructive, requires confirmation modal).
 
 ## UX Rules
 - Changes auto-save or have explicit save button per section — never both.

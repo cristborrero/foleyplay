@@ -2,25 +2,28 @@ export interface StreamProvider {
   id: string;
   name: string;
   needsImdbId?: boolean;
+  isLatam?: boolean;
   getMovieUrl: (tmdbId: number, imdbId?: string) => string;
   getTvUrl: (tmdbId: number, season: number, episode: number, imdbId?: string) => string;
 }
 
-function proxy(url: string) {
-  return `/api/proxy/player?url=${encodeURIComponent(url)}`;
-}
-
-// proxy()  — HTML fetched server-side, ad-blocking script injected (only for domains that resolve server-side)
-// direct   — iframe URL served straight to the browser (DNS resolves in browser but not server-side)
-
 export const streamProviders: StreamProvider[] = [
-  // ── DIRECT (browser resolves DNS) ───────────────────────────────────────
+  // ── 1. DEFAULT (Multi-audio & broad catalog) ─────────────────────────────
   {
     id: 'unlimplay',
     name: 'UnlimPlay',
     getMovieUrl: (tmdbId) => `https://unlimplay.com/play/embed/movie/${tmdbId}`,
     getTvUrl: (tmdbId, season, episode) => `https://unlimplay.com/play/embed/tv/${tmdbId}/${season}/${episode}`,
   },
+  // ── 2. LATINO DIRECTO HLS ────────────────────────────────────────────────
+  {
+    id: 'latam-direct',
+    name: 'Latino Directo (HLS)',
+    isLatam: true,
+    getMovieUrl: (tmdbId) => `/api/providers/latam/player?tmdbId=${tmdbId}&mediaType=movie`,
+    getTvUrl: (tmdbId, season, episode) => `/api/providers/latam/player?tmdbId=${tmdbId}&mediaType=tv`,
+  },
+  // ── 3. DIRECT (VidLink & VidSrc) ─────────────────────────────────────────
   {
     id: 'vidlink',
     name: 'VidLink',

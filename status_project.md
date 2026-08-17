@@ -20,9 +20,7 @@
 | Estilos       | Tailwind CSS v4                 | 4.x           |
 | Animaciones   | Framer Motion                   | 12.38.0       |
 | Iconos        | Lucide React                    | 1.11.0        |
-| Auth          | NextAuth v5 beta                | 5.0.0-beta.31 |
-| Base de datos | Cloudflare D1 + Drizzle ORM     | -             |
-| Contraseñas   | bcryptjs                        | 3.0.3         |
+| Almacenamiento| localStorage (Watchlist/History/Ratings)| Nativo |
 | HLS           | hls.js                          | 1.6.16        |
 | Consumet      | @consumet/extensions            | 1.8.8         |
 
@@ -34,28 +32,26 @@
 ┌─────────────────────────────────────────────────────────────┐
 │                      Next.js App Router                      │
 │                                                             │
-│  ┌─────────────┐  ┌──────────────────┐  ┌───────────────┐  │
-│  │  (auth)     │  │     (main)       │  │   api/        │  │
-│  │  /login     │  │  /browse         │  │  /tmdb/...    │  │
-│  │  /register  │  │  /movie/[id]     │  │  /history     │  │
-│  └─────────────┘  │  /tv/[id]        │  │  /watchlist   │  │
-│                   │  /movies         │  │  /tv          │  │
-│                   │  /tv             │  │  /search       │  │
-│                   │  /search         │  │  /subtitles   │  │
-│                   │  /watchlist      │  │  /proxy/player│  │
-│                   │  /history        │  │  /admin/...   │  │
-│                   │  /profile        │  │  /auth/*      │  │
-│                   │  /admin/users    │  └───────────────┘  │
-│                   │  /legal/*        │                      │
-│                   └──────────────────┘                      │
+│  ┌─────────────────────────────────┐  ┌──────────────────┐  │
+│  │             (main)              │  │      api/        │  │
+│  │  /browse                        │  │  /tmdb/...       │  │
+│  │  /movie/[id]                    │  │  /subtitles      │  │
+│  │  /tv/[id]                       │  │  /proxy/player   │  │
+│  │  /movies                        │  │  /proxy/stream   │  │
+│  │  /tv                            │  │  /iptv/epg       │  │
+│  │  /search                        │  └──────────────────┘  │
+│  │  /watchlist                     │                        │
+│  │  /history                       │                        │
+│  │  /tv-en-vivo                    │                        │
+│  │  /legal/*                       │                        │
+│  └─────────────────────────────────┘                        │
 └─────────────────────────────────────────────────────────────┘
-         │                    │                │
-         ▼                    ▼                ▼
-     NextAuth JWT          Cloudflare D1     TMDB API
-     Google OAuth          Local/Remote      (cacheado 1h)
-     Credentials           4 tablas          es-ES default
-     Roles: user/admin     approved flag
-     /superadmin
+         │                                    │
+         ▼                                    ▼
+   localStorage (Browser)                 TMDB API
+   - Watchlist (Mi Lista)                 (cacheado 1h)
+   - Continuar Viendo (Historial)         es-MX default
+   - Calificaciones (Like/Dislike)
 ```
 
 ---
@@ -77,7 +73,6 @@
 | `/search`        | Búsqueda con debounce y filtros                    | Autenticado        |
 | `/watchlist`     | Mi lista personal                                  | Autenticado        |
 | `/history`       | Continuar viendo                                   | Autenticado        |
-| `/profile`       | Edición de nombre, avatar por iniciales            | Autenticado        |
 | `/admin/users`   | Panel de gestión de usuarios                       | admin / superadmin |
 | `/legal/terms`   | Términos de uso                                    | Público            |
 | `/legal/privacy` | Política de privacidad                             | Público            |
@@ -166,7 +161,6 @@
 │   │   ├── search/page.tsx
 │   │   ├── watchlist/page.tsx
 │   │   ├── history/page.tsx
-│   │   ├── profile/page.tsx
 │   │   ├── admin/users/
 │   │   └── legal/
 │   ├── api/
@@ -175,7 +169,6 @@
 │   │   ├── history/
 │   │   ├── watchlist/
 │   │   ├── ratings/
-│   │   ├── profile/
 │   │   ├── subtitles/
 │   │   ├── proxy/player/
 │   │   └── admin/
