@@ -74,7 +74,7 @@ body {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* Focus States */
+/* Focus States for Keyboard and TV Remote Navigation */
 *:focus {
   outline: none;
 }
@@ -82,7 +82,7 @@ body {
 *:focus-visible {
   outline: 2px solid var(--color-fp-lime);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 /* Surfaces & Containers */
@@ -104,8 +104,8 @@ body {
 
 @media (min-width: 768px) {
   .container-editorial {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
   }
 }
 
@@ -116,13 +116,16 @@ body {
   }
 }
 
-/* Content Rail Scroll */
+/* Content Rail Scroll with GPU Acceleration & Layout Containment */
 .content-row-scroll {
   scrollbar-width: none;
   -ms-overflow-style: none;
   scroll-behavior: smooth;
   overscroll-behavior-inline: contain;
   scroll-snap-type: x proximity;
+  contain: layout paint;
+  transform: translateZ(0);
+  -webkit-overflow-scrolling: touch;
 }
 
 .content-row-scroll::-webkit-scrollbar {
@@ -131,6 +134,8 @@ body {
 
 .content-row-viewport {
   position: relative;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 280px;
 }
 
 .content-row-viewport::before,
@@ -139,7 +144,7 @@ body {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 3.5rem;
+  width: 3rem;
   z-index: 20;
   pointer-events: none;
 }
@@ -169,6 +174,30 @@ body {
 @keyframes shimmer {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Smart TV & HD (720p / 1366x768 / 1280x720) Optimizations
+   ───────────────────────────────────────────────────────────── */
+@media (max-height: 780px), (max-width: 1280px) {
+  :root {
+    font-size: 15px;
+  }
+  .container-editorial {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+/* Smart TV / Low-power GPU: Disable expensive blur filters to maintain 60 FPS */
+@media (hover: none) and (pointer: coarse), (tv) {
+  .backdrop-blur-md,
+  .backdrop-blur-lg,
+  .backdrop-blur-sm {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: rgba(16, 19, 16, 0.96) !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
