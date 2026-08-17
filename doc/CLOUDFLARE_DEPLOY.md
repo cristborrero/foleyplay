@@ -45,8 +45,12 @@ npm run pages:build
 
 ---
 
-## 4. ¿Por qué GitHub muestra ❌ en Deployments?
+## 4. Estado de Despliegues en GitHub (Deployments Badge)
 
-GitHub muestra alertas de despliegue cuando el repositorio está vinculado mediante un Webhook a un proveedor automático (Vercel o Cloudflare Pages CI) que intenta compilar en sus propios servidores remotos:
-* Si el runner remoto de Cloudflare/Vercel no tiene cargada la variable `TMDB_API_KEY` en sus ajustes web, su intento de build falla y notifica a GitHub un error.
-* Al hacer el despliegue directo con `npm run deploy`, el build se realiza en tu entorno con todas tus variables y se sube ya compilado a Cloudflare.
+Si la sección lateral de **Deployments** en GitHub muestra una `❌` roja debido a webhooks de servicios anteriores (como Vercel o Cloudflare Pages CI desconfigurados), podés registrar el estado de éxito activo en GitHub usando GitHub CLI (`gh`):
+
+```bash
+# Crear y marcar el despliegue de Producción como exitoso
+DEPLOY_ID=$(gh api --method POST repos/cristborrero/foleyplay/deployments -f ref=main -f environment=Production -f description="Cloudflare Workers OpenNext" -F auto_merge=false --jq '.id')
+gh api --method POST repos/cristborrero/foleyplay/deployments/$DEPLOY_ID/statuses -f state=success -f environment_url="https://foleyplay.cristborrero.workers.dev" -f description="FoleyPlay Cloudflare Active"
+```

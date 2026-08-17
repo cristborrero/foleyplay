@@ -21,3 +21,12 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## 4. Port Conflicts
 - Since the workspace hosts multiple storefront projects (e.g. ReClic), check for process collisions on port 3000 using `lsof -i :3000`. Kill or free port 3000 if FoleyPlay needs to run there.
+
+## 5. Cloudflare Workers Deployment & GitHub Deployments Badge
+- Deploy command: `npm run deploy` (which runs `npx @opennextjs/cloudflare build && npx wrangler deploy`).
+- Live Production URL: `https://foleyplay.cristborrero.workers.dev`.
+- GitHub Deployment Status: If GitHub Deployments displays a red ❌ due to stale external bots (e.g. legacy Vercel webhook), update or register the active deployment status directly via GitHub CLI:
+  ```bash
+  DEPLOY_ID=$(gh api --method POST repos/cristborrero/foleyplay/deployments -f ref=main -f environment=Production -f description="Cloudflare Workers OpenNext" -F auto_merge=false --jq '.id')
+  gh api --method POST repos/cristborrero/foleyplay/deployments/$DEPLOY_ID/statuses -f state=success -f environment_url="https://foleyplay.cristborrero.workers.dev" -f description="FoleyPlay Cloudflare Active"
+  ```
